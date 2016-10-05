@@ -177,28 +177,34 @@ module LittleShape
     end
   end
   class Rectangle < LittleShape::Shape
+    def initialize (constraint=Constraint.new, theme=nil, content=nil)
+      super(constraint,theme)
+      @content = content
+      if @content
+        py = ((@theme.font_size * $DPI) / 72) #height
+        #60% of font size?
+        px = ((@theme.font_size * $DPI) / 72) * @content.size * $FONT_WIDTH_RATIO
+        if px >= @constraint.w or py >= @constraint.h
+          @constraint.set_wh(px+20, py+20)
+        end
+        @sx = @constraint.xc - (px/2)
+        @sy = @constraint.yc - (py/2)
+      end
+    end
     # Draws the shape with a graphics object.
     # @param graphics [FXDCWindow] the display component on which
     #                              the shape will be drawn.
     # @param tick [Float] the length of the current game loop.
-    def draw (graphics, tick, content="")
+    def draw (graphics, tick)
       #based on the size of the font so 12pt = 16px per character?
       #points = pixels * 72 / dpi
       #dpi is specific to the computer...mine is 118
       #http://dpi.lv/
       #(points * dpi) / 72 = pixels per character
-      if @font
-        py = ((@theme.font_size * $DPI) / 72) #height
-        #60% of font size?
-        px = ((@theme.font_size * $DPI) / 72) * content.size * $FONT_WIDTH_RATIO
-        if px >= @constraint.w or py >= @constraint.h
-          @constraint.set_wh(px+20, py+20)
-        end
-        sx = @constraint.xc - (px/2)
-        sy = @constraint.yc - (py/2)
+      if @font and @content
         graphics.foreground = @theme.font_color
         graphics.font = @font
-        graphics.drawText(sx,sy,content)
+        graphics.drawText(@sx,@sy,@content)
       end
       if @theme.fill_color
         graphics.foreground = @theme.fill_color
