@@ -119,10 +119,11 @@ class Theme
   
   # Returns a FXFont instance.
   # @param app [FXApp] is the parent application.
-  def font(app)
-    font = FXFont.new(app, @font_type, @font_size, @font_weight)
-    font.create
-    return font
+  def font(app=nil)
+    return @font if @font
+    @font = FXFont.new(app, @font_type, @font_size, @font_weight)
+    @font.create
+    return @font
   end
   # Creates a deep copy of the object.
   def clone
@@ -187,7 +188,7 @@ module LittleShape
       #http://dpi.lv/
       #(points * dpi) / 72 = pixels per character
       if @font
-        py = ((@theme.font_size * $DPI) / 72)
+        py = ((@theme.font_size * $DPI) / 72) #height
         #60% of font size?
         px = ((@theme.font_size * $DPI) / 72) * content.size * $FONT_WIDTH_RATIO
         if px >= @constraint.w or py >= @constraint.h

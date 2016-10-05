@@ -20,13 +20,14 @@ class RedBlueTheme < Theme
     @stroke_color = Fox.FXRGB(179, 0, 0) #red
     @fill_color = Fox.FXRGB(102, 153, 204) #blue
     @font_color = Fox.FXRGB(179, 0, 0) #red
+    @highlight_color = Fox.FXRGB(224, 224, 235) #light greyish blue
   end
 end
 
 class Label < GameObject
-  def initialize (game, group, x, y, w, h, content)
+  def initialize (game, group, x, y, w, h, content, theme=Theme.new)
     super (game, group)
-    @shape = LittleShape::Rectangle.new(Constraint.new(x, y, w, h), Theme.new)
+    @shape = LittleShape::Rectangle.new(Constraint.new(x, y, w, h), theme)
     @font_color = Fox.FXRGB(179, 0, 0)
     @content = content
   end
@@ -42,8 +43,8 @@ class Label < GameObject
 end
 
 class Button < Label
-  def initialize (game, group, x,y,w,h)
-    super(game, group, x,y,w,h,RedBlueTheme.new)
+  def initialize (game, group, x,y,w,h, content)
+    super(game, group, x,y,w,h,content, RedBlueTheme.new)
   end
   
   def contains?(x, y)
@@ -52,9 +53,9 @@ class Button < Label
 end
 
 class Line < GameObject
-  def initialize (game, group, x_start, y_start, x_end, y_end)
+  def initialize (game, group, theme, x_start, y_start, x_end, y_end)
     super(game, group)
-    @theme = RedBlueTheme.new
+    @theme = theme
     @x = x_start
     @y = y_start
     @x1 = x_end
@@ -62,7 +63,7 @@ class Line < GameObject
   end
 
   def draw(graphics, tick)
-    graphics.foreground = @theme.fill_color
+    graphics.foreground = @theme.highlight_color
     graphics.drawLine(@x,@y,@x1,@y1)
   end
   
@@ -75,15 +76,71 @@ class Line < GameObject
 end
 
 class Axis < Line
-
-  def initialize (game, group, x_start, y_start, x_end, y_end, scale, limit, orientation)
-    super (game, group, x_start, y_start, x_end, y_end)
+  #Orient starts from origin (0,0)
+  def initialize (game, group, theme, x_start, y_start, x_end, y_end, scale, limit)
+    super (game, group, theme, x_start, y_start, x_end, y_end)
     @scale = scale
     @limit = limit
-    @orientation = orientation
+    @ticks = []
+    if x_start == x_end #vertical
+      #ok so it starts at 0 and goes to limit
+      # scale is how much space b/t the tick marks
+      t = 0
+      #----|----|
+      px_total = (y_start - y_end) #how many pixels we have to work with
+      #how many time does the scale fit into the limit?
+      howmanyticks = limit / scale
+      #now how many pixels are for each tick
+      px_tick = px_total / howmanyticks
+      c = 0
+      while (t+scale) < limit
+        y = y_start+(px_tick*c)
+        @ticks.push(TickMark.new(game,group,theme,x_start-5,y,x_end+5,y,t.to_s))
+        t += scale
+        c += 1
+      end
+      @ticks.push(TickMark.new(game,group,theme,x_start-5,y_end,x_end+5,y_end,limit.to_s)
+    else if y_start == y_end #horizontal
+      t = 0
+      px_total = (x_start - x_end)
+      howmanyticks = limit / scale
+      px_tick = px_total / howmanyticks
+      c = 0
+      while (t+scale) < limit
+        x = x_start+(px_tick*c)
+        @ticks.push(TickMark.new(game,group,theme,x,y_start-5,x,y_end+5,t.to_s))
+        t += scale
+        c += 1
+      end
+      @ticks.push(TickMark.new(game,group,theme,x_end,y_start-5,x_end,y_start+5, limit.to_s))
+    end
   end
   def draw(graphics, tick)
-    #TODO
+    #TODO need to draw the line plus the tick marks
+    # tick marks are a standard width, say 5 px and have a label attached
+    # halfway on the string needs to be the tick mark
+  end
+  
+  class TickMark < Line
+    def initialize (game, group, theme, x_start, y_start, x_end, y_end, content)
+      super(game, group, theme, x_start, y_start, x_end, y_end)
+      @content = content
+    end
+    def draw (graphics, tick)
+      super
+      sx = @x
+      sy = @y
+      if @x == @x1 #vertical
+        sx = @x - 5
+        sy = @y - ((@theme.font_size * $DPI) / 36)
+      else if @y == @y1 #horizontal
+        sx = @x - (((@theme.font_size * $DPI) / 72) * @content.size * $FONT_WIDTH_RATIO)/2
+        sy = @y1 + 5
+      end
+      graphics.foreground = @theme.font_color
+      graphics.font = @theme.font
+      graphics.drawText(sx,sy,content)
+    end
   end
 end
 
@@ -94,9 +151,18 @@ class Graph < Group
   # @param y_scale [Fixnum] determines the space between ticks for the y axis.
   # @param x_limit [Fixnum] the upper-bound on the x axis.
   # @param y_limit [Fixnum] the upper-bound on the y axis.
-  def initialize(game, scene, x_scale, y_scale, x_limit, y_limit)
+  def initialize(game, scene, x,y,w,h,x_scale, y_scale, x_limit, y_limit)
     super(game, scene)
+    @x_axis = Axis.new(game,:graph,)
     #create x and y axis using the scales and limits
+    @theme = RedBlueTheme.new
+  end
+  def load (app)
+    super
+    @theme.font(app)
+  end
+  def scale (x,y)
+    #need to get the pixel point of an x,y value on the plot
   end
 end
 
