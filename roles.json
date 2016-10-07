@@ -1,0 +1,29 @@
+{
+  "service":{
+    "school":       6,
+    "food":         [20,97],
+    "shelter":      [20,30],
+    "health":       [20,12]
+  },
+  
+  "administration":{
+    "school":       6,
+    "acquisition":  [20,97],
+    "role":         [20,30],
+    "audit":        [20,12]
+  }
+  
+  "technical":{
+    "school":       6,
+    "equipment":    [20,97],
+    "security":     [20,30],
+    "data":         [20,12]
+  }
+  
+  "training":{
+    "school":       6,
+    "ojt":          [20,97],
+    "professional": [20,30],
+    "formal":       [20,12]
+  }
+}

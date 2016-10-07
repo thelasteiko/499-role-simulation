@@ -1,0 +1,23 @@
+{
+  "active_roles": [1,1,1,0,0,0,0,0,0],
+  
+  "num_agents":   [5,5,5,0,0,0,0,0,0],
+  
+  "variables":{
+  },
+  
+  "resources":{
+    "food":         18,
+    "shelter":      15,
+    "health":       2,
+    "acquisition":  0,
+    "role":         0,
+    "audit":        0,
+    "equipment":    0,
+    "security":     0,
+    "data":         0,
+    "ojt":          0,
+    "professional": 0,
+    "formal":       0
+  }
+}
