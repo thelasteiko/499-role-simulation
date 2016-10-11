@@ -95,6 +95,7 @@ class Agent < GameObject
     #TODO
     return false
   end
+  # TODO need to make the resource requirements flexible
   def check_tolerance (resources)
     if resources["food"] >= @tolerance
         and resources["shelter"] >= @tolerance
@@ -145,11 +146,14 @@ class Office < Group
     @trainers = [0,0,0,0]
     add_role(params) if params[:role]
   end
-  def add_role(params={})
+  # Adds a role to this office object and initializes agents for it.
+  # @param params [Hash] a list of parameters. The hash is for ease of programming.
+  def add_role(params={}) #TODO this doesn't really need to be a hash
     return nil if params[:office] != @office
     data = @scene.role_data[@office][params[:role]]
     q = params[:qualified]
     for i in 0...params[:num]
+      #TODO on the next iteration have a JSON list of agents to load
       a = Agent.new(@game,@office,params[:role]+@total_all.to_s,params[:role],data)
       for j in 0...q.length #so for the beginning add some trainers
         if q[j] > 0
@@ -161,6 +165,7 @@ class Office < Group
       end
       push(a)
       @total_all += 1
+      @total_curr += 1
     end
   end
 end
@@ -183,11 +188,12 @@ class Organization < Scene
     #@preferences = JSON.parse(File.read('pref.json'))
     @role_data = JSON.parse(File.read('roles.json'))
     @start_data = JSON.parse(File.read('start.json'))
+    @total_agents = 0
   end
   def load (app)
     $FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
-    roles = @start_data[:roles] #integer array
+    roles = @start_data["roles"] #integer array
     for i in 0...roles.length
       if roles[i] > 0
         r = @role_data["roles"][i] #name of the role
@@ -204,10 +210,18 @@ class Organization < Scene
           push(@role_data["roles"],Office.new(@game,this,o,
             role: r,initial_agents: roles[i],qualified: q))
         end
+        @total_agents += @groups[o].total_curr
       end
     end
+    @resources = @start_data["resources"]
     super
   end
+  
+  def update
+    
+  end
+  # Draws if draw is on.
+  # @see LittleGame::draw
   def draw (graphics, tick)
     super if $DRAW
   end
@@ -215,7 +229,7 @@ class Organization < Scene
     #create a resource list that has distributed resources
     # according to how many people total and how many to provide for
     new_list = Organization.create_resource_list
-    resource.each_pair do |k,v|
+    @resources.each_pair do |k,v|
       # v / total = how much each * num = how much
       nv = (v / @total_agents) * num
       new_list[k] = nv

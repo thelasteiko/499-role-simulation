@@ -29,6 +29,7 @@ error messages in.
 
 #for logging events in a file
 require_relative 'littlelog'
+#handles input events
 require_relative 'littleinput'
 
 #I'm using fxruby for the GUI portion.
