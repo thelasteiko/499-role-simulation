@@ -86,6 +86,7 @@ class Group
     # Updates the objects in this group.
     def update
         @entities.each {|i| i.update}
+        @entities.delete_if {|i| i.remove}
     end
     # Tells the objects in this group to draw.
     # @param graphics [FXDCWindow] is the graphics object with
@@ -103,7 +104,6 @@ class Group
     def push (value)
         @entities.push(value)
     end
-    # TODO look into a more efficient way of doing this
     # Retrieve one of the objects in the group.
     # @param value [Fixnum] is the index of the object.
     def [] (value)
@@ -213,13 +213,13 @@ class LittleGame
     
     # Creates the game and the variables needed
     # to time the loop correctly.
-    def initialize
+    def initialize (newscene=nil)
         @tick = 0
         @time = Time.now
         @input = LittleInput::Input.new(self)
         @scene = nil
         @canvas = nil
-        @newscene = nil
+        @newscene = newscene
     end
     # Creates listeners for the canvas when it is added.
     # @param canvas [FXCanvas] is the canvas object for which input
