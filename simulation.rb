@@ -8,13 +8,52 @@ require_relative 'littleengine'
 require 'json'
 $DRAW = false
 
+module Equations
+  WEIGHT = {
+    "food" =>         1.0,
+    "shelter" =>      1.0,
+    "health" =>       1.0,
+    "acquisition" =>  1.0,
+    "role" =>         1.0,
+    "audit" =>        1.0,
+    "equipment" =>    1.0,
+    "security" =>     1.0,
+    "data" =>         1.0,
+    "ojt" =>          1.0,
+    "professional" => 1.0,
+    "formal" =>       1.0
+    }
+  def Equations.train (resources, trainers, motivation)
+    ratio = (resources["food"] * WEIGHT["food"]
+        + resources["shelter"] * WEIGHT["shelter"]
+        + resources["ojt"] * WEIGHT["ojt"])/100
+    return ratio * (motivation + (trainers/100))
+  end
+  
+  def Equations.output (resources, motivation, proficiency)
+    ratio = resources["food"]     * WEIGHT["food"]
+        + resources["shelter"]    * WEIGHT["shelter"]
+        + resources["health"]     * WEIGHT["health"]
+        + resources["equipment"]  * WEIGHT["equipment"]
+        + resources["data"]       * WEIGHT["data"]
+        + resources["security"]   * WEIGHT["security"]
+    return ratio * (motivation + (proficiency + resources["audit"])/100)
+  end
+  
+  def Equations.cross_train
+  end
+  
+  def Equations.acquire_agent
+  end
+end
+
 class RoleProgress
   MIN_MONTH = [0,12,12]
   # @return [String] the name of the role.
   attr_accessor :role_name
   # @return [Array] reference to the base data for a role.
   attr_accessor :role_data
-  # @return [FixNum] 0, 1, or 2 according to the level of proficieny in the job.
+  # @return [FixNum] 0 to 3 according to the level of proficieny in the job.
   attr_accessor :proficiency
   # @return [FixNum] how many months in the current proficiency level.
   attr_accessor :months_current
@@ -61,7 +100,6 @@ class RoleProgress
 end
 # Agents are the backbone of the simulation. They intake resources and produce output.
 class Agent < GameObject
-  AVERAGE_OUTPUT = 5
   # @return [String] uniquely identifies agent.
   attr_reader   :serial_number
   # @return [Array] list of the progress the agent has made in training.
@@ -74,7 +112,6 @@ class Agent < GameObject
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
-  #tolerance=1, motivation=1, months=24
   def initialize(game, group, serial_number, role_name, role_data, params={})
     super(game, group)
     @serial_number = serial_number
@@ -82,18 +119,8 @@ class Agent < GameObject
     @tolerance = params[:tolerance] ? params[:tolerance] : 1
     @motivation = params[:motivation] ? params[:motivation] : 1
     @months_total = params[:months_total] ? params[:months_total] : 24
+    @output_level = params[:output_level] ? params[:output_level] : 5
     @months = 0
-  end
-  def output(resources)
-    if resources["equipment"] >= @tolerance
-      #subtract equipment needs...but they need to be distributed ;.;
-      return (AVERAGE_OUTPUT * @motivation * role.proficiency)
-    end
-    return 0
-  end
-  def train (resources, trainers)
-    #TODO
-    return false
   end
   # TODO need to make the resource requirements flexible
   def check_tolerance (resources)
@@ -104,19 +131,28 @@ class Agent < GameObject
     false
   end
   def retrain(role)
-    #TODO
+    #TODO...not used yet
   end
   def role
     #TODO i need the latest...do this when doing cross-training stuff
     @roles.value_at(-1)
   end
-  def update (resources, new_resources)
-    #TODO is school included?
-    return if not check_tolerance(resources)
-    new_resources[role.role_data.role] += output(resources)
-    
-    @months_total += 1
-    
+  def update (resources, new_resources, trainers)
+    #signifies death
+    if @months >= @months_total
+      @remove = true
+      trainers[role.proficience-1] -= 1 if role.proficiency > 0
+      return nil
+    end
+    return nil if not check_tolerance(resources)
+    o = Equations.output(resources, @motivation, role.proficiency)
+    new_resources[role.role_name] += @output_level * o
+    t = Equations.train(resources, trainers[role.proficiency], motivation)
+    role.update(t)
+    if role.upgrade? and role.proficiency > 0
+      trainers[role.proficiency-1] += 1
+    end
+    @months += 1
   end
 end
 
@@ -153,7 +189,7 @@ class Office < Group
     data = @scene.role_data[@office][params[:role]]
     q = params[:qualified]
     for i in 0...params[:num]
-      #TODO on the next iteration have a JSON list of agents to load
+      #TODO on the next iteration have an optional JSON list of agents to load
       a = Agent.new(@game,@office,params[:role]+@total_all.to_s,params[:role],data)
       for j in 0...q.length #so for the beginning add some trainers
         if q[j] > 0
@@ -167,6 +203,11 @@ class Office < Group
       @total_all += 1
       @total_curr += 1
     end
+  end
+  
+  def update (resources, new_resources)
+    @entities.each {|i| i.update(resources, new_resources, @trainers)}
+    @entities.delete_if{|i| i.remove}
   end
 end
 
@@ -190,6 +231,8 @@ class Organization < Scene
     @start_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
   end
+  # Creates the offices from the starting data and adds agents.
+  # @see Scene::load
   def load (app)
     $FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
@@ -217,14 +260,25 @@ class Organization < Scene
     super
   end
   
+  # This is where we need to distribute resources.
   def update
-    
+    new_resources = create_resource_list
+    @groups.each do |k,v|
+      resources = create_distributed (v.total_curr)
+      v.update(resources, new_resources)
+    end
+    $FRAME.log(1,"Organization::update::Replacing resources : "
+        + @resources.to_s)
+    @resources = new_resources
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
     super if $DRAW
   end
+  # Creates a resource list depending on the number of agents
+  # to provide for from the total resource list. Then it subtracts
+  # any distributed resources from the current list.
   def create_distributed (num)
     #create a resource list that has distributed resources
     # according to how many people total and how many to provide for
@@ -233,7 +287,7 @@ class Organization < Scene
       # v / total = how much each * num = how much
       nv = (v / @total_agents) * num
       new_list[k] = nv
-      v -= nv
+      @resources[k] -= nv
     end
     return new_list
   end

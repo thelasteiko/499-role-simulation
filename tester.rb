@@ -1,9 +1,24 @@
 #!/usr/bin/env ruby
 
-a = []
+resources = {
+    "food" =>         1,
+    "shelter" =>      1,
+    "health" =>       1,
+    "acquisition" =>  1,
+    "role" =>         1,
+    "audit" =>        1,
+    "equipment" =>    1,
+    "security" =>     1,
+    "data" =>         1,
+    "ojt" =>          1,
+    "professional" => 1,
+    "formal" =>       1
+}
 
-a.push(1)
-a.push(5)
-a.push(3)
-#so the last added is the one that pops
-print (a.value_at(-1)) #gets the last item, 3
+puts(resources)
+
+resources.each_pair do |k,v|
+  resources[k] += 1
+end
+
+puts(resources)
