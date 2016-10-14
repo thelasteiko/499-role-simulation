@@ -67,6 +67,7 @@ end
 
 class RoleProgress
   MIN_MONTH = [0,12,12]
+  attr_accessor :office
   # @return [String] the name of the role.
   attr_accessor :role_name
   # @return [Array] reference to the base data for a role.
@@ -79,7 +80,8 @@ class RoleProgress
   attr_accessor :progress
   # Creates an object to track the training progress of an agent.
   # @param role_data [Array] holds the requirements for upgrade.
-  def initialize (name, role_data)
+  def initialize (office, name, role_data)
+    @office = office
     @role_name = name
     @role_data = role_data
     @proficiency = 0
@@ -130,10 +132,10 @@ class Agent < GameObject
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
-  def initialize(game, group, serial_number, role_name, role_data, params={})
+  def initialize(game, group, serial_number, office, role_name, role_data, params={})
     super(game, group)
     @serial_number = serial_number
-    @roles = [RoleProgress.new(role_name,role_data)]
+    @roles = [RoleProgress.new(office,role_name,role_data)]
     @tolerance = params[:tolerance] ? params[:tolerance] : 1
     @motivation = params[:motivation] ? params[:motivation] : 1
     @months_total = params[:months_total] ? params[:months_total] : 24
@@ -150,86 +152,68 @@ class Agent < GameObject
     #TODO i need the latest...do this when doing cross-training stuff
     @roles.value_at(-1)
   end
+  # Updates the agent, consumes resources and produces output.
+  # @param resources [Hash] a list of resources the agent needs.
+  # @param new_resources [Hash] a list of resources for the next iteration.
+  # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
     #signifies death
     if @months >= @months_total 
         or not Equations.basic_tolerance(resources)
       @remove = true
-      trainers[role.proficiency-1] -= 1 if role.proficiency > 0
+      trainers[role.office][role.proficiency-1] -= 1 if role.proficiency > 0
       return nil
     end
     o = Equations.output(resources, @motivation, role.proficiency, @consumption)
     new_resources[role.role_name] += @output_level * o
+    @months += 1
     t = Equations.train(resources, trainers[role.proficiency], motivation, @consumption)
     role.update(t)
     if role.upgrade? and role.proficiency > 0
-      trainers[role.proficiency-1] += 1
+      trainers[role.office][role.proficiency-1] += 1
     end
-    @months += 1
   end
 end
 
 =begin
-do I need a separate office for each role?
-what does every office need?
-  a way to change roles within the office -> no need to go to school
-  distribute resources evenly for agents
-  gather resources and report them to organization
-  request resources from organization
-  
-  TODO how do i determine which role is the primary one?
+The best way to distribute resources is by making each
+group a unit with 1 agent per role but this could create
+problems when changing roles.
+What might work better is having the 3 offices within a unit
+then have 3 agents per office. Services and Tech first.
 =end
-class Office < Group
-  attr_accessor :office
-  # @return [FixNum] the total amount of agents ever created in this office.
-  attr_accessor :total_all
-  # @return [Array] how many trainers there are for each proficiency level.
-  attr_accessor :trainers
-  def initialize (game, scene, office, params={})
-    super(game,scene)
-    @office = office
-    @total_all = 0
-    @trainers = [0,0,0]
-    add_role(params) if params[:role]
-    $FRAME.log(2, "Office::init::Created " + office)
-    $FRAME.log(2, "Office::init::Param " + params.to_s)
+
+class Unit < GameObject
+  # @return [Hash] a hash map of agents in the unit.
+  attr_accessor :agents
+  attr_accessor :unit_serial
+  # Creates an object that holds a certain number of agents.
+  def initialize(game, group, unit_serial)
+    super(game,group)
+    @unit_serial = unit_serial
+    @agents = Hash.new
   end
-  # Adds a role to this office object and initializes agents for it.
-  # @param params [Hash] a list of parameters. The hash is for ease of programming.
-  def add_role(params={}) #TODO this doesn't really need to be a hash
-    return nil if params[:office] != @office
-    data = @scene.role_data[@office][params[:role]]
-    q = params[:qualified] ? params[:qualified] : 0
-    n = params[:num]
-    for j in 0...q.length
-      while q[j] > 0
-        add_agent(params[:role],data,j+1)
-        q[j] -= 1
-        n -= 1
-      end
+  def update (params={})
+    @agents.each do |k,v| 
+      v.update(params[:resources],
+          params[:new_resources],
+          params[:trainers])
     end
-    while n > 0
-      add_agent(params[:role],data,0)
-    end
-    #TODO on the next iteration have an optional JSON list of agents to load
+    @agents.delete_if {|k,v| v.remove}
+    @remove = true if @agents.size == 0
   end
-  # Adds a new agent to the list.
-  # @param role_name [String] the name of the role.
-  # @param role_data [Array] a list of information about the role.
-  # @param proficiency [FixNum] represents the proficiency level of the agent.
-  def add_agent(role_name,role_data,proficiency)
-    a = Agent.new(@game, @office, @office+@total_all.to_s,role_name,role_data)
-    a.role.proficiency = proficiency
-    @trainers[proficiency-1] += 1 if proficiency > 0
-    push(a)
-    @total_all += 1
+  def has?(role)
+    #TODO I can modify this so that it checks if
+    # the role is full, that is to have multiple
+    # agents in some roles
+    @agents[role]
   end
-  # Updates the agents and deletes them if necessary.
-  # @param resources [Array] an array of resources to distribute.
-  # @param new_resources [Array] a list of new resources.
-  def update (resources, new_resources)
-    @entities.each {|i| i.update(resources, new_resources, @trainers)}
-    @entities.delete_if {|i| i.remove}
+  def add_agent(agent)
+    rn = agent.role.role_name
+    return false if has?(rn)
+    @agent[rn] = [] if not @agent[rn]
+    @agent[rn].push(agent)
+    true
   end
 end
 
@@ -242,9 +226,12 @@ Manages distribution of resources to various offices.
 =end
 class Organization < Scene
   attr_accessor :total_agents
+  attr_accessor :current_agents
+  attr_accessor :total_units
   attr_accessor :resources
   attr_reader :role_data
   attr_reader :start_data
+  attr_accessor :trainers
   def initialize (game)
     super
     #read file things
@@ -252,6 +239,16 @@ class Organization < Scene
     @role_data = JSON.parse(File.read('roles.json'))
     @start_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
+    @current_agents = 0
+    @total_units = 0;
+    @trainers = {
+      "service"         =>  [0,0,0],
+      "administration"  =>  [0,0,0],
+      "technical"       =>  [0,0,0],
+      "training"        =>  [0,0,0]
+    }
+    push(:units,Unit.new(game,:units,"U"+@total_units.to_s))
+    @total_units += 1
   end
   # Creates the offices from the starting data and adds agents.
   # @see Scene::load
@@ -260,58 +257,86 @@ class Organization < Scene
     #create an office for each role
     roles = @start_data["roles"] #integer array
     for i in 0...roles.length
-      if roles[i] > 0
-        r = @role_data["roles"][i] #name of the role
+      if roles[i] > 0 #number of agents in role
         #TODO so this is wonky...
         q = [@start_data["qualified"][0][i],
               @start_data["qualified"][1][i],
               @start_data["qualified"][2][i]]
+        r = @role_data["roles"][i] #name of the role
         o = @role_data["offices"][(i/4).to_i] #name of the office
-        if @groups[o]
-          #updates an office that already exists
-          @groups[o].add_role(o,r,roles[i])
-        else
-          #adds a new office with the role data and how many agents
-          push(@role_data["roles"],Office.new(@game,this,o,
-            role: r,initial_agents: roles[i],qualified: q))
+        d = @role_data[o][r] #data for the role
+        t = 0 #proficiency level
+        for j = 0...roles[i] #for the number of agents to be added
+          #create agent
+          a = nil
+          if t > q.length #got past all the proficiency levels
+            a = create_agent(o,r,d)
+          else if q[t] == 0 #the current level has been satisfied
+            t += 1
+          else #the current level needs agents
+            a = create_agent(o,r,d,t)
+            q[t] -= 1
+          end
+          a = create_agent(o,r,d) if not a
+          #add agent to unit
+          add_agent(a)
         end
-        @total_agents += @groups[o].total_curr
       end
     end
     @resources = @start_data["resources"]
     super
   end
   
+  # Creates an agent.
+  # @param role_name [String] the name of the role.
+  # @param role_data [Array] a list of information about the role.
+  # @param proficiency [FixNum] represents the proficiency level of the agent.
+  def create_agent(office,role_name,role_data, proficiency=0)
+    a = Agent.new(@game, :unit, office+@total_agents.to_s,
+          office,role_name,role_data)
+    a.role.proficiency = proficiency
+    return a
+  end
+  # Adds an agent to the simulation, creating a unit if there
+  # is none for them.
+  # @param agent [Agent] the agent to add.
+  def add_agent(agent)
+    n = 0 #unit to access
+    u = @groups[:units][n] #get first unit
+    n += 1
+    while u and not u.add_agent(agent)
+      u = @groups[:units][n]
+      n += 1
+    end
+    if not u
+      u = Unit.new(@game, :units,"U"+@total_units.to_s)
+      push(:units,u)
+      @total_units += 1
+      u.add_agent(agent)
+    end
+    @total_agents += 1
+    @current_agents += 1
+    if a.role.proficiency > 0
+      @trainers[o][a.role.proficiency-1] += 1
+    end
+  end
+  
   # This is where we need to distribute resources.
   def update
-    new_resources = create_resource_list
+    nr = create_resource_list
     @groups.each do |k,v|
-      resources = create_distributed (v.total_curr)
-      v.update(resources, new_resources)
+      v.update(resources: @resources,
+          new_resources:  nr,
+          trainers: @trainers)
     end
     $FRAME.log(1,"Organization::update::Replacing resources : "
         + @resources.to_s)
-    @resources = new_resources
+    @resources = nr
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
     super if $DRAW
-  end
-  # Creates a resource list depending on the number of agents
-  # to provide for from the total resource list. Then it subtracts
-  # any distributed resources from the current list.
-  def create_distributed (num)
-    #create a resource list that has distributed resources
-    # according to how many people total and how many to provide for
-    new_list = Organization.create_resource_list
-    @resources.each_pair do |k,v|
-      # v / total = how much each * num = how much
-      nv = (v / @total_agents) * num
-      new_list[k] = nv
-      @resources[k] -= nv
-    end
-    return new_list
   end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.

@@ -1,5 +1,5 @@
 # Save to file?
-$CREATE_LOG = false
+$CREATE_LOG = true
 #The file to which statistics will be saved.
 $STATFILE = "log/stat2016Fall.csv"
 #The list of statistics that will be saved.

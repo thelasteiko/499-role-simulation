@@ -41,7 +41,7 @@ $MS_PER_FRAME = 0.01
 #Set this to true to display the debug window.
 $DEBUG = true
 #Set this to true to save statistics and comments to file.
-$LOG = false
+$LOG = true
 
 #Game objects do all the heavy lifting in the game.
 #If there's something to see there's a game object
@@ -59,7 +59,7 @@ class GameObject
       @remove = false
     end
     # Update variables (hint: position) here.
-    def update
+    def update(params={})
     end
     # Draw the object (picture or shape) using
     # the graphics from the canvas.
@@ -85,8 +85,8 @@ class Group
       @scene = scene
     end
     # Updates the objects in this group.
-    def update
-        @entities.each {|i| i.update}
+    def update(params={})
+        @entities.each {|i| i.update(params)}
         @entities.delete_if {|i| i.remove}
     end
     # Tells the objects in this group to draw.
@@ -119,6 +119,9 @@ class Group
     def index(value)
       @entities.index(value)
     end
+    def size
+      @entities.size
+    end
 end
 # The scene is a convenient way to switch entire sets
 # of objects. This way, the game can switch levels or
@@ -134,8 +137,8 @@ class Scene
       @groups = Hash.new
     end
     # Calls update on all the groups.
-    def update
-      @groups.each{|key, value| value.update}
+    def update (params={})
+      @groups.each{|key, value| value.update(params)}
     end
     # Calls draw on all the groups.
     # If a particular layering scheme needs to be
@@ -396,6 +399,9 @@ class LittleFrame < FXMainWindow
       if @@console
         time = Time.now
         @@console.appendText("#{time}: #{id}: #{message}\n")
+      end
+      if $LOG
+        logtofile("frame","log",message)
       end
       if exit
         abort

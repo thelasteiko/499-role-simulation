@@ -8,6 +8,7 @@
   ],
   
   "variables":{
+    "role_ratio": [1,1,1,0,0,0,0,0,0]
   },
   
   "resources":{
