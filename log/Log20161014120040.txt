@@ -1,0 +1,337 @@
+2016-10-14 12:00:40 -0700
+12:00:40:0.023001: String.log: I:100{A:15/15,U:5/5}
+12:00:40:0.024001: String.log: R1:{"food"=>18, "shelter"=>15, "health"=>2, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.025001: String.log: R2:{"food"=>18, "shelter"=>15, "health"=>2, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0.0, "professional"=>0, "formal"=>0}
+12:00:40:0.026001: String.log: I:99{A:15/15,U:5/5}
+12:00:40:0.026001: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.027001: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.038001: String.log: I:98{A:15/15,U:0/5}
+12:00:40:0.038001: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.039002: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.049006: String.log: I:97{A:15/15,U:0/5}
+12:00:40:0.049506: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.050006: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.060507: String.log: I:96{A:15/15,U:0/5}
+12:00:40:0.061007: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.061507: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.072596: String.log: I:95{A:15/15,U:0/5}
+12:00:40:0.072596: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.073596: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.083597: String.log: I:94{A:15/15,U:0/5}
+12:00:40:0.083597: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.084597: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.094597: String.log: I:93{A:15/15,U:0/5}
+12:00:40:0.094597: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.095598: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.106598: String.log: I:92{A:15/15,U:0/5}
+12:00:40:0.106598: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.106598: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.117639: String.log: I:91{A:15/15,U:0/5}
+12:00:40:0.117639: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.118599: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.1286: String.log: I:90{A:15/15,U:0/5}
+12:00:40:0.1286: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.1296: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.1396: String.log: I:89{A:15/15,U:0/5}
+12:00:40:0.1396: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.140665: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.151105: String.log: I:88{A:15/15,U:0/5}
+12:00:40:0.151605: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.152105: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.162606: String.log: I:87{A:15/15,U:0/5}
+12:00:40:0.163135: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.163135: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.174131: String.log: I:86{A:15/15,U:0/5}
+12:00:40:0.174131: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.175147: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.186131: String.log: I:85{A:15/15,U:0/5}
+12:00:40:0.186131: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.187145: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.198133: String.log: I:84{A:15/15,U:0/5}
+12:00:40:0.198133: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.199134: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.210133: String.log: I:83{A:15/15,U:0/5}
+12:00:40:0.210133: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.211137: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.222134: String.log: I:82{A:15/15,U:0/5}
+12:00:40:0.222134: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.223135: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.234135: String.log: I:81{A:15/15,U:0/5}
+12:00:40:0.234135: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.235136: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.246135: String.log: I:80{A:15/15,U:0/5}
+12:00:40:0.246135: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.247136: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.257642: String.log: I:79{A:15/15,U:0/5}
+12:00:40:0.258142: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.258642: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.272145: String.log: I:78{A:15/15,U:0/5}
+12:00:40:0.272145: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.273144: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.283145: String.log: I:77{A:15/15,U:0/5}
+12:00:40:0.283145: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.28415: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.295146: String.log: I:76{A:15/15,U:0/5}
+12:00:40:0.295146: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.295146: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.306147: String.log: I:75{A:15/15,U:0/5}
+12:00:40:0.306147: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:40:0.307148: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.317184: String.log: I:74{A:15/15,U:0/5}
+12:00:41:0.317184: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.318148: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.328179: String.log: I:73{A:15/15,U:0/5}
+12:00:41:0.328179: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.329149: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.339178: String.log: I:72{A:15/15,U:0/5}
+12:00:41:0.339178: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.34015: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.350152: String.log: I:71{A:15/15,U:0/5}
+12:00:41:0.350652: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.351152: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.361692: String.log: I:70{A:15/15,U:0/5}
+12:00:41:0.362154: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.362655: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.372721: String.log: I:69{A:15/15,U:0/5}
+12:00:41:0.372721: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.373676: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.383722: String.log: I:68{A:15/15,U:0/5}
+12:00:41:0.383722: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.384678: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.394712: String.log: I:67{A:15/15,U:0/5}
+12:00:41:0.394712: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.395679: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.406701: String.log: I:66{A:15/15,U:0/5}
+12:00:41:0.406701: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.407676: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.417714: String.log: I:65{A:15/15,U:0/5}
+12:00:41:0.417714: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.418757: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.429716: String.log: I:64{A:15/15,U:0/5}
+12:00:41:0.429716: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.430677: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.440727: String.log: I:63{A:15/15,U:0/5}
+12:00:41:0.440727: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.44168: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.451748: String.log: I:62{A:15/15,U:0/5}
+12:00:41:0.452183: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.452684: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.463247: String.log: I:61{A:15/15,U:0/5}
+12:00:41:0.463247: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.464243: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.474282: String.log: I:60{A:15/15,U:0/5}
+12:00:41:0.474282: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.475262: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.485285: String.log: I:59{A:15/15,U:0/5}
+12:00:41:0.485285: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.486267: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.49628: String.log: I:58{A:15/15,U:0/5}
+12:00:41:0.49628: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.497264: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.507304: String.log: I:57{A:15/15,U:0/5}
+12:00:41:0.507304: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.510247: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.520282: String.log: I:56{A:15/15,U:0/5}
+12:00:41:0.520282: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.521292: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.531309: String.log: I:55{A:15/15,U:0/5}
+12:00:41:0.531309: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.532276: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.542283: String.log: I:54{A:15/15,U:0/5}
+12:00:41:0.542283: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.543252: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.553783: String.log: I:53{A:15/15,U:0/5}
+12:00:41:0.55431: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.554809: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.56532: String.log: I:52{A:15/15,U:0/5}
+12:00:41:0.56532: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.566323: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.576357: String.log: I:51{A:15/15,U:0/5}
+12:00:41:0.576357: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.577286: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.587357: String.log: I:50{A:15/15,U:0/5}
+12:00:41:0.587357: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.588287: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.598363: String.log: I:49{A:15/15,U:0/5}
+12:00:41:0.598363: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.599355: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.610323: String.log: I:48{A:15/15,U:0/5}
+12:00:41:0.610323: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.611288: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.621323: String.log: I:47{A:15/15,U:0/5}
+12:00:41:0.621323: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.622327: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.632363: String.log: I:46{A:15/15,U:0/5}
+12:00:41:0.632363: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.633344: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.644363: String.log: I:45{A:15/15,U:0/5}
+12:00:41:0.644363: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.645375: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.655808: String.log: I:44{A:15/15,U:0/5}
+12:00:41:0.656309: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.656809: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.667383: String.log: I:43{A:15/15,U:0/5}
+12:00:41:0.667383: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.668377: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.678413: String.log: I:42{A:15/15,U:0/5}
+12:00:41:0.678413: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.679389: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.690379: String.log: I:41{A:15/15,U:0/5}
+12:00:41:0.690379: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.691386: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.701415: String.log: I:40{A:15/15,U:0/5}
+12:00:41:0.701415: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.702395: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.713385: String.log: I:39{A:15/15,U:0/5}
+12:00:41:0.714349: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.714349: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.72539: String.log: I:38{A:15/15,U:0/5}
+12:00:41:0.72539: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.726393: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.736417: String.log: I:37{A:15/15,U:0/5}
+12:00:41:0.736417: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.737426: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.747857: String.log: I:36{A:15/15,U:0/5}
+12:00:41:0.748357: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.748857: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.759395: String.log: I:35{A:15/15,U:0/5}
+12:00:41:0.759879: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.760374: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.771465: String.log: I:34{A:15/15,U:0/5}
+12:00:41:0.771465: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.7724: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.782427: String.log: I:33{A:15/15,U:0/5}
+12:00:41:0.782427: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.783404: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.793438: String.log: I:32{A:15/15,U:0/5}
+12:00:41:0.793438: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.794461: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.805436: String.log: I:31{A:15/15,U:0/5}
+12:00:41:0.805436: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.806443: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.817439: String.log: I:30{A:15/15,U:0/5}
+12:00:41:0.817439: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.818429: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.828434: String.log: I:29{A:15/15,U:0/5}
+12:00:41:0.828434: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.829422: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.840402: String.log: I:28{A:15/15,U:0/5}
+12:00:41:0.840402: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.841401: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.852406: String.log: I:27{A:15/15,U:0/5}
+12:00:41:0.852976: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.853408: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.86441: String.log: I:26{A:15/15,U:0/5}
+12:00:41:0.86441: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.86441: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.876411: String.log: I:25{A:15/15,U:0/5}
+12:00:41:0.876411: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.877411: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.887459: String.log: I:24{A:15/15,U:0/5}
+12:00:41:0.887459: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.88847: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.899462: String.log: I:23{A:15/15,U:0/5}
+12:00:41:0.899462: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.900426: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.910459: String.log: I:22{A:15/15,U:0/5}
+12:00:41:0.910459: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.911445: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.921452: String.log: I:21{A:15/15,U:0/5}
+12:00:41:0.921452: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.922455: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.93246: String.log: I:20{A:15/15,U:0/5}
+12:00:41:0.93246: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.933486: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.944481: String.log: I:19{A:15/15,U:0/5}
+12:00:41:0.944481: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.944481: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.955467: String.log: I:18{A:15/15,U:0/5}
+12:00:41:0.955919: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.956418: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.967507: String.log: I:17{A:15/15,U:0/5}
+12:00:41:0.967507: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.968474: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.978506: String.log: I:16{A:15/15,U:0/5}
+12:00:41:0.978506: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.979489: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.989537: String.log: I:15{A:15/15,U:0/5}
+12:00:41:0.989537: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:0.990542: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.001472: String.log: I:14{A:15/15,U:0/5}
+12:00:41:1.001472: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.002472: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.012538: String.log: I:13{A:15/15,U:0/5}
+12:00:41:1.012538: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.013473: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.023539: String.log: I:12{A:15/15,U:0/5}
+12:00:41:1.023539: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.024547: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.035511: String.log: I:11{A:15/15,U:0/5}
+12:00:41:1.035511: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.036497: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.047475: String.log: I:10{A:15/15,U:0/5}
+12:00:41:1.04798: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.04848: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.059018: String.log: I:9{A:15/15,U:0/5}
+12:00:41:1.05954: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.060067: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.07059: String.log: I:8{A:15/15,U:0/5}
+12:00:41:1.07059: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.071546: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.081586: String.log: I:7{A:15/15,U:0/5}
+12:00:41:1.081586: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.082525: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.092587: String.log: I:6{A:15/15,U:0/5}
+12:00:41:1.092587: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.093573: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.103586: String.log: I:5{A:15/15,U:0/5}
+12:00:41:1.103586: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.104568: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.11458: String.log: I:4{A:15/15,U:0/5}
+12:00:41:1.11458: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.115528: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.125567: String.log: I:3{A:15/15,U:0/5}
+12:00:41:1.125567: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.126582: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.137564: String.log: I:2{A:15/15,U:0/5}
+12:00:41:1.137564: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.138565: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.149032: String.log: I:1{A:15/15,U:0/5}
+12:00:41:1.150031: String.log: R1:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.150531: String.log: R2:{"food"=>0, "shelter"=>0, "health"=>0, "acquisition"=>0, "role"=>0, "audit"=>0, "equipment"=>0, "security"=>0, "data"=>0, "ojt"=>0, "professional"=>0, "formal"=>0}
+12:00:41:1.161061: String.log: Agents:15/15
+Units:5
+Resource{
+	food:0
+	shelter:0
+	health:0
+	acquisition:0
+	role:0
+	audit:0
+	equipment:0
+	security:0
+	data:0
+	ojt:0
+	professional:0
+	formal:0
+}
+Units{
+}
+12:00:41:1.172581: String.log: Agents:15/15
+Units:5
+Resource{
+	food:0
+	shelter:0
+	health:0
+	acquisition:0
+	role:0
+	audit:0
+	equipment:0
+	security:0
+	data:0
+	ojt:0
+	professional:0
+	formal:0
+}
+Units{
+}

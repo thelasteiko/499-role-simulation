@@ -22,7 +22,7 @@ class LittleLogger
     strtime = "#{hour}#{min}#{sec}"
     #@startime = time.to_f
     if $CREATE_LOG
-      @logfile = "Log#{@date}#{strtime}.txt"
+      @logfile = "log/Log#{@date}#{strtime}.txt"
       open(@logfile, 'w') do |f|
         f.puts "#{time}"
       end
@@ -74,14 +74,15 @@ class LittleLogger
   #format of args {"stat"=>"value"}
     return if not @statlist
     @statlist[:runtime] = (Time.now - @time).to_f
-    @statlist[:timeperrun] = @statlist[:runtime] / @statlist[:runs]
+    @statlist[:timeperrun] = @statlist[:runtime] / @statlist[:run]
     if not File.file?($STATFILE)
+      File.new($STATFILE, 'w')
       File.open($STATFILE, 'w') do |f|
         $STAT_LIST.each do |i|
           f.write(i.to_s)
           f.write(",")
         end
-        f.write("\n")
+        f.puts ""
       end
     end
     File.open($STATFILE, 'a') do |f|
@@ -89,7 +90,7 @@ class LittleLogger
         f.write(v)
         f.write(',')
       end
-      f.write('\n')
+      f.puts ""
     end
   end
 end

@@ -1,30 +1,30 @@
 {
-  "roles":["food","shelter","health",
+  "roles": ["food","shelter","health",
     "acquisition","role","audit",
     "equipment","security","data",
     "ojt","professional","formal"],
   
-  "offices":["service","administration","technical","training"],
+  "offices": ["service","administration","technical","training"],
     
-  "service":{
+  "service": {
     "food":         [6,20,97],
     "shelter":      [6,20,30],
     "health":       [6,20,12]
   },
   
-  "administration":{
+  "administration": {
     "acquisition":  [6,20,97],
     "role":         [6,20,30],
     "audit":        [6,20,12]
-  }
+  },
   
-  "technical":{
+  "technical": {
     "equipment":    [0,20,97],
     "security":     [0,20,30],
     "data":         [0,20,12]
-  }
+  },
   
-  "training":{
+  "training": {
     "ojt":          [0,20,97],
     "professional": [0,20,30],
     "formal":       [0,20,12]

@@ -33,17 +33,17 @@ module Equations
   TOLERANCE = 1
   # Compares tolerance to the available resources.
   def Equations.basic_tolerance(resources)
-    return resources["food"] >= TOLERANCE
-        and resources["shelter"] >= TOLERANCE
+    return (resources["food"] >= Equations::TOLERANCE and
+        resources["shelter"] >= Equations::TOLERANCE)
   end
   # Compares tolerance to the available resources.
   def Equations.train_tolerance(resources)
-    return resources["ojt"] >= TOLERANCE
+    return resources["ojt"] >= Equations::TOLERANCE
   end
   # Compares tolerance to the available resources.
   def Equations.output_tolerance(resources)
-    return resources["equipment"] >= TOLERANCE
-        and resources["data"] >= TOLERANCE
+    return (resources["equipment"] >= TOLERANCE and
+        resources["data"] >= TOLERANCE)
   end
   # Consumes resources and produces a ratio for training.
   # @param resources [Hash] a listing of available resources.
@@ -109,7 +109,8 @@ class RoleProgress
     @progress = 0
   end
   # Updates the training progress.
-  # @param ration [Number] percentage determined by the agent of how much progress they make.
+  # @param ration [Number] percentage determined by the agent of how much
+  #  progress they make.
   def update(ratio)
     if @proficiency > 0
       @progress += (@role_data[@proficiency] * ratio)
@@ -126,9 +127,9 @@ class RoleProgress
         @progress = 0
         return true
       end
-    else if @proficiency < 3
-      if (@progress >= @role_data[@proficiency]
-          and @months_current >= MIN_MONTH[@proficiency])
+    elsif @proficiency < 3
+      if (@progress >= @role_data[@proficiency] and
+          @months_current >= MIN_MONTH[@proficiency])
         @proficiency += 1
         @months_current = 0
         @progress = 0
@@ -143,7 +144,8 @@ class RoleProgress
       + "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
   end
 end
-# Agents are the backbone of the simulation. They intake resources and produce output.
+# Agents are the backbone of the simulation. They intake resources and
+# produce output.
 class Agent < GameObject
   # @return [String] uniquely identifies agent.
   attr_reader   :serial_number
@@ -174,7 +176,7 @@ class Agent < GameObject
   end
   def role
     #TODO i need the latest...do this when doing cross-training stuff
-    @roles.value_at(-1)
+    @roles[-1]
   end
   # Updates the agent, consumes resources and produces output.
   # @param resources [Hash] a list of resources the agent needs.
@@ -182,8 +184,8 @@ class Agent < GameObject
   # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
     #signifies death
-    if @months >= @months_total 
-        or not Equations.basic_tolerance(resources)
+    if @months >= @months_total or not
+        Equations.basic_tolerance(resources)
       @remove = true
       trainers[role.office][role.proficiency-1] -= 1 if role.proficiency > 0
       return nil
@@ -191,7 +193,8 @@ class Agent < GameObject
     o = Equations.output(resources, @motivation, role.proficiency, @consumption)
     new_resources[role.role_name] += @output_level * o
     @months += 1
-    t = Equations.train(resources, trainers[role.proficiency], motivation, @consumption)
+    t = Equations.train(resources, trainers[role.proficiency],
+        motivation, @consumption)
     role.update(t)
     if role.upgrade? and role.proficiency > 0
       trainers[role.office][role.proficiency-1] += 1
@@ -224,11 +227,12 @@ class Unit < GameObject
   end
   def update (params={})
     @agents.each do |k,v|
-      v.update(params[:resources],
+      v.each {|j| j.update(params[:resources],
           params[:new_resources],
-          params[:trainers])
+          params[:trainers])}
+      v.delete_if {|j| j.remove}
     end
-    @agents.delete_if {|k,v| v.remove}
+    @agents.delete_if {|k,v| v.size == 0}
     @remove = true if @agents.size == 0
   end
   def has?(role)
@@ -240,8 +244,8 @@ class Unit < GameObject
   def add_agent(agent)
     rn = agent.role.role_name
     return false if has?(rn)
-    @agent[rn] = [] if not @agent[rn]
-    @agent[rn].push(agent)
+    @agents[rn] = [] if not @agents[rn]
+    @agents[rn].push(agent)
     true
   end
   def to_s
@@ -255,7 +259,7 @@ class Unit < GameObject
 end
 
 =begin
-Manages distribution of resources to various offices.
+Manages distribution of resources to various units.
   "roles":["food","shelter","health",
     "acquisition","role","audit",
     "equipment","security","data",
@@ -270,7 +274,7 @@ class Organization < Scene
   attr_reader :start_data
   attr_reader :preferences
   attr_accessor :trainers
-  def initialize (game)
+  def initialize (game,param)
     super
     #read file things
     @preferences = JSON.parse(File.read('pref.json'))
@@ -278,7 +282,6 @@ class Organization < Scene
     @start_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
     @current_agents = 0
-    @total_units = 0;
     @trainers = {
       "service"         =>  [0,0,0],
       "administration"  =>  [0,0,0],
@@ -286,12 +289,12 @@ class Organization < Scene
       "training"        =>  [0,0,0]
     }
     push(:units,Unit.new(game,:units,"U"+@total_units.to_s))
-    @total_units += 1
+    @total_units = 1;
   end
   # Creates the offices from the starting data and adds agents.
   # @see Scene::load
   def load (app)
-    $FRAME.log(0,"Organization::load::Loading objects.")
+    #$FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
     roles = @start_data["roles"] #integer array
     for i in 0...roles.length
@@ -304,17 +307,17 @@ class Organization < Scene
         o = @role_data["offices"][(i/4).to_i] #name of the office
         d = @role_data[o][r] #data for the role
         t = 0 #proficiency level
-        for j = 0...roles[i] #for the number of agents to be added
+        for j in 0...roles[i] #for the number of agents to be added
           #create agent
           a = nil
-          if t > q.length #got past all the proficiency levels
+          if t >= q.length #got past all the proficiency levels
             a = create_agent(o,r,d)
-          else if q[t] == 0 #the current level has been satisfied
+          elsif q[t] == 0 #the current level has been satisfied
             t += 1
             #check the next level
-            if t > q.length #reached the end
+            if t >= q.length #reached the end
               a = create_agent(o,r,d)
-            else if q[t] > 0 #next level has qualified agents
+            elsif q[t] > 0 #next level has qualified agents
               a = create_agent(o,r,d,t)
               q[t] -= 1
             end
@@ -361,8 +364,8 @@ class Organization < Scene
     end
     @total_agents += 1
     @current_agents += 1
-    if a.role.proficiency > 0
-      @trainers[o][a.role.proficiency-1] += 1
+    if agent.role.proficiency > 0
+      @trainers[agent.role.office][agent.role.proficiency-1] += 1
     end
   end
   
@@ -370,39 +373,48 @@ class Organization < Scene
   def update
     if @preferences["iterations"] == 0
       @game.end_game = true
+      $FRAME.log(0,self.to_s)
       return
     end
+    $FRAME.log(0, brief)
+    $FRAME.log(0, "R1:#{@resources}")
     nr = create_resource_list
     @groups.each do |k,v|
       v.update(resources: @resources,
           new_resources:  nr,
           trainers: @trainers)
     end
-    $FRAME.log(1,"Organization::update::Replacing resources : "
-        + @resources.to_s)
+    $FRAME.log(0, "R2:#{@resources}")
     @resources = nr
     @preferences["iterations"] -= 1
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
-    super if @pref["draw"] == 1
+    super if @preferences["draw"] == 1
   end
   def to_s
-    text = "Agents:#{@current_agents}/#{@total_agents}\nUnits:#{@total_units}\nResource{"
+    text = "Agents:#{@current_agents}/#{@total_agents}\n" +
+        "Units:#{@total_units}\nResource{"
     @resources.each_pair do |k,v|
       text += "\n\t#{k}:#{v}"
     end
     text += "\n}\nUnits{"
-    @groups[:units].each do |i|
-      text += "\n#{i}"
+    g = @groups[:units]
+    for i in 0...g.size
+      text += "\n#{g[i]}"
     end
     text += "\n}"
     return text
   end
+  def brief
+    "I:#{@preferences["iterations"]}" +
+        "{A:#{@current_agents}/#{@total_agents}," +
+        "U:#{@groups[:units].size}/#{@total_units}}"
+  end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.
-  def self.create_resource_list (a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,i=0)
+  def create_resource_list (a=0,b=0,c=0,d=0,e=0,f=0,g=0,h=0,i=0,j=0,k=0,l=0)
     return {
     "food" =>         a,
     "shelter" =>      b,
@@ -420,3 +432,8 @@ class Organization < Scene
   end
 end
 
+if __FILE__ == $0
+  $FRAME = LittleFrame.new(400, 600)
+  game = LittleGame.new(Organization)
+  $FRAME.start(game)
+end

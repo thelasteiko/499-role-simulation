@@ -132,7 +132,7 @@ class Scene
     # Initializes the scene by setting up variables
     # and adding starting groups.
     # @param game [LittleGame] is the game object owner.
-    def initialize (game)
+    def initialize (game,param={})
       @game = game
       @groups = Hash.new
     end
@@ -220,13 +220,15 @@ class LittleGame
     
     # Creates the game and the variables needed
     # to time the loop correctly.
-    def initialize (newscene=nil)
+    def initialize (newscene=nil, param={})
         @tick = 0
         @time = Time.now
         @input = LittleInput::Input.new(self)
         @scene = nil
         @canvas = nil
-        @newscene = newscene
+        if newscene
+          @newscene = newscene.new(self,param)
+        end
     end
     # Creates listeners for the canvas when it is added.
     # @param canvas [FXCanvas] is the canvas object for which input
@@ -287,7 +289,7 @@ class LittleGame
         #$FRAME.log(1, "Running.")
         return if not @canvas
         if @end_game
-          $FRAME.on_close(self,nil,nil)
+          $FRAME.on_close(self,nil,:end_game)
         end
         #if the scene has been changed, switch out the old scene
         #and switch input to the new scene.
