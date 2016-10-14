@@ -6,9 +6,15 @@ An Agent-based simulation using FXRuby to run the simulation loop.
 
 require_relative 'littleengine'
 require 'json'
+
+# Determines if the fancy GUI will show.
 $DRAW = false
 
+=begin
+The equations used in the simulation.
+=end
 module Equations
+  # Determines how much each resource affects the simulation.
   WEIGHT = {
     "food" =>         1.0,
     "shelter" =>      1.0,
@@ -22,19 +28,28 @@ module Equations
     "ojt" =>          1.0,
     "professional" => 1.0,
     "formal" =>       1.0
-    }
+  }
+  # The minimum requirement for training and output.
   TOLERANCE = 1
+  # Compares tolerance to the available resources.
   def Equations.basic_tolerance(resources)
     return resources["food"] >= TOLERANCE
         and resources["shelter"] >= TOLERANCE
   end
+  # Compares tolerance to the available resources.
   def Equations.train_tolerance(resources)
     return resources["ojt"] >= TOLERANCE
   end
+  # Compares tolerance to the available resources.
   def Equations.output_tolerance(resources)
     return resources["equipment"] >= TOLERANCE
         and resources["data"] >= TOLERANCE
   end
+  # Consumes resources and produces a ratio for training.
+  # @param resources [Hash] a listing of available resources.
+  # @param trainers [FixNum] the number of trainers available.
+  # @param motivation [Float] percentage modifier specific to an agent.
+  # @param consumption [FixNum] the rate of resource reduction.
   def Equations.train (resources, trainers, motivation, consumption)
     ratio = (resources["food"]  * WEIGHT["food"]
         + resources["shelter"]  * WEIGHT["shelter"]
@@ -43,6 +58,11 @@ module Equations
     return 0 if not train_tolerance(resources)
     return ratio * (motivation + (trainers/100))
   end
+  # Consumes resources and produces a ratio for output.
+  # @param resources [Hash] a listing of available resources.
+  # @param motivation [Float] percentage modifier specific to an agent.
+  # @param proficiency [FixNum] the level of proficiency an agent has.
+  # @param consumption [FixNum] the rate of resource reduction.
   def Equations.output (resources, motivation, proficiency, consumption)
     return 0 if not output_tolerance(resources)
     ratio = resources["food"]     * WEIGHT["food"]
@@ -117,6 +137,11 @@ class RoleProgress
     end
     false
   end
+  
+  def to_s
+    "{#{@office}:#{@role_name}:#{@role_data},"
+      + "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
+  end
 end
 # Agents are the backbone of the simulation. They intake resources and produce output.
 class Agent < GameObject
@@ -132,7 +157,8 @@ class Agent < GameObject
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
-  def initialize(game, group, serial_number, office, role_name, role_data, params={})
+  def initialize(game, group, serial_number,
+      office, role_name, role_data, params={})
     super(game, group)
     @serial_number = serial_number
     @roles = [RoleProgress.new(office,role_name,role_data)]
@@ -143,8 +169,6 @@ class Agent < GameObject
     @consumption = params[:consumption] ? params[:consumption] : 2
     @months = 0
   end
-  # TODO need to make the resource requirements flexible
-
   def retrain(role)
     #TODO...not used yet
   end
@@ -173,14 +197,19 @@ class Agent < GameObject
       trainers[role.office][role.proficiency-1] += 1
     end
   end
+  def to_s
+    text = "#{@serial_number}:#{@motivation}:#{@months}/#{@months_total}{"
+    @roles.each do |i|
+      text += "\n\t#{i.to_s}"
+    end
+    text += "}"
+    return text
+  end
 end
 
 =begin
 The best way to distribute resources is by making each
-group a unit with 1 agent per role but this could create
-problems when changing roles.
-What might work better is having the 3 offices within a unit
-then have 3 agents per office. Services and Tech first.
+group a unit with 1 agent per role.
 =end
 
 class Unit < GameObject
@@ -194,7 +223,7 @@ class Unit < GameObject
     @agents = Hash.new
   end
   def update (params={})
-    @agents.each do |k,v| 
+    @agents.each do |k,v|
       v.update(params[:resources],
           params[:new_resources],
           params[:trainers])
@@ -215,6 +244,14 @@ class Unit < GameObject
     @agent[rn].push(agent)
     true
   end
+  def to_s
+    text = "#{@unit_serial}{"
+    @agents.each_pair do |k,v|
+      text += "\n\t#{k}:#{v}"
+    end
+    text += "\n}"
+    return text
+  end
 end
 
 =begin
@@ -231,11 +268,12 @@ class Organization < Scene
   attr_accessor :resources
   attr_reader :role_data
   attr_reader :start_data
+  attr_reader :preferences
   attr_accessor :trainers
   def initialize (game)
     super
     #read file things
-    #@preferences = JSON.parse(File.read('pref.json'))
+    @preferences = JSON.parse(File.read('pref.json'))
     @role_data = JSON.parse(File.read('roles.json'))
     @start_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
@@ -273,11 +311,18 @@ class Organization < Scene
             a = create_agent(o,r,d)
           else if q[t] == 0 #the current level has been satisfied
             t += 1
+            #check the next level
+            if t > q.length #reached the end
+              a = create_agent(o,r,d)
+            else if q[t] > 0 #next level has qualified agents
+              a = create_agent(o,r,d,t)
+              q[t] -= 1
+            end
           else #the current level needs agents
             a = create_agent(o,r,d,t)
             q[t] -= 1
           end
-          a = create_agent(o,r,d) if not a
+          a = create_agent(o,r,d) if a == nil #just in case
           #add agent to unit
           add_agent(a)
         end
@@ -323,6 +368,10 @@ class Organization < Scene
   
   # This is where we need to distribute resources.
   def update
+    if @preferences["iterations"] == 0
+      @game.end_game = true
+      return
+    end
     nr = create_resource_list
     @groups.each do |k,v|
       v.update(resources: @resources,
@@ -332,11 +381,24 @@ class Organization < Scene
     $FRAME.log(1,"Organization::update::Replacing resources : "
         + @resources.to_s)
     @resources = nr
+    @preferences["iterations"] -= 1
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
-    super if $DRAW
+    super if @pref["draw"] == 1
+  end
+  def to_s
+    text = "Agents:#{@current_agents}/#{@total_agents}\nUnits:#{@total_units}\nResource{"
+    @resources.each_pair do |k,v|
+      text += "\n\t#{k}:#{v}"
+    end
+    text += "\n}\nUnits{"
+    @groups[:units].each do |i|
+      text += "\n#{i}"
+    end
+    text += "\n}"
+    return text
   end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.
@@ -356,6 +418,5 @@ class Organization < Scene
     "formal" =>       l
     }
   end
-  
 end
 

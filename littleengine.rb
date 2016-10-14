@@ -214,6 +214,9 @@ class LittleGame
     # @!attribute [rw] input
     #   @return [LittleInput::Input] manages user input.
     attr_accessor   :input
+    # @!attribute [rw] end_game
+    # @return [Boolean] determines whether or not to continue.
+    attr_accessor   :end_game
     
     # Creates the game and the variables needed
     # to time the loop correctly.
@@ -283,6 +286,9 @@ class LittleGame
     def run
         #$FRAME.log(1, "Running.")
         return if not @canvas
+        if @end_game
+          $FRAME.on_close(self,nil,nil)
+        end
         #if the scene has been changed, switch out the old scene
         #and switch input to the new scene.
         if (@newscene)
@@ -362,6 +368,7 @@ class LittleFrame < FXMainWindow
         end
         @@logger = LittleLogger.new if $LOG
         @canvas.backColor = Fox.FXRGB(0, 0, 0)
+        self.connect(SEL_CLOSE, method(:on_close))
     end
     # Creates the application, adds a timeout function
     # that calls the run method periodically, shows
@@ -420,6 +427,7 @@ class LittleFrame < FXMainWindow
       if $LOG
         @@logger.save
       end
+      getApp().exit(0)
     end
 end
 
