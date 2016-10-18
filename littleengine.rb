@@ -337,6 +337,11 @@ class LittleGame
         graphics.fillRectangle(0, 0, @canvas.width, @canvas.height)
         @scene ? @scene.draw(graphics, tick) : nil
     end
+    def to_s
+      text = "time:#{@time}, tick:#{@tick}, EG:#{@end_game}\n"
+      text += @scene.to_s
+      return text
+    end
 end
 # This is the program window that holds the canvas.
 # The canvas is where everything is drawn. The frame
@@ -359,7 +364,8 @@ class LittleFrame < FXMainWindow
         end
         super(app, "Game Frame", :width => w, :height => myh)
         @app = app #this is the main application
-        @contents = FXVerticalFrame.new(self, LAYOUT_FILL_X|LAYOUT_FILL_Y)
+        #@contents = FXVerticalFrame.new(self, LAYOUT_FILL_X|LAYOUT_FILL_Y)
+        @contents = FXVerticalFrame.new(self, LAYOUT_FILL_X)
         @canvas = FXCanvas.new(@contents, :opts => LAYOUT_FILL_X|LAYOUT_FILL_Y|LAYOUT_TOP|LAYOUT_LEFT)
         if $DEBUG #create the console for debug messages
           debugframe = FXVerticalFrame.new(@contents,:opts => FRAME_SUNKEN|LAYOUT_FILL_X|LAYOUT_TOP|LAYOUT_LEFT)
@@ -383,7 +389,12 @@ class LittleFrame < FXMainWindow
         if $LOG
           @@logger.inc(:run)
         end
-        @game.run
+        begin
+          @game.run
+        rescue
+          @game.end_game = true
+          $FRAME.log(1, "Frame:run:An error occured; " + @game.to_s, true)
+        end
         #Messages can be logged by using this command
         #anywhere in the running game.
         #$FRAME.log(0, "Game is running")
@@ -410,10 +421,10 @@ class LittleFrame < FXMainWindow
         @@console.appendText("#{time}: #{id}: #{message}\n")
       end
       if $LOG
-        logtofile("frame","log",message)
+        logtofile(self,"log",message)
       end
       if exit
-        abort
+        on_close(self,nil,:error)
       end
     end
     # Adds a line to the log file.

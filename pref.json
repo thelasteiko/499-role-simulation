@@ -1,5 +1,5 @@
 {
   "iterations": 100,
   "draw":       0,
-  "verbose":    0
+  "verbose":    1
 }

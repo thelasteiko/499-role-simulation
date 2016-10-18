@@ -7,26 +7,26 @@
   "offices": ["service","administration","technical","training"],
     
   "service": {
-    "food":         [6,20,97],
-    "shelter":      [6,20,30],
-    "health":       [6,20,12]
+    "food":         [4,35,96],
+    "shelter":      [4,35,36],
+    "health":       [4,35,36]
   },
   
   "administration": {
-    "acquisition":  [6,20,97],
-    "role":         [6,20,30],
-    "audit":        [6,20,12]
+    "acquisition":  [2,60,3],
+    "role":         [2,60,3],
+    "audit":        [2,60,3]
   },
   
   "technical": {
-    "equipment":    [0,20,97],
-    "security":     [0,20,30],
-    "data":         [0,20,12]
+    "equipment":    [6,197,51],
+    "security":     [6,206,50],
+    "data":         [6,246,71]
   },
   
   "training": {
-    "ojt":          [0,20,97],
-    "professional": [0,20,30],
-    "formal":       [0,20,12]
+    "ojt":          [3,148,16],
+    "professional": [3,148,16],
+    "formal":       [3,148,16]
   }
 }
