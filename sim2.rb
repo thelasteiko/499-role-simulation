@@ -13,15 +13,15 @@ The equations used in the simulation.
 module Equations
   # Determines how much each resource affects the simulation.
   WEIGHT = {
-    "food" =>         1.0,
-    "shelter" =>      1.0,
+    "food" =>         1.2,
+    "shelter" =>      1.2,
     "health" =>       1.0,
     "acquisition" =>  1.0,
     "role" =>         1.0,
     "audit" =>        1.0,
-    "equipment" =>    1.0,
+    "equipment" =>    1.2,
     "security" =>     1.0,
-    "data" =>         1.0,
+    "data" =>         1.2,
     "ojt" =>          1.0,
     "professional" => 1.0,
     "formal" =>       1.0
@@ -52,13 +52,14 @@ module Equations
     ratio = (resources["food"]  * WEIGHT["food"] +
         resources["shelter"]  * WEIGHT["shelter"] +
         resources["ojt"]      * WEIGHT["ojt"])/100.0
-    return ratio * (motivation + (trainers/100.0))
+    return ratio + (motivation + (trainers/100.0))
   end
-  # Consumes resources and produces a ratio for output.
+  # Produces a ratio for output.
   # @param resources [Hash] a listing of available resources.
   # @param motivation [Float] percentage modifier specific to an agent.
-  # @param proficiency [FixNum] the level of proficiency an agent has.
-  # @param consumption [FixNum] the rate of resource reduction.
+  # @param proficiency [Float] the level of proficiency an agent has.
+  # @param consumption [Float] the rate of resource reduction.
+  # @return [Float] a percentage of the output.
   def Equations.output (resources, motivation, proficiency)
     return 0.0 if not output_tolerance(resources)
     ratio = (resources["food"]     * WEIGHT["food"] +
@@ -66,10 +67,10 @@ module Equations
         resources["health"]     * WEIGHT["health"] +
         resources["equipment"]  * WEIGHT["equipment"] +
         resources["data"]       * WEIGHT["data"] +
-        resources["security"]   * WEIGHT["security"])/10.0
-    return ratio * (motivation +
+        resources["security"]   * WEIGHT["security"])*0.8
+    return ratio + (motivation +
         (proficiency +
-        resources["audit"]  * WEIGHT["audit"])/100.0)
+        resources["audit"]  * WEIGHT["audit"])/10.0)
   end
   
   def Equations.cross_train
@@ -79,31 +80,27 @@ module Equations
   def Equations.acquire_agent
     #TODO
   end
-  
-  def Equations.consume(resources, proficiency, consumption)
-    $FRAME.log(99,"#{consumption}")
+  # Consumes resources.
+  # @param resources [Hash] the overall resources available.
+  # @param consumption [Hash] the rate of consumption based
+  #   on agent need.
+  def Equations.consume(resources, consumption, proficiency)
+    #$FRAME.log(99,"#{consumption}")
     return nil if not basic_tolerance(resources)
-    #so now i need to account for stuff if there is not enough
     ret = {}
     resources.each_pair do |k,v|
-      c = consumption[k]
-      x = 0.0
-      if v > 0
-        if k == "food" || k == "shelter"
-          x = c #* (training_ratio + output_ratio)
-        elsif k == "health" || k == "professional" || k == "security" || k == "audit"
-          x = c
-        elsif k == "ojt" && proficiency > 0
-          x = c #* training_ratio
-        elsif k == "equipment" || k == "data"
-          x = c #* output_ratio
-        end
+      x = consumption[k]
+      if k == "ojt" and (proficiency == 0 or proficiency == 3)
+        x = 0.0
+      elsif k == "role" or k == "formal" or k == "acquisition"
+        x = 0.0
       end
-      if resources[k] - x >= 0.0
+      if v - x >= 0.0
         resources[k] -= x
         ret[k] = x
       else
-        ret[k] = 0.0
+        ret[k] = v
+        resources[k] = 0.0
       end
     end
     return ret
@@ -131,7 +128,7 @@ class RoleProgress
     @role_data = role_data
     @proficiency = 0
     @months_current = 0
-    @progress = 0
+    @progress = 0.0
   end
   # Updates the training progress.
   # @param ration [Number] percentage determined by the agent of how much
@@ -188,6 +185,7 @@ class Agent < GameObject
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
+  attr_accessor :retrain
   def initialize(game, group, serial_number,
       office, role_name, role_data, params={})
     super(game, group)
@@ -195,12 +193,18 @@ class Agent < GameObject
     @roles = [RoleProgress.new(office,role_name,role_data)]
     @tolerance = params[:tolerance] ? params[:tolerance] : 1.0
     @motivation = params[:motivation] ? params[:motivation] : 1.0
-    @months_total = params[:months_total] ? params[:months_total] : 24
-    @output_level = params[:output_level] ? params[:output_level] : 5.0
-    @consumption = params[:consumption] ? params[:consumption] : 4.0
+    @months_total = params[:months_total] ? params[:months_total] : 240
+    @output_level = params[:output_level] ? params[:output_level] : 2.0
+    if params[:consumption]
+      @consumption = params[:consumption]
+    else
+      @consumption = Organization.create_resource_list(
+          1,1,1,1,1,1,1,1,1,1,1,1
+      )
+    end
     @months = 0
   end
-  def retrain(role)
+  def change_role(role)
     #TODO...not used yet
   end
   def role
@@ -211,15 +215,18 @@ class Agent < GameObject
   # @param resources [Hash] a list of resources the agent needs.
   # @param new_resources [Hash] a list of resources for the next iteration.
   # @param trainers [Hash] a list of trainers for each role.
-  def update (resources, new_resources, trainers, consumption)
+  def update (resources, new_resources, trainers)
     #signifies death
     if @months >= @months_total or not
-        (ret = Equations.consume(resources, role.proficiency, consumption))
-      @remove = true
+        (ret = Equations.consume(resources, @consumption, role.proficiency))
+      if @retrain
+        @remove = true
+      end
+      @retrain = true
       trainers[role.office][role.proficiency-1] -= 1 if role.proficiency > 0
       return nil
     end
-    $FRAME.log(3, "#{@serial_number}:#{ret}")
+    #$FRAME.log(3, "#{@serial_number}:#{ret}")
     o = Equations.output(ret, @motivation, role.proficiency)
     #$FRAME.log(3, "#{@serial_number}:#{o}")
     new_resources[role.role_name] += @output_level * o
@@ -233,6 +240,10 @@ class Agent < GameObject
     end
     if role.upgrade? and role.proficiency > 0
       trainers[role.office][role.proficiency-1] += 1
+      if role.proficiency-2 >= 0
+        trainers[role.office][role.proficiency-2] -= 1
+      end
+      @consumption["ojt"] = 0.0
     end
   end
   def to_s
@@ -260,10 +271,10 @@ class Unit < GameObject
     @unit_serial = unit_serial
     @agents = Hash.new
   end
-  def update (resources, new_resources, trainers, consumption)
+  def update (resources, new_resources, trainers)
     @agents.each do |k,v|
       v.each {|j| j.update(resources, new_resources,
-          trainers, consumption)}
+          trainers)}
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
@@ -294,12 +305,15 @@ class Unit < GameObject
     text += "\n}"
     return text
   end
+  def brief
+    text = "#{@unit_serial}:#{@agents.size}"
+  end
 end
 
 class UnitGroup < Group
-  def update(resources, new_resources, trainers, consumption)
+  def update(resources, new_resources, trainers)
       @entities.each {|i| i.update(resources,
-          new_resources, trainers, consumption)}
+          new_resources, trainers)}
       @entities.delete_if {|i| i.remove}
   end
 end
@@ -335,8 +349,8 @@ class Organization < Scene
       "training"        =>  [0,0,0]
     }
     @groups[:units] = UnitGroup.new(game, self)
-    push(:units, Unit.new(game,:units,"U"+@total_units.to_s))
     @total_units = 1;
+    push(:units, Unit.new(game,:units,"U0"))
   end
   # Creates the offices from the starting data and adds agents.
   # @see Scene::load
@@ -386,8 +400,9 @@ class Organization < Scene
   # @param role_name [String] the name of the role.
   # @param role_data [Array] a list of information about the role.
   # @param proficiency [FixNum] represents the proficiency level of the agent.
+  # @return [Agent] the created agent.
   def create_agent(office,role_name,role_data, proficiency=0)
-    a = Agent.new(@game, :unit, office+@total_agents.to_s,
+    a = Agent.new(@game, :units, office+@total_agents.to_s,
           office,role_name,role_data)
     a.role.proficiency = proficiency
     return a
@@ -404,7 +419,7 @@ class Organization < Scene
       n += 1
     end
     if not u
-      u = Unit.new(@game, :units,"U"+@total_units.to_s)
+      u = Unit.new(@game, :units,"U#{@total_units}")
       push(:units,u)
       @total_units += 1
       u.add_agent(agent)
@@ -418,44 +433,45 @@ class Organization < Scene
   
   # This is where we need to distribute resources.
   def update
+    return nil if @game.end_game
     if @preferences["iterations"] == 0 || @current_agents == 0
       @game.end_game = true
-      $FRAME.log(0,self.to_s)
-      return
+      $FRAME.log(0, to_s)
+      return nil
     end
     $FRAME.log(0, brief)
     $FRAME.log(0, "IN:#{@resources}")
     nr = Organization.create_resource_list
-    con = {}
-    @resources.each do |k,v|
-      con[k] = @resources[k] / @current_agents
-    end
     @groups.each do |k,v|
       if k == :units
-        v.update(@resources, nr, @trainers, con)
+        v.update(@resources, nr, @trainers)
       else
         v.update
       end
     end
     $FRAME.log(0, "R:#{@resources}")
+    #TODO determine which resources ran out and go through
+    # to retrain agents that could not produce output, unless
+    # they are already in that resource band
     @resources = nr
     @preferences["iterations"] -= 1
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
-    super if @preferences["draw"] == 1
+    super if @preferences[:draw] == 1
   end
   def to_s
-    text = "Agents:#{@current_agents}/#{@total_agents}\n" +
+    text = "Agents:#{@current_agents}/#{@total_agents}," +
         "Units:#{@total_units}\nResource{"
     @resources.each_pair do |k,v|
       text += "\n\t#{k}:#{v}"
     end
+    text += "\n}\nTrainers{#{@trainers}"
     text += "\n}\nUnits{"
     g = @groups[:units]
     for i in 0...g.size
-      text += "\n#{g[i]}"
+      text += "\n\t#{g[i].brief}"
     end
     text += "\n}"
     return text
