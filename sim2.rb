@@ -13,17 +13,17 @@ The equations used in the simulation.
 module Equations
   # Determines how much each resource affects the simulation.
   WEIGHT = {
-    "food" =>         1.2,
-    "shelter" =>      1.2,
-    "health" =>       1.0,
+    "food" =>         1.0,
+    "shelter" =>      1.0,
+    "health" =>       1.1,
     "acquisition" =>  1.0,
     "role" =>         1.0,
-    "audit" =>        1.0,
-    "equipment" =>    1.2,
+    "audit" =>        0.8,
+    "equipment" =>    1.1,
     "security" =>     1.0,
-    "data" =>         1.2,
+    "data" =>         1.1,
     "ojt" =>          1.0,
-    "professional" => 1.0,
+    "professional" => 0.8,
     "formal" =>       1.0
   }
   # The minimum requirement for training and output.
@@ -61,16 +61,14 @@ module Equations
   # @param consumption [Float] the rate of resource reduction.
   # @return [Float] a percentage of the output.
   def Equations.output (resources, motivation, proficiency)
-    return 0.0 if not output_tolerance(resources)
+    #return 0.0 if not output_tolerance(resources)
     ratio = (resources["food"]     * WEIGHT["food"] +
         resources["shelter"]    * WEIGHT["shelter"] +
         resources["health"]     * WEIGHT["health"] +
         resources["equipment"]  * WEIGHT["equipment"] +
         resources["data"]       * WEIGHT["data"] +
-        resources["security"]   * WEIGHT["security"])*0.8
-    return ratio + (motivation +
-        (proficiency +
-        resources["audit"]  * WEIGHT["audit"])/10.0)
+        resources["security"]   * WEIGHT["security"]) * proficiency
+    return ratio + motivation + (resources["audit"]  * WEIGHT["audit"])/10.0
   end
   
   def Equations.cross_train
@@ -86,10 +84,13 @@ module Equations
   #   on agent need.
   def Equations.consume(resources, consumption, proficiency)
     #$FRAME.log(99,"#{consumption}")
-    return nil if not basic_tolerance(resources)
+    p = proficiency
+    if not basic_tolerance(resources) and p > 0
+      p -= 1
+    end
     ret = {}
     resources.each_pair do |k,v|
-      x = consumption[k]
+      x = consumption[k] + p
       if k == "ojt" and (proficiency == 0 or proficiency == 3)
         x = 0.0
       elsif k == "role" or k == "formal" or k == "acquisition"
@@ -166,8 +167,8 @@ class RoleProgress
   end
   
   def to_s
-    "{#{@office}:#{@role_name}:#{@role_data},"
-      + "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
+    "{#{@office}:#{@role_name}:#{@role_data}," +
+      "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
   end
 end
 # Agents are the backbone of the simulation. They intake resources and
@@ -217,15 +218,15 @@ class Agent < GameObject
   # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
     #signifies death
-    if @months >= @months_total or not
-        (ret = Equations.consume(resources, @consumption, role.proficiency))
-      if @retrain
-        @remove = true
+    if @months >= @months_total
+      @remove = true
+      if trainers[role.office][role.proficiency-1] > 0 and
+          role.proficiency > 0
+        trainers[role.office][role.proficiency-1] -= 1
       end
-      @retrain = true
-      trainers[role.office][role.proficiency-1] -= 1 if role.proficiency > 0
       return nil
     end
+    (ret = Equations.consume(resources, @consumption, role.proficiency))
     #$FRAME.log(3, "#{@serial_number}:#{ret}")
     o = Equations.output(ret, @motivation, role.proficiency)
     #$FRAME.log(3, "#{@serial_number}:#{o}")
@@ -238,10 +239,16 @@ class Agent < GameObject
     else
       t = 0.0
     end
-    if role.upgrade? and role.proficiency > 0
+    b = role.upgrade?
+    if b
+      $FRAME.log(3, "#{@serial_number} upgraded to #{role.proficiency}")
+    end
+    if b and role.proficiency > 0
       trainers[role.office][role.proficiency-1] += 1
-      if role.proficiency-2 >= 0
+      if role.proficiency-2 >= 0 and
+          trainers[role.office][role.proficiency-2] > 0
         trainers[role.office][role.proficiency-2] -= 1
+        
       end
       @consumption["ojt"] = 0.0
     end
@@ -292,7 +299,10 @@ class Unit < GameObject
   end
   def add_agent(agent)
     rn = agent.role.role_name
-    return false if has?(rn)
+    if has?(rn)
+      #$FRAME.log(5, "Could not add #{@agents[rn][0].to_s}")
+      return false
+    end
     @agents[rn] = [] if not @agents[rn]
     @agents[rn].push(agent)
     true
@@ -326,9 +336,13 @@ Manages distribution of resources to various units.
     "ojt","professional","formal"]
 =end
 class Organization < Scene
+  # @return [FixNum] the total or max amount of agents.
   attr_accessor :total_agents
+  # @return [FixNum] the current number of agents.
   attr_accessor :current_agents
+  # @return [FixNum] the total number of units created.
   attr_accessor :total_units
+  # @return [Hash] the resources available.
   attr_accessor :resources
   attr_reader :role_data
   attr_reader :start_data
@@ -358,38 +372,19 @@ class Organization < Scene
     #$FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
     roles = @start_data["roles"] #integer array
+    q = [0,1,0]
     for i in 0...roles.length
       if roles[i] > 0 #number of agents in role
         #TODO so this is wonky...
-        q = [@start_data["qualified"][0][i],
-              @start_data["qualified"][1][i],
-              @start_data["qualified"][2][i]]
         r = @role_data["roles"][i] #name of the role
         o = @role_data["offices"][(i/3).to_i] #name of the office
         d = @role_data[o][r] #data for the role
-        t = 0 #proficiency level
-        for j in 0...roles[i] #for the number of agents to be added
-          #create agent
-          a = nil
-          if t >= q.length #got past all the proficiency levels
-            a = create_agent(o,r,d)
-          elsif q[t] == 0 #the current level has been satisfied
-            t += 1
-            #check the next level
-            if t >= q.length #reached the end
-              a = create_agent(o,r,d)
-            elsif q[t] > 0 #next level has qualified agents
-              a = create_agent(o,r,d,t)
-              q[t] -= 1
-            end
-          else #the current level needs agents
-            a = create_agent(o,r,d,t)
-            q[t] -= 1
-          end
-          a = create_agent(o,r,d) if a == nil #just in case
-          #add agent to unit
-          add_agent(a)
-        end
+        t = 1 #proficiency level
+        params = {role: r, office: o, role_data: d, proficiency: t}
+        a = create_agent(params)
+        #add agent to unit
+        #$FRAME.log(4, a.to_s)
+        add_agent(a)
       end
     end
     @resources = @start_data["resources"]
@@ -401,10 +396,26 @@ class Organization < Scene
   # @param role_data [Array] a list of information about the role.
   # @param proficiency [FixNum] represents the proficiency level of the agent.
   # @return [Agent] the created agent.
-  def create_agent(office,role_name,role_data, proficiency=0)
-    a = Agent.new(@game, :units, office+@total_agents.to_s,
-          office,role_name,role_data)
-    a.role.proficiency = proficiency
+  def create_agent(param={})
+    #$FRAME.log(4, param.to_s)
+    if param[:office]
+      #game, group, serial_number,
+      #office, role_name, role_data, params={}
+      a = Agent.new(@game, :units,
+          param[:office]+@total_agents.to_s,
+          param[:office],
+          param[:role],
+          param[:role_data])
+      #$FRAME.log(4, a.to_s)
+    else
+      num = Random.rand(12)
+      r = @role_data["roles"][num]
+      o = @role_data["offices"][(num/3).to_i]
+      d = @role_data[o][r] #data for the role
+      #$FRAME.log(4,"{R:#{r},O:#{o},D:#{d}}")
+      a = Agent.new(@game, :units, o+@total_agents.to_s,o,r,d)
+    end
+    a.role.proficiency = param[:proficiency] ? param[:proficiency] : 0
     return a
   end
   # Adds an agent to the simulation, creating a unit if there
@@ -412,11 +423,11 @@ class Organization < Scene
   # @param agent [Agent] the agent to add.
   def add_agent(agent)
     n = 0 #unit to access
-    u = @groups[:units][n] #get first unit
-    n += 1
+    u = @groups[:units][-1] #get last unit
+    n = -1
     while u and not u.add_agent(agent)
       u = @groups[:units][n]
-      n += 1
+      n -= 1
     end
     if not u
       u = Unit.new(@game, :units,"U#{@total_units}")
@@ -434,13 +445,14 @@ class Organization < Scene
   # This is where we need to distribute resources.
   def update
     return nil if @game.end_game
-    if @preferences["iterations"] == 0 || @current_agents == 0
+    if @preferences["iterations"] == 0 || @current_agents < 5
       @game.end_game = true
       $FRAME.log(0, to_s)
       return nil
     end
     $FRAME.log(0, brief)
     $FRAME.log(0, "IN:#{@resources}")
+    add_agent(create_agent)
     nr = Organization.create_resource_list
     @groups.each do |k,v|
       if k == :units

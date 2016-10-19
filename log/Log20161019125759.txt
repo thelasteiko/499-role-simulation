@@ -1,0 +1,498 @@
+2016-10-19 12:57:59 -0700
+12:57:59:0.023002: LittleFrame.log: I:100{A:12/12,U:1/1}
+12:57:59:0.024002: LittleFrame.log: IN:{"food"=>200.0, "shelter"=>200.0, "health"=>20.0, "acquisition"=>40.0, "role"=>70.0, "audit"=>20.0, "equipment"=>180.0, "security"=>30.0, "data"=>160.0, "ojt"=>140.0, "professional"=>80.0, "formal"=>40.0}
+12:57:59:0.029003: LittleFrame.log: R:{"food"=>187.0, "shelter"=>187.0, "health"=>7.0, "acquisition"=>40.0, "role"=>70.0, "audit"=>7.0, "equipment"=>167.0, "security"=>17.0, "data"=>147.0, "ojt"=>140.0, "professional"=>67.0, "formal"=>40.0}
+12:57:59:0.030038: LittleFrame.log: I:99{A:13/13,U:2/2}
+12:57:59:0.031003: LittleFrame.log: IN:{"food"=>2.16, "shelter"=>2.16, "health"=>2.16, "acquisition"=>4.32, "role"=>2.16, "audit"=>2.16, "equipment"=>2.16, "security"=>2.16, "data"=>2.16, "ojt"=>2.16, "professional"=>2.16, "formal"=>2.16}
+12:57:59:0.031003: LittleFrame.log: administration3 upgraded to 1
+12:57:59:0.032041: LittleFrame.log: administration4 upgraded to 1
+12:57:59:0.032041: LittleFrame.log: administration5 upgraded to 1
+12:57:59:0.033042: LittleFrame.log: administration12 upgraded to 1
+12:57:59:0.033042: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>4.32, "role"=>2.16, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>2.16, "professional"=>0.0, "formal"=>2.16}
+12:57:59:0.044004: LittleFrame.log: I:98{A:14/14,U:3/3}
+12:57:59:0.044004: LittleFrame.log: IN:{"food"=>2.16, "shelter"=>2.16, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.045004: LittleFrame.log: training9 upgraded to 1
+12:57:59:0.045004: LittleFrame.log: training10 upgraded to 1
+12:57:59:0.046004: LittleFrame.log: training11 upgraded to 1
+12:57:59:0.046004: LittleFrame.log: administration13 upgraded to 1
+12:57:59:0.047003: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.047003: LittleFrame.log: I:97{A:15/15,U:3/3}
+12:57:59:0.048003: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.048003: LittleFrame.log: service0 upgraded to 1
+12:57:59:0.049002: LittleFrame.log: service1 upgraded to 1
+12:57:59:0.049002: LittleFrame.log: service2 upgraded to 1
+12:57:59:0.050003: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.061005: LittleFrame.log: I:96{A:16/16,U:3/3}
+12:57:59:0.061005: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.062005: LittleFrame.log: administration15 upgraded to 1
+12:57:59:0.063005: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.074004: LittleFrame.log: I:95{A:17/17,U:3/3}
+12:57:59:0.074004: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.075004: LittleFrame.log: technical6 upgraded to 1
+12:57:59:0.07606: LittleFrame.log: technical7 upgraded to 1
+12:57:59:0.077004: LittleFrame.log: technical8 upgraded to 1
+12:57:59:0.077004: LittleFrame.log: service14 upgraded to 1
+12:57:59:0.078005: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.088012: LittleFrame.log: I:94{A:18/18,U:3/3}
+12:57:59:0.08851: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.089511: LittleFrame.log: training16 upgraded to 1
+12:57:59:0.090011: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.100015: LittleFrame.log: I:93{A:19/19,U:3/3}
+12:57:59:0.100015: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.102015: LittleFrame.log: training17 upgraded to 1
+12:57:59:0.102015: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.113016: LittleFrame.log: I:92{A:20/20,U:3/3}
+12:57:59:0.113016: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.114015: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.125017: LittleFrame.log: I:91{A:21/21,U:3/3}
+12:57:59:0.125017: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.126016: LittleFrame.log: training19 upgraded to 1
+12:57:59:0.127017: LittleFrame.log: service18 upgraded to 1
+12:57:59:0.127017: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.138018: LittleFrame.log: I:90{A:22/22,U:3/3}
+12:57:59:0.138018: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.139017: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.150018: LittleFrame.log: I:89{A:23/23,U:3/3}
+12:57:59:0.150018: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.151017: LittleFrame.log: service20 upgraded to 1
+12:57:59:0.152018: LittleFrame.log: administration22 upgraded to 1
+12:57:59:0.152018: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.163018: LittleFrame.log: I:88{A:24/24,U:3/3}
+12:57:59:0.163018: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.164027: LittleFrame.log: administration23 upgraded to 1
+12:57:59:0.165018: LittleFrame.log: service21 upgraded to 1
+12:57:59:0.165018: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.17602: LittleFrame.log: I:87{A:25/25,U:4/4}
+12:57:59:0.17602: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.17802: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.188025: LittleFrame.log: I:86{A:26/26,U:4/4}
+12:57:59:0.188525: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:57:59:0.189526: LittleFrame.log: administration25 upgraded to 1
+12:57:59:0.190525: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.20103: LittleFrame.log: I:85{A:27/27,U:4/4}
+12:58:00:0.20103: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.203029: LittleFrame.log: service24 upgraded to 1
+12:58:00:0.20403: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.21403: LittleFrame.log: I:84{A:28/28,U:5/5}
+12:58:00:0.215031: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.21603: LittleFrame.log: training26 upgraded to 1
+12:58:00:0.21703: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.227031: LittleFrame.log: I:83{A:29/29,U:5/5}
+12:58:00:0.227031: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.229031: LittleFrame.log: administration28 upgraded to 1
+12:58:00:0.229031: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.241031: LittleFrame.log: I:82{A:30/30,U:6/6}
+12:58:00:0.241031: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.242031: LittleFrame.log: service27 upgraded to 1
+12:58:00:0.243031: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.253032: LittleFrame.log: I:81{A:31/31,U:6/6}
+12:58:00:0.253032: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.254033: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.265033: LittleFrame.log: I:80{A:32/32,U:6/6}
+12:58:00:0.265033: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.266101: LittleFrame.log: service29 upgraded to 1
+12:58:00:0.267033: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.277034: LittleFrame.log: I:79{A:33/33,U:6/6}
+12:58:00:0.277034: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.278047: LittleFrame.log: service30 upgraded to 1
+12:58:00:0.279033: LittleFrame.log: training31 upgraded to 1
+12:58:00:0.280033: LittleFrame.log: administration32 upgraded to 1
+12:58:00:0.280033: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.291039: LittleFrame.log: I:78{A:34/34,U:6/6}
+12:58:00:0.29158: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.293039: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.304044: LittleFrame.log: I:77{A:35/35,U:6/6}
+12:58:00:0.304044: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.305043: LittleFrame.log: administration34 upgraded to 1
+12:58:00:0.306043: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.317043: LittleFrame.log: I:76{A:36/36,U:6/6}
+12:58:00:0.317043: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.319043: LittleFrame.log: service33 upgraded to 1
+12:58:00:0.319043: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.330045: LittleFrame.log: I:75{A:37/37,U:6/6}
+12:58:00:0.330045: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.333045: LittleFrame.log: training35 upgraded to 1
+12:58:00:0.334045: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.344045: LittleFrame.log: I:74{A:38/38,U:6/6}
+12:58:00:0.345045: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.347045: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.358046: LittleFrame.log: I:73{A:39/39,U:6/6}
+12:58:00:0.359048: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.361046: LittleFrame.log: training37 upgraded to 1
+12:58:00:0.362046: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.372046: LittleFrame.log: I:72{A:40/40,U:7/7}
+12:58:00:0.372046: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.374047: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.385052: LittleFrame.log: I:71{A:41/41,U:7/7}
+12:58:00:0.385551: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.387051: LittleFrame.log: service38 upgraded to 1
+12:58:00:0.387551: LittleFrame.log: technical36 upgraded to 1
+12:58:00:0.388051: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.398554: LittleFrame.log: I:70{A:42/42,U:7/7}
+12:58:00:0.399101: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.400106: LittleFrame.log: service39 upgraded to 1
+12:58:00:0.401127: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.412106: LittleFrame.log: I:69{A:43/43,U:7/7}
+12:58:00:0.412106: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.414107: LittleFrame.log: service40 upgraded to 1
+12:58:00:0.414107: LittleFrame.log: administration42 upgraded to 1
+12:58:00:0.415106: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.425108: LittleFrame.log: I:68{A:44/44,U:7/7}
+12:58:00:0.425108: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.427107: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.437109: LittleFrame.log: I:67{A:45/45,U:7/7}
+12:58:00:0.437109: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.439108: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.450109: LittleFrame.log: I:66{A:46/46,U:7/7}
+12:58:00:0.450109: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.452109: LittleFrame.log: technical41 upgraded to 1
+12:58:00:0.452109: LittleFrame.log: training44 upgraded to 1
+12:58:00:0.453109: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.46411: LittleFrame.log: I:65{A:47/47,U:7/7}
+12:58:00:0.46411: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.46611: LittleFrame.log: training45 upgraded to 1
+12:58:00:0.46611: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.477111: LittleFrame.log: I:64{A:48/48,U:8/8}
+12:58:00:0.477111: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.47911: LittleFrame.log: training46 upgraded to 1
+12:58:00:0.47911: LittleFrame.log: technical43 upgraded to 1
+12:58:00:0.480144: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.490674: LittleFrame.log: I:63{A:49/49,U:8/8}
+12:58:00:0.491116: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.492615: LittleFrame.log: administration48 upgraded to 1
+12:58:00:0.493115: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.504119: LittleFrame.log: I:62{A:50/50,U:9/9}
+12:58:00:0.504119: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.505118: LittleFrame.log: service0 upgraded to 2
+12:58:00:0.505118: LittleFrame.log: service1 upgraded to 2
+12:58:00:0.506119: LittleFrame.log: service2 upgraded to 2
+12:58:00:0.507119: LittleFrame.log: service47 upgraded to 1
+12:58:00:0.508119: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.518119: LittleFrame.log: I:61{A:51/51,U:9/9}
+12:58:00:0.518119: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.52112: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.532121: LittleFrame.log: I:60{A:52/52,U:9/9}
+12:58:00:0.532121: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.53312: LittleFrame.log: service14 upgraded to 2
+12:58:00:0.53512: LittleFrame.log: service49 upgraded to 1
+12:58:00:0.536121: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.546123: LittleFrame.log: I:59{A:53/53,U:9/9}
+12:58:00:0.546123: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.548122: LittleFrame.log: service50 upgraded to 1
+12:58:00:0.549121: LittleFrame.log: administration52 upgraded to 1
+12:58:00:0.549121: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.560122: LittleFrame.log: I:58{A:54/54,U:9/9}
+12:58:00:0.560122: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.562122: LittleFrame.log: administration53 upgraded to 1
+12:58:00:0.563122: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.573158: LittleFrame.log: I:57{A:55/55,U:9/9}
+12:58:00:0.573158: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.575153: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.586198: LittleFrame.log: I:56{A:56/56,U:9/9}
+12:58:00:0.58666: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.587663: LittleFrame.log: service18 upgraded to 2
+12:58:00:0.589161: LittleFrame.log: technical51 upgraded to 1
+12:58:00:0.589672: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.600223: LittleFrame.log: I:55{A:57/57,U:9/9}
+12:58:00:0.600223: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.602196: LittleFrame.log: training55 upgraded to 1
+12:58:00:0.603213: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.613231: LittleFrame.log: I:54{A:58/58,U:9/9}
+12:58:00:0.613231: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.614234: LittleFrame.log: service20 upgraded to 2
+12:58:00:0.616196: LittleFrame.log: training56 upgraded to 1
+12:58:00:0.616196: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.627247: LittleFrame.log: I:53{A:59/59,U:9/9}
+12:58:00:0.627247: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.628251: LittleFrame.log: service21 upgraded to 2
+12:58:00:0.630249: LittleFrame.log: technical54 upgraded to 1
+12:58:00:0.630249: LittleFrame.log: administration58 upgraded to 1
+12:58:00:0.631251: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.642234: LittleFrame.log: I:52{A:60/60,U:9/9}
+12:58:00:0.642234: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.644253: LittleFrame.log: service57 upgraded to 1
+12:58:00:0.645255: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.656233: LittleFrame.log: I:51{A:61/61,U:9/9}
+12:58:00:0.656233: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.658198: LittleFrame.log: training59 upgraded to 1
+12:58:00:0.659198: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.6692: LittleFrame.log: I:50{A:62/62,U:9/9}
+12:58:00:0.6692: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.670198: LittleFrame.log: service24 upgraded to 2
+12:58:00:0.671199: LittleFrame.log: training60 upgraded to 1
+12:58:00:0.6732: LittleFrame.log: administration61 upgraded to 1
+12:58:00:0.6742: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.684282: LittleFrame.log: I:49{A:63/63,U:9/9}
+12:58:00:0.684748: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.687249: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.697782: LittleFrame.log: I:48{A:64/64,U:9/9}
+12:58:00:0.698248: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.700251: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.710412: LittleFrame.log: I:47{A:65/65,U:9/9}
+12:58:00:0.710412: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.712252: LittleFrame.log: service27 upgraded to 2
+12:58:00:0.714252: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.725253: LittleFrame.log: I:46{A:66/66,U:9/9}
+12:58:00:0.725253: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.728253: LittleFrame.log: administration65 upgraded to 1
+12:58:00:0.728253: LittleFrame.log: service63 upgraded to 1
+12:58:00:0.729254: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.740254: LittleFrame.log: I:45{A:67/67,U:9/9}
+12:58:00:0.740254: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.742402: LittleFrame.log: service29 upgraded to 2
+12:58:00:0.743254: LittleFrame.log: service64 upgraded to 1
+12:58:00:0.744254: LittleFrame.log: technical62 upgraded to 1
+12:58:00:0.744254: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.755255: LittleFrame.log: I:44{A:68/68,U:9/9}
+12:58:00:0.755255: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.757255: LittleFrame.log: service30 upgraded to 2
+12:58:00:0.759255: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.769255: LittleFrame.log: I:43{A:69/69,U:9/9}
+12:58:00:0.769255: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.772268: LittleFrame.log: training67 upgraded to 1
+12:58:00:0.773256: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.784761: LittleFrame.log: I:42{A:70/70,U:9/9}
+12:58:00:0.785262: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.788262: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.798764: LittleFrame.log: I:41{A:71/71,U:9/9}
+12:58:00:0.799356: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.800352: LittleFrame.log: service33 upgraded to 2
+12:58:00:0.801352: LittleFrame.log: service68 upgraded to 1
+12:58:00:0.802352: LittleFrame.log: technical66 upgraded to 1
+12:58:00:0.803353: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.813353: LittleFrame.log: I:40{A:72/72,U:9/9}
+12:58:00:0.813353: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.816353: LittleFrame.log: service69 upgraded to 1
+12:58:00:0.817353: LittleFrame.log: training70 upgraded to 1
+12:58:00:0.818354: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.830356: LittleFrame.log: I:39{A:73/73,U:9/9}
+12:58:00:0.830356: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.831355: LittleFrame.log: administration3 upgraded to 2
+12:58:00:0.831355: LittleFrame.log: administration4 upgraded to 2
+12:58:00:0.832354: LittleFrame.log: administration5 upgraded to 2
+12:58:00:0.833354: LittleFrame.log: administration12 upgraded to 2
+12:58:00:0.834354: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.845356: LittleFrame.log: I:38{A:74/74,U:9/9}
+12:58:00:0.845356: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.846354: LittleFrame.log: administration13 upgraded to 2
+12:58:00:0.848355: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.858358: LittleFrame.log: I:37{A:75/75,U:10/10}
+12:58:00:0.858358: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.861355: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.871359: LittleFrame.log: I:36{A:76/76,U:10/10}
+12:58:00:0.871359: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.872356: LittleFrame.log: administration15 upgraded to 2
+12:58:00:0.873356: LittleFrame.log: service38 upgraded to 2
+12:58:00:0.874357: LittleFrame.log: technical71 upgraded to 1
+12:58:00:0.875357: LittleFrame.log: training74 upgraded to 1
+12:58:00:0.875357: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.886405: LittleFrame.log: I:35{A:77/77,U:10/10}
+12:58:00:0.886899: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.888452: LittleFrame.log: service39 upgraded to 2
+12:58:00:0.8889: LittleFrame.log: technical72 upgraded to 1
+12:58:00:0.889899: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.900475: LittleFrame.log: I:34{A:78/78,U:10/10}
+12:58:00:0.900475: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.902439: LittleFrame.log: service40 upgraded to 2
+12:58:00:0.903438: LittleFrame.log: technical73 upgraded to 1
+12:58:00:0.904493: LittleFrame.log: administration77 upgraded to 1
+12:58:00:0.904493: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.916476: LittleFrame.log: I:33{A:79/79,U:10/10}
+12:58:00:0.916476: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.919439: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.929506: LittleFrame.log: I:32{A:80/80,U:10/10}
+12:58:00:0.929506: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.931497: LittleFrame.log: technical75 upgraded to 1
+12:58:00:0.932495: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.943478: LittleFrame.log: I:31{A:81/81,U:10/10}
+12:58:00:0.943478: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.945512: LittleFrame.log: technical76 upgraded to 1
+12:58:00:0.94644: LittleFrame.log: service78 upgraded to 1
+12:58:00:0.947455: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.957525: LittleFrame.log: I:30{A:82/82,U:10/10}
+12:58:00:0.957525: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.960491: LittleFrame.log: training80 upgraded to 1
+12:58:00:0.960491: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.97151: LittleFrame.log: I:29{A:83/83,U:10/10}
+12:58:00:0.97151: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.97248: LittleFrame.log: administration22 upgraded to 2
+12:58:00:0.974495: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.985512: LittleFrame.log: I:28{A:84/84,U:10/10}
+12:58:00:0.986012: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:0.987012: LittleFrame.log: administration23 upgraded to 2
+12:58:00:0.987512: LittleFrame.log: service81 upgraded to 1
+12:58:00:0.989512: LittleFrame.log: technical79 upgraded to 1
+12:58:00:0.990012: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.001072: LittleFrame.log: I:27{A:85/85,U:10/10}
+12:58:00:1.001072: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.002047: LittleFrame.log: administration3 upgraded to 3
+12:58:00:1.003048: LittleFrame.log: administration4 upgraded to 3
+12:58:00:1.003048: LittleFrame.log: administration5 upgraded to 3
+12:58:00:1.004048: LittleFrame.log: administration12 upgraded to 3
+12:58:00:1.006048: LittleFrame.log: service47 upgraded to 2
+12:58:00:1.008048: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.019068: LittleFrame.log: I:26{A:86/86,U:10/10}
+12:58:00:1.019068: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.020051: LittleFrame.log: service1 upgraded to 3
+12:58:00:1.02105: LittleFrame.log: service2 upgraded to 3
+12:58:00:1.02105: LittleFrame.log: administration13 upgraded to 3
+12:58:00:1.02205: LittleFrame.log: administration25 upgraded to 2
+12:58:00:1.023051: LittleFrame.log: administration85 upgraded to 1
+12:58:00:1.024051: LittleFrame.log: service83 upgraded to 1
+12:58:00:1.02505: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.035074: LittleFrame.log: I:25{A:87/87,U:10/10}
+12:58:00:1.035074: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.0371: LittleFrame.log: technical82 upgraded to 1
+12:58:00:1.038067: LittleFrame.log: service49 upgraded to 2
+12:58:00:1.039049: LittleFrame.log: administration86 upgraded to 1
+12:58:00:1.040049: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.050079: LittleFrame.log: I:24{A:88/88,U:10/10}
+12:58:00:1.050079: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.051071: LittleFrame.log: administration15 upgraded to 3
+12:58:00:1.054103: LittleFrame.log: service50 upgraded to 2
+12:58:00:1.055063: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.065115: LittleFrame.log: I:23{A:89/89,U:10/10}
+12:58:00:1.065115: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.066053: LittleFrame.log: technical84 upgraded to 1
+12:58:00:1.067066: LittleFrame.log: administration28 upgraded to 2
+12:58:00:1.069058: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.079109: LittleFrame.log: I:22{A:90/90,U:10/10}
+12:58:00:1.079109: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.082068: LittleFrame.log: service87 upgraded to 1
+12:58:00:1.082068: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.093141: LittleFrame.log: I:21{A:91/91,U:10/10}
+12:58:00:1.093641: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.096171: LittleFrame.log: administration90 upgraded to 1
+12:58:00:1.096669: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.107701: LittleFrame.log: I:20{A:92/92,U:10/10}
+12:58:00:1.107701: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.108723: LittleFrame.log: service18 upgraded to 3
+12:58:00:1.109713: LittleFrame.log: service89 upgraded to 1
+12:58:00:1.110672: LittleFrame.log: administration91 upgraded to 1
+12:58:00:1.112701: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.123663: LittleFrame.log: I:19{A:93/93,U:10/10}
+12:58:00:1.123663: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.125646: LittleFrame.log: administration32 upgraded to 2
+12:58:00:1.126662: LittleFrame.log: administration92 upgraded to 1
+12:58:00:1.127701: LittleFrame.log: technical88 upgraded to 1
+12:58:00:1.12867: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.138707: LittleFrame.log: I:18{A:94/94,U:10/10}
+12:58:00:1.138707: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.141701: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.152715: LittleFrame.log: I:17{A:95/95,U:10/10}
+12:58:00:1.152715: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.153647: LittleFrame.log: service21 upgraded to 3
+12:58:00:1.154647: LittleFrame.log: administration22 upgraded to 3
+12:58:00:1.155648: LittleFrame.log: administration34 upgraded to 2
+12:58:00:1.157648: LittleFrame.log: service57 upgraded to 2
+12:58:00:1.158648: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.168683: LittleFrame.log: I:16{A:96/96,U:10/10}
+12:58:00:1.168683: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.169648: LittleFrame.log: administration23 upgraded to 3
+12:58:00:1.170648: LittleFrame.log: administration95 upgraded to 1
+12:58:00:1.172649: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.183682: LittleFrame.log: I:15{A:97/97,U:10/10}
+12:58:00:1.184197: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:00:1.185186: LittleFrame.log: service94 upgraded to 1
+12:58:00:1.187686: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.198231: LittleFrame.log: I:14{A:98/98,U:10/10}
+12:58:01:1.198771: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.199207: LittleFrame.log: administration25 upgraded to 3
+12:58:01:1.201289: LittleFrame.log: technical93 upgraded to 1
+12:58:01:1.202237: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.213271: LittleFrame.log: I:13{A:99/99,U:10/10}
+12:58:01:1.213271: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.21529: LittleFrame.log: training97 upgraded to 1
+12:58:01:1.217292: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.228267: LittleFrame.log: I:12{A:100/100,U:10/10}
+12:58:01:1.228267: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.231292: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.242298: LittleFrame.log: I:11{A:101/101,U:11/11}
+12:58:01:1.242298: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.244294: LittleFrame.log: administration28 upgraded to 3
+12:58:01:1.244294: LittleFrame.log: technical96 upgraded to 1
+12:58:01:1.245256: LittleFrame.log: service63 upgraded to 2
+12:58:01:1.247295: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.258279: LittleFrame.log: I:10{A:102/102,U:12/12}
+12:58:01:1.258279: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.26224: LittleFrame.log: service64 upgraded to 2
+12:58:01:1.263252: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.274306: LittleFrame.log: I:9{A:103/103,U:12/12}
+12:58:01:1.274306: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.276241: LittleFrame.log: technical98 upgraded to 1
+12:58:01:1.277241: LittleFrame.log: administration42 upgraded to 2
+12:58:01:1.278241: LittleFrame.log: service100 upgraded to 1
+12:58:01:1.279241: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.289318: LittleFrame.log: I:8{A:104/104,U:12/12}
+12:58:01:1.289852: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.290821: LittleFrame.log: technical99 upgraded to 1
+12:58:01:1.291795: LittleFrame.log: service30 upgraded to 3
+12:58:01:1.293333: LittleFrame.log: service101 upgraded to 1
+12:58:01:1.294298: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.304866: LittleFrame.log: I:7{A:105/105,U:12/12}
+12:58:01:1.304866: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.306821: LittleFrame.log: administration32 upgraded to 3
+12:58:01:1.308821: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.318842: LittleFrame.log: I:6{A:106/106,U:12/12}
+12:58:01:1.318842: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.320823: LittleFrame.log: service68 upgraded to 2
+12:58:01:1.322824: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.332906: LittleFrame.log: I:5{A:107/107,U:13/13}
+12:58:01:1.332906: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.334822: LittleFrame.log: service33 upgraded to 3
+12:58:01:1.335823: LittleFrame.log: administration34 upgraded to 3
+12:58:01:1.336822: LittleFrame.log: service69 upgraded to 2
+12:58:01:1.338825: LittleFrame.log: technical102 upgraded to 1
+12:58:01:1.338825: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.349907: LittleFrame.log: I:4{A:108/108,U:13/13}
+12:58:01:1.349907: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.354826: LittleFrame.log: technical103 upgraded to 1
+12:58:01:1.354826: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.365859: LittleFrame.log: I:3{A:109/109,U:13/13}
+12:58:01:1.365859: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.367826: LittleFrame.log: administration48 upgraded to 2
+12:58:01:1.369825: LittleFrame.log: technical104 upgraded to 1
+12:58:01:1.370824: LittleFrame.log: service106 upgraded to 1
+12:58:01:1.370824: LittleFrame.log: training107 upgraded to 1
+12:58:01:1.371826: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.381859: LittleFrame.log: I:2{A:110/110,U:13/13}
+12:58:01:1.381859: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.385332: LittleFrame.log: technical105 upgraded to 1
+12:58:01:1.38633: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.396834: LittleFrame.log: I:1{A:111/111,U:13/13}
+12:58:01:1.397332: LittleFrame.log: IN:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.399838: LittleFrame.log: training109 upgraded to 1
+12:58:01:1.400837: LittleFrame.log: R:{"food"=>0.0, "shelter"=>0.0, "health"=>0.0, "acquisition"=>0.0, "role"=>0.0, "audit"=>0.0, "equipment"=>0.0, "security"=>0.0, "data"=>0.0, "ojt"=>0.0, "professional"=>0.0, "formal"=>0.0}
+12:58:01:1.411836: LittleFrame.log: Agents:112/112,Units:14
+Resource{
+	food:0.0
+	shelter:0.0
+	health:0.0
+	acquisition:0.0
+	role:0.0
+	audit:0.0
+	equipment:0.0
+	security:0.0
+	data:0.0
+	ojt:0.0
+	professional:0.0
+	formal:0.0
+}
+Trainers{{"service"=>[9, 17, 6], "administration"=>[12, 2, 12], "technical"=>[27, 0, 0], "training"=>[24, 0, 0]}
+}
+Units{
+	U0:12
+	U1:5
+	U2:9
+	U3:7
+	U4:10
+	U5:11
+	U6:11
+	U7:12
+	U8:12
+	U9:11
+	U10:2
+	U11:4
+	U12:5
+	U13:1
+}
