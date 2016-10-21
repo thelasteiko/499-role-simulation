@@ -3,15 +3,15 @@
 require_relative 'sim2'
 
 resources = Organization.create_resource_list(
-    2,2,1,1,1,1,1,1,1,1,1,1)
+    1,1,1,1,1,1,1,1,1,1,1,1)
 
-motivation = 1.0
+motivation = 0.7
 trainers = 3
-consumption = 1.0
+consumption = Organization.create_resource_list(
+    1,1,1,1,1,1,1,1,1,1,1,1)
 output_level = 2.0
-proficiency = 0.0
-
-ret = Equations.consume(resources, proficiency, consumption)
+proficiency = 3
+ret = Equations.consume(resources, consumption, proficiency)
 puts resources
 puts ret
 

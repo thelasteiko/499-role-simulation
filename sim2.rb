@@ -51,8 +51,8 @@ module Equations
     return 0.0 if not train_tolerance(resources)
     ratio = (resources["food"]  * WEIGHT["food"] +
         resources["shelter"]  * WEIGHT["shelter"] +
-        resources["ojt"]      * WEIGHT["ojt"])/100.0
-    return ratio + (motivation + (trainers/100.0))
+        resources["ojt"]      * WEIGHT["ojt"])
+    return ratio * (motivation + trainers)
   end
   # Produces a ratio for output.
   # @param resources [Hash] a listing of available resources.
@@ -67,7 +67,8 @@ module Equations
         resources["health"]     * WEIGHT["health"] +
         resources["equipment"]  * WEIGHT["equipment"] +
         resources["data"]       * WEIGHT["data"] +
-        resources["security"]   * WEIGHT["security"]) * proficiency
+        resources["security"]   * WEIGHT["security"]) * 0.02
+    ratio *= proficiency
     return ratio + motivation + (resources["audit"]  * WEIGHT["audit"])/10.0
   end
   
@@ -75,7 +76,7 @@ module Equations
     #TODO
   end
   
-  def Equations.acquire_agent
+  def Equations.acquire_agent(resources)
     #TODO
   end
   # Consumes resources.
@@ -100,8 +101,9 @@ module Equations
         resources[k] -= x
         ret[k] = x
       else
-        ret[k] = v
-        resources[k] = 0.0
+        v > 0.0 ? a = v : a = 0.0
+        resources[k] -= x
+        ret[k] = a
       end
     end
     return ret
@@ -137,17 +139,18 @@ class RoleProgress
   def update(ratio)
     if @proficiency > 0 && @proficiency < 3
       if ratio > 0.0
-        @progress += (@role_data[@proficiency] * ratio)
+        @progress += ratio
       else
         @progress += 1
       end
     end
+    #$FRAME.log(5, to_s)
     @months_current += 1
   end
   # Determines if the agent is ready for upgrade to the next proficiency level.
   # @return [Boolean] true if they upgrade, false otherwise.
   def upgrade?
-    if @proficiency == 0 
+    if @proficiency == 0
       if @months_current >= @role_data[@proficiency]
         @proficiency += 1
         @months_current = 0
@@ -192,10 +195,10 @@ class Agent < GameObject
     super(game, group)
     @serial_number = serial_number
     @roles = [RoleProgress.new(office,role_name,role_data)]
-    @tolerance = params[:tolerance] ? params[:tolerance] : 1.0
-    @motivation = params[:motivation] ? params[:motivation] : 1.0
+    @tolerance = params[:tolerance] ? params[:tolerance] : 0.9
+    @motivation = params[:motivation] ? params[:motivation] : 0.7
     @months_total = params[:months_total] ? params[:months_total] : 240
-    @output_level = params[:output_level] ? params[:output_level] : 2.0
+    @output_level = params[:output_level] ? params[:output_level] : 5.0
     if params[:consumption]
       @consumption = params[:consumption]
     else
@@ -224,15 +227,20 @@ class Agent < GameObject
           role.proficiency > 0
         trainers[role.office][role.proficiency-1] -= 1
       end
+      $FRAME.log(6,"#{@serial_number} died at #{@months}/#{@months_total}.")
       return nil
     end
     (ret = Equations.consume(resources, @consumption, role.proficiency))
     #$FRAME.log(3, "#{@serial_number}:#{ret}")
     o = Equations.output(ret, @motivation, role.proficiency)
+    if role.proficiency > 0 and o < @tolerance
+      #TODO it needs to start dying...
+      @months += (@months_total*(1.0-@motivation))
+      $FRAME.log(3, "#{@serial_number}:#{o}:#{@months}/#{@months_total}")
+    end
     #$FRAME.log(3, "#{@serial_number}:#{o}")
     new_resources[role.role_name] += @output_level * o
     #$FRAME.log(3, "#{new_resources}")
-    @months += 1
     if role.proficiency < 3
       t = Equations.train(ret, trainers[role.office][role.proficiency], @motivation)
       role.update(t)
@@ -252,6 +260,7 @@ class Agent < GameObject
       end
       @consumption["ojt"] = 0.0
     end
+    @months += 1
   end
   def to_s
     text = "#{@serial_number}:#{@motivation}:#{@months}/#{@months_total}{"
@@ -366,28 +375,25 @@ class Organization < Scene
     @total_units = 1;
     push(:units, Unit.new(game,:units,"U0"))
   end
-  # Creates the offices from the starting data and adds agents.
+  # Loads base data to start the simulation with.
   # @see Scene::load
   def load (app)
     #$FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
-    roles = @start_data["roles"] #integer array
-    q = [0,1,0]
-    for i in 0...roles.length
-      if roles[i] > 0 #number of agents in role
-        #TODO so this is wonky...
-        r = @role_data["roles"][i] #name of the role
-        o = @role_data["offices"][(i/3).to_i] #name of the office
-        d = @role_data[o][r] #data for the role
-        t = 1 #proficiency level
-        params = {role: r, office: o, role_data: d, proficiency: t}
-        a = create_agent(params)
-        #add agent to unit
-        #$FRAME.log(4, a.to_s)
-        add_agent(a)
-      end
+    for i in 0...12
+      r = @role_data["roles"][i] #name of the role
+      o = @role_data["offices"][(i/3).to_i] #name of the office
+      d = @role_data[o][r] #data for the role
+      t = 1 #proficiency level
+      params = {role: r, office: o, role_data: d, proficiency: t}
+      a = create_agent(params)
+      #add agent to unit
+      #$FRAME.log(4, a.to_s)
+      add_agent(a)
     end
-    @resources = @start_data["resources"]
+    @resources = Organization.create_resource_list(
+        50,50,50,50,50,50,50,50,50,50,50,50
+    )
     super
   end
   
@@ -413,7 +419,9 @@ class Organization < Scene
       o = @role_data["offices"][(num/3).to_i]
       d = @role_data[o][r] #data for the role
       #$FRAME.log(4,"{R:#{r},O:#{o},D:#{d}}")
-      a = Agent.new(@game, :units, o+@total_agents.to_s,o,r,d)
+      a = Agent.new(@game, :units, o+@total_agents.to_s,o,r,d,
+        months_total: (Random.rand(360-36)+36),
+        motivation: (Random.rand(100)+2).to_f/100.0)
     end
     a.role.proficiency = param[:proficiency] ? param[:proficiency] : 0
     return a
@@ -452,7 +460,13 @@ class Organization < Scene
     end
     $FRAME.log(0, brief)
     $FRAME.log(0, "IN:#{@resources}")
-    add_agent(create_agent)
+    #determine whether to add an agent based on
+    # acquisition and formal schools resources
+    if @current_agents < @preferences["max_agents"]
+      add_agent(create_agent)
+    end
+    #determine need for basic things: food, shelter, equipment, data
+    #and what role needs to be created or retrained from/to
     nr = Organization.create_resource_list
     @groups.each do |k,v|
       if k == :units

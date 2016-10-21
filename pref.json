@@ -1,5 +1,6 @@
 {
   "iterations": 100,
   "draw":       0,
-  "verbose":    1
+  "verbose":    1,
+  "max_agents": 70
 }
