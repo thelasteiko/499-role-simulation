@@ -47,12 +47,14 @@ module Equations
   # @param trainers [FixNum] the number of trainers available.
   # @param motivation [Float] percentage modifier specific to an agent.
   # @param consumption [FixNum] the rate of resource reduction.
-  def Equations.train (resources, trainers, motivation)
-    return 0.0 if not train_tolerance(resources)
-    ratio = (resources["food"]  * WEIGHT["food"] +
-        resources["shelter"]  * WEIGHT["shelter"] +
-        resources["ojt"]      * WEIGHT["ojt"])
-    return ratio * (motivation + trainers)
+  def Equations.train (resources, consumption, trainers, motivation)
+    #return 0.0 if not train_tolerance(resources)
+    return 0.0 if consumption["ojt"] <= 0.0
+    ratio = (resources["food"]/consumption["food"])  * WEIGHT["food"] +
+        (resources["shelter"]/consumption["shelter"])  * WEIGHT["shelter"] +
+        (resources["ojt"]/consumption["ojt"]) * WEIGHT["ojt"] +
+        trainers
+    ratio *= motivation
   end
   # Produces a ratio for output.
   # @param resources [Hash] a listing of available resources.
@@ -60,16 +62,17 @@ module Equations
   # @param proficiency [Float] the level of proficiency an agent has.
   # @param consumption [Float] the rate of resource reduction.
   # @return [Float] a percentage of the output.
-  def Equations.output (resources, motivation, proficiency)
+  def Equations.output (resources, consumption, motivation, proficiency)
     #return 0.0 if not output_tolerance(resources)
-    ratio = (resources["food"]     * WEIGHT["food"] +
-        resources["shelter"]    * WEIGHT["shelter"] +
-        resources["health"]     * WEIGHT["health"] +
-        resources["equipment"]  * WEIGHT["equipment"] +
-        resources["data"]       * WEIGHT["data"] +
-        resources["security"]   * WEIGHT["security"]) * 0.02
-    ratio *= proficiency
-    return ratio + motivation + (resources["audit"]  * WEIGHT["audit"])/10.0
+    return 0.0 if proficiency == 0
+    ratio = (resources["food"]/consumption["food"]) * WEIGHT["food"] +
+        (resources["shelter"]/consumption["shelter"]) * WEIGHT["shelter"] +
+        (resources["health"]/consumption["health"]) * WEIGHT["health"] +
+        (resources["equipment"]/consumption["equipment"]) * WEIGHT["equipment"] +
+        (resources["data"]/consumption["data"]) * WEIGHT["data"] +
+        (resources["security"]/consumption["security"]) * WEIGHT["security"]
+    ratio *= (motivation + proficiency + (resources["audit"]  * WEIGHT["audit"]))
+    ratio *= 0.1
   end
   
   def Equations.cross_train
@@ -190,12 +193,13 @@ class Agent < GameObject
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
   attr_accessor :retrain
+  attr_accessor :in_queue
   def initialize(game, group, serial_number,
       office, role_name, role_data, params={})
     super(game, group)
     @serial_number = serial_number
     @roles = [RoleProgress.new(office,role_name,role_data)]
-    @tolerance = params[:tolerance] ? params[:tolerance] : 0.9
+    @tolerance = params[:tolerance] ? params[:tolerance] : 0.8
     @motivation = params[:motivation] ? params[:motivation] : 0.7
     @months_total = params[:months_total] ? params[:months_total] : 240
     @output_level = params[:output_level] ? params[:output_level] : 5.0
@@ -207,9 +211,46 @@ class Agent < GameObject
       )
     end
     @months = 0
+    @retrain = 0
   end
-  def change_role(role)
-    #TODO...not used yet
+  # Changes the role of an agent. If the agent has previously
+  # held the role, it reverts to the previously held role.
+  # This also resets retraining, motivation and sets the
+  # months back by 36.
+  # @param role [RoleProgress] is the role to switch to.
+  def change_role(r)
+    #if there is a role with the same office
+    a = []
+    p = r
+    o = role.role_name
+    @roles.delete_if do |i|
+      if i.office == r.office
+        a.push(i)
+        p.proficiency = 1
+        true
+      end
+    end
+    #if there is a role with the same name
+    if a
+      a.each do |i|
+        if i.role_name == r.role_name
+          p = i
+          break
+        end
+      end
+      a.delete(p)
+      a.each do |i|
+        @roles.push(i)
+      end
+    end
+    if p.role_name == o
+      return false
+    end
+    @retrain = 0
+    @months -= 36
+    @roles.push(p)
+    @motivation = (Random.rand(100).to_f * .1)
+    return true
   end
   def role
     #TODO i need the latest...do this when doing cross-training stuff
@@ -220,6 +261,7 @@ class Agent < GameObject
   # @param new_resources [Hash] a list of resources for the next iteration.
   # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
+    $FRAME.log(6, "#{@serial_number}")
     #signifies death
     if @months >= @months_total
       @remove = true
@@ -232,17 +274,22 @@ class Agent < GameObject
     end
     (ret = Equations.consume(resources, @consumption, role.proficiency))
     #$FRAME.log(3, "#{@serial_number}:#{ret}")
-    o = Equations.output(ret, @motivation, role.proficiency)
+    o = Equations.output(ret, @consumption, @motivation, role.proficiency)
     if role.proficiency > 0 and o < @tolerance
       #TODO it needs to start dying...
       @months += (@months_total*(1.0-@motivation))
+      @retrain += 1
       $FRAME.log(3, "#{@serial_number}:#{o}:#{@months}/#{@months_total}")
+    end
+    if @motivation < 0.5
+      @retrain += 1
     end
     #$FRAME.log(3, "#{@serial_number}:#{o}")
     new_resources[role.role_name] += @output_level * o
     #$FRAME.log(3, "#{new_resources}")
     if role.proficiency < 3
-      t = Equations.train(ret, trainers[role.office][role.proficiency], @motivation)
+      t = Equations.train(ret, @consumption,
+          trainers[role.office][role.proficiency], @motivation)
       role.update(t)
     else
       t = 0.0
@@ -289,8 +336,13 @@ class Unit < GameObject
   end
   def update (resources, new_resources, trainers)
     @agents.each do |k,v|
-      v.each {|j| j.update(resources, new_resources,
-          trainers)}
+      v.each do |j|
+        j.update(resources, new_resources,
+          trainers)
+        if j.retrain > 0 and not j.in_queue
+          @game.scene.push(:retrain, j)
+        end
+      end
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
@@ -314,6 +366,7 @@ class Unit < GameObject
     end
     @agents[rn] = [] if not @agents[rn]
     @agents[rn].push(agent)
+    agent.group = self
     true
   end
   def to_s
@@ -334,6 +387,28 @@ class UnitGroup < Group
       @entities.each {|i| i.update(resources,
           new_resources, trainers)}
       @entities.delete_if {|i| i.remove}
+  end
+end
+
+class RetrainGroup < Group
+  MAX_RETRAINEES = 10
+  def update (resources)
+    if size > MAX_RETRAINEES
+      #find a resource that is needed
+      minv = 10000
+      mink = nil
+      resources.each {|k,v| v < minv ? minv = v; mink = k : nil}
+    end
+  end
+  def draw(graphics, tick)
+    #don't do anything
+  end
+  def load(app)
+    #don't do anything
+  end
+  def get_top
+    @entries.sort!{|a,b| a.retrain <=> b.retrain}
+    return @entries[-1]
   end
 end
 
@@ -372,6 +447,7 @@ class Organization < Scene
       "training"        =>  [0,0,0]
     }
     @groups[:units] = UnitGroup.new(game, self)
+    @groups[:retrain] = RetrainGroup.new(game, self)
     @total_units = 1;
     push(:units, Unit.new(game,:units,"U0"))
   end
@@ -384,7 +460,7 @@ class Organization < Scene
       r = @role_data["roles"][i] #name of the role
       o = @role_data["offices"][(i/3).to_i] #name of the office
       d = @role_data[o][r] #data for the role
-      t = 1 #proficiency level
+      t = 2 #proficiency level
       params = {role: r, office: o, role_data: d, proficiency: t}
       a = create_agent(params)
       #add agent to unit
@@ -460,17 +536,14 @@ class Organization < Scene
     end
     $FRAME.log(0, brief)
     $FRAME.log(0, "IN:#{@resources}")
-    #determine whether to add an agent based on
-    # acquisition and formal schools resources
-    if @current_agents < @preferences["max_agents"]
-      add_agent(create_agent)
-    end
     #determine need for basic things: food, shelter, equipment, data
     #and what role needs to be created or retrained from/to
     nr = Organization.create_resource_list
     @groups.each do |k,v|
       if k == :units
         v.update(@resources, nr, @trainers)
+      else if k == :retrain
+        v.update(@resources)
       else
         v.update
       end
@@ -479,8 +552,15 @@ class Organization < Scene
     #TODO determine which resources ran out and go through
     # to retrain agents that could not produce output, unless
     # they are already in that resource band
+    #determine whether to add an agent based on
+    # acquisition and formal schools resources
+    #if there are agents to retrain then retrain them
+    if @current_agents < @preferences["max_agents"]
+      add_agent(create_agent)
+    end
     @resources = nr
     @preferences["iterations"] -= 1
+    
   end
   # Draws if draw is on.
   # @see LittleGame::draw

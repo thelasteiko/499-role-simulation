@@ -1,30 +1,9 @@
 #!/usr/bin/env ruby
 
-class MClass
-  def initialize
-    super
-  end
-  def ch (a)
-    a[:food] -= 50
-  end
-end
+a = {"food" => 10, "shelter" => 8, "health" => 10}
 
-a = {
-    "food":         200,
-    "shelter":      200,
-    "health":       20,
-    "acquisition":  40,
-    "role":         70,
-    "audit":        20,
-    "equipment":    180,
-    "security":     30,
-    "data":         160,
-    "ojt":          140,
-    "professional": 80,
-    "formal":       40
-  }
+minv = 10000
+mink = nil
 
-m = MClass.new
-puts a
-m.ch (a)
+a.each {|k,v| v < minv ? minv = v; mink = k : nil}
 puts a
