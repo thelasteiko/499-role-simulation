@@ -5,6 +5,7 @@ An Agent-based simulation using FXRuby to run the simulation loop.
 =end
 
 require_relative 'littleengine'
+require_relative 'weightedrand'
 require 'json'
 
 =begin
@@ -33,22 +34,12 @@ module Equations
     return (resources["food"] >= TOLERANCE and
         resources["shelter"] >= TOLERANCE)
   end
-  # Compares tolerance to the available resources.
-  def Equations.train_tolerance(resources)
-    return resources["ojt"] >= TOLERANCE
-  end
-  # Compares tolerance to the available resources.
-  def Equations.output_tolerance(resources)
-    return (resources["equipment"] >= TOLERANCE and
-        resources["data"] >= TOLERANCE)
-  end
   # Consumes resources and produces a ratio for training.
   # @param resources [Hash] a listing of available resources.
   # @param trainers [FixNum] the number of trainers available.
   # @param motivation [Float] percentage modifier specific to an agent.
   # @param consumption [FixNum] the rate of resource reduction.
   def Equations.train (resources, consumption, trainers, motivation)
-    #return 0.0 if not train_tolerance(resources)
     return 0.0 if consumption["ojt"] <= 0.0
     ratio = (resources["food"]/consumption["food"])  * WEIGHT["food"] +
         (resources["shelter"]/consumption["shelter"])  * WEIGHT["shelter"] +
@@ -63,7 +54,6 @@ module Equations
   # @param consumption [Float] the rate of resource reduction.
   # @return [Float] a percentage of the output.
   def Equations.output (resources, consumption, motivation, proficiency)
-    #return 0.0 if not output_tolerance(resources)
     return 0.0 if proficiency == 0
     ratio = (resources["food"]/consumption["food"]) * WEIGHT["food"] +
         (resources["shelter"]/consumption["shelter"]) * WEIGHT["shelter"] +
@@ -249,7 +239,7 @@ class Agent < GameObject
     @retrain = 0
     @months -= 36
     @roles.push(p)
-    @motivation = (Random.rand(100).to_f * .1)
+    @motivation = WeightedRandom.rand(0,1,0.5,0.9,0.75)
     return true
   end
   def role
@@ -261,7 +251,7 @@ class Agent < GameObject
   # @param new_resources [Hash] a list of resources for the next iteration.
   # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
-    $FRAME.log(6, "#{@serial_number}")
+    #$FRAME.log(6, "#{@serial_number}")
     #signifies death
     if @months >= @months_total
       @remove = true
@@ -303,7 +293,6 @@ class Agent < GameObject
       if role.proficiency-2 >= 0 and
           trainers[role.office][role.proficiency-2] > 0
         trainers[role.office][role.proficiency-2] -= 1
-        
       end
       @consumption["ojt"] = 0.0
     end
@@ -346,6 +335,7 @@ class Unit < GameObject
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
+          true
         end
       end
     end
@@ -384,8 +374,7 @@ end
 
 class UnitGroup < Group
   def update(resources, new_resources, trainers)
-      @entities.each {|i| i.update(resources,
-          new_resources, trainers)}
+      @entities.each {|i| i.update(resources, new_resources, trainers)}
       @entities.delete_if {|i| i.remove}
   end
 end
@@ -397,7 +386,12 @@ class RetrainGroup < Group
       #find a resource that is needed
       minv = 10000
       mink = nil
-      resources.each {|k,v| v < minv ? minv = v; mink = k : nil}
+      resources.each do |k,v|
+        if v < minv
+          minv = v
+          mink = k
+        end
+      end
     end
   end
   def draw(graphics, tick)
@@ -470,6 +464,11 @@ class Organization < Scene
     @resources = Organization.create_resource_list(
         50,50,50,50,50,50,50,50,50,50,50,50
     )
+    #set statistics
+    if $LOG
+      $FRAME.logger.set(:agents_created, @total_agents)
+      $FRAME.logger.set(:units_created, @total_units)
+    end
     super
   end
   
@@ -480,7 +479,7 @@ class Organization < Scene
   # @return [Agent] the created agent.
   def create_agent(param={})
     #$FRAME.log(4, param.to_s)
-    if param[:office]
+    if param[:role]
       #game, group, serial_number,
       #office, role_name, role_data, params={}
       a = Agent.new(@game, :units,
@@ -517,10 +516,12 @@ class Organization < Scene
       u = Unit.new(@game, :units,"U#{@total_units}")
       push(:units,u)
       @total_units += 1
+      $FRAME.logger.inc(:units_created)
       u.add_agent(agent)
     end
     @total_agents += 1
     @current_agents += 1
+    $FRAME.logger.inc(:agents_created)
     if agent.role.proficiency > 0
       @trainers[agent.role.office][agent.role.proficiency-1] += 1
     end
@@ -536,19 +537,33 @@ class Organization < Scene
     end
     $FRAME.log(0, brief)
     $FRAME.log(0, "IN:#{@resources}")
+    if $LOG
+      old = {} #for updating the log
+      @resources.each do |k,v|
+        old[k] = v
+      end
+    end
     #determine need for basic things: food, shelter, equipment, data
     #and what role needs to be created or retrained from/to
     nr = Organization.create_resource_list
     @groups.each do |k,v|
       if k == :units
         v.update(@resources, nr, @trainers)
-      else if k == :retrain
+      elsif k == :retrain
         v.update(@resources)
       else
         v.update
       end
     end
     $FRAME.log(0, "R:#{@resources}")
+    if $LOG #track resource use
+      @resources.each do |k,v|
+        #difference b/t used and needed
+        $FRAME.logger.add("#{k}_needed", old[k] - v) #needed
+        v < 0 ? n = old[k] : n = old[k] - v
+        $FRAME.logger.add("#{k}_used", n) #actual use
+      end
+    end
     #TODO determine which resources ran out and go through
     # to retrain agents that could not produce output, unless
     # they are already in that resource band
@@ -586,6 +601,18 @@ class Organization < Scene
     "I:#{@preferences["iterations"]}" +
         "{A:#{@current_agents}/#{@total_agents}," +
         "U:#{@groups[:units].size}/#{@total_units}}"
+  end
+  def on_close
+    if $LOG
+      $FRAME.logger.set(:agents_current, @current_agents)
+      $FRAME.logger.set(:units_current, @groups[:units].size)
+      #track resource use as well, average resource use per run
+      #avg = resources used / runs
+      @resources.each do |k,v|
+        $FRAME.logger.avg("#{k}_needed")
+        $FRAME.logger.avg("#{k}_used")
+      end
+    end
   end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.

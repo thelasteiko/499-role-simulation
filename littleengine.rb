@@ -193,6 +193,9 @@ class Scene
     def input_map
       {}
     end
+    # Does clean up when the program closes.
+    def on_close
+    end
 end
 # Here are guts of the game engine. This has the
 # actual game loop which runs continuosly, updating
@@ -289,6 +292,7 @@ class LittleGame
         #$FRAME.log(1, "Running.")
         return if not @canvas
         if @end_game
+          on_close
           $FRAME.on_close(self,nil,:end_game)
         end
         #if the scene has been changed, switch out the old scene
@@ -342,6 +346,9 @@ class LittleGame
       text += @scene.to_s
       return text
     end
+    def on_close
+      @scene.on_close if @scene
+    end
 end
 # This is the program window that holds the canvas.
 # The canvas is where everything is drawn. The frame
@@ -350,7 +357,7 @@ end
 class LittleFrame < FXMainWindow
     # @!attribute [r] logger
     #   @return [LittleLogger] 
-    attr_reader :logger
+    #attr_reader :logger
     # Creates the window components and adds the game.
     # @param app [FXApp] is the application that will be running.
     # @param w [Fixnum] is the width in pixels.
@@ -374,7 +381,11 @@ class LittleFrame < FXMainWindow
           @@console = FXText.new(debugframe, opts: TEXT_READONLY|TEXT_WORDWRAP|TEXT_AUTOSCROLL|LAYOUT_FILL_X)
           @@console.setText("Starting...\n")
         end
-        @@logger = LittleLogger.new if $LOG
+        if $LOG
+          @@logger = LittleLogger.new
+          @@logger.set(:date, Time.now)
+          @@logger.start(:run)
+        end        
         @canvas.backColor = Fox.FXRGB(0, 0, 0)
         self.connect(SEL_CLOSE, method(:on_close))
     end
@@ -433,6 +444,9 @@ class LittleFrame < FXMainWindow
     # @param note [String] is the note to save to the log file.
     def logtofile(sender, method="", note="")
       @@logger.logtofile(sender, method, note) if @@logger
+    end
+    def logger
+      @@logger
     end
     # Overwrite exiting so that the log file can be saved
     # and any cleanup operations can be performed.

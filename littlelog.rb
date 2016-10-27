@@ -27,8 +27,6 @@ class LittleLogger
         f.puts "#{time}"
       end
     end
-    @statlist = Hash.new
-    $STAT_LIST.each {|i| @statlist[i] = 0}
   end
   #Logs a comment to the file.
   #@param sender [Class] the class requesting the log.
@@ -53,7 +51,10 @@ class LittleLogger
   #Adds a numerical statistic to the list, initialized to 0.
   #@param stat [Symbol] the statistic type to add.
   def start(stat)
-    @statlist = {} if not @statlist
+    if not @statlist
+      @statlist = {}
+      @statlist[:run] = 0
+    end
     @statlist[stat] = 0
   end
   #Sets the value of a statistic.
@@ -66,8 +67,16 @@ class LittleLogger
   #Increment the indicated numerical statistic.
   #@param stat [Symbol] the statictic type.
   def inc(stat)
-    start(stat) if not @statlist
+    start(stat) if not @statlist or not @statlist[stat]
     @statlist[stat] += 1
+  end
+  def avg(stat)
+    start(stat) if not @statlist
+    @statlist[stat] /= @statlist[:run]
+  end
+  def add(stat, value)
+    start(stat) if not @statlist or not @statlist[stat]
+    @statlist[stat] += value
   end
   #Saves the list of statistics to a file.
   def save
@@ -78,8 +87,8 @@ class LittleLogger
     if not File.file?($STATFILE)
       File.new($STATFILE, 'w')
       File.open($STATFILE, 'w') do |f|
-        $STAT_LIST.each do |i|
-          f.write(i.to_s)
+        @statlist.each do |k,v|
+          f.write(k.to_s)
           f.write(",")
         end
         f.puts ""

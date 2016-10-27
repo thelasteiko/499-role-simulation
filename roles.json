@@ -1,10 +1,10 @@
 {
   "roles": ["food","shelter","health",
-    "acquisition","role","audit",
     "equipment","security","data",
+    "acquisition","role","audit",
     "ojt","professional","formal"],
   
-  "offices": ["service","administration","technical","training"],
+  "offices": ["service","technical","administration","training"],
     
   "service": {
     "food":         [4,35,96],
