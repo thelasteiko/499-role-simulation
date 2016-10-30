@@ -11,14 +11,23 @@ class WeightedRandom
     return -1 if r1 < b or r2 > e
     a = Random.rand
     if a < p
-      return Random.rand(r2-r1)+r1
+      return Random.rand((r2-r1).to_f)+r1
     else
       a = Random.rand
       if a < 0.5
-        return Random.rand(r1-b)+b
+        if r1 < b
+          return Random.rand((r1-b).to_f)+b
+        else
+          return b
+        end
       else
-        return Random.rand(e-r2)+r2
+        if r2 < e
+          return Random.rand((e-r2).to_f)+r2
+        else
+          return e
+        end
       end
     end
+    return Random.rand((e-b).to_f)+b
   end
 end

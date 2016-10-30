@@ -2,5 +2,6 @@
   "iterations": 100,
   "draw":       0,
   "verbose":    1,
-  "max_agents": 70
+  "max_agents": 70,
+  "priority":   "organization"
 }
