@@ -25,15 +25,15 @@ class Organization < Scene
   attr_accessor :total_units
   # @return [Hash] the resources available.
   attr_accessor :resources
-  attr_reader :role_data
-  attr_reader :preferences
+  attr_accessor :old_resources
   attr_accessor :trainers
+  attr_accessor :retrainees
   def initialize (game,param)
     super
     #read file things
-    @preferences = JSON.parse(File.read('pref.json'))
-    @role_data = JSON.parse(File.read('roles.json'))
-    @default_data = JSON.parse(File.read('start.json'))
+    @@preferences = JSON.parse(File.read('pref.json'))
+    @@role_data = JSON.parse(File.read('roles.json'))
+    @@default_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
     @current_agents = 0
     @trainers = {
@@ -43,30 +43,34 @@ class Organization < Scene
       "training"        =>  [0,0,0]
     }
     @groups[:units] = UnitGroup.new(game, self)
-    @groups[:retrain] = RetrainGroup.new(game, self)
+    #@groups[:retrain] = RetrainGroup.new(game, self)
     @total_units = 1;
-    push(:units, Unit.new(game,:units,"U0"))
+    push(:units, Unit.new(game,:units,"U0",
+        @@default_data["role_ratios"]))
+    @retrainees = []
   end
   # Loads base data to start the simulation with.
   # @see Scene::load
   def load (app)
     #$FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
+    @resources = Organization.create_resource_list(
+        50,50,50,50,50,50,50,50,50,50,50,50
+    )
+    @old_resources = @resources
     for i in 0...12
       sn = @total_agents
-      r = @role_data["roles"][i] #name of the role
-      o = @role_data["offices"][(i/3).to_i] #name of the office
-      d = @role_data[o][r] #data for the role
+      r = @@role_data["roles"][i] #name of the role
+      o = @@role_data["offices"][(i/3).to_i] #name of the office
+      d = @@role_data[o][r] #data for the role
       t = 2 #proficiency level
       params = parse_default
       a = Agent.new(@game,:units,sn,o,r,d,params)
+      a.role.proficiency = 2
       @groups[:units][0].add_agent(a)
       @total_agents += 1
       @current_agents += 1
     end
-    @resources = Organization.create_resource_list(
-        50,50,50,50,50,50,50,50,50,50,50,50
-    )
     #set statistics
     if $LOG
       $FRAME.logger.set(:agents_created, @total_agents)
@@ -77,30 +81,36 @@ class Organization < Scene
   
   # Creates and adds an agent to the simulation by determining
   # the greatest resource need.
-  def add_agent
-    sn = @total_agents
-    r = priority_need
-    o = @role_data["offices"][(@role_data.index(r)/3).to_i]
-    d = @role_data[o][r]
-    params = parse_default(r)
-    agent = Agent.new(@game,:units,sn,o,r,d,params)
-    n = 0 #unit to access
-    u = @groups[:units][-1] #get last unit
-    n = @groups[:units].size-2
-    while n >= 0 and not u.add_agent(agent)
+  def add_agent (agent=nil)
+    if not agent
+      sn = @total_agents
+      r = priority_need
+      o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
+      d = @@role_data[o][r]
+      params = parse_default#(r)
+      agent = Agent.new(@game,:units,sn,o,r,d,params)
+      @total_agents += 1
+      @current_agents += 1
+      $FRAME.logger.inc(:agents_created)
+      $FRAME.log(2, "Created #{sn}")
+    end
+    u = nil #get last unit
+    n = @groups[:units].size-1
+    u = @groups[:units][n]
+    b = u ? u.add_agent(agent) : false
+    while n >= 0 and not b
       u = @groups[:units][n]
       n -= 1
+      b = u.add_agent(agent)
     end
-    if not u
-      u = Unit.new(@game, :units,"U#{@total_units}")
+    if n < 0 and not b
+      u = Unit.new(@game, :units,"U#{@total_units}",
+          @@default_data["role_ratios"])
       push(:units,u)
       @total_units += 1
       $FRAME.logger.inc(:units_created)
       u.add_agent(agent)
     end
-    @total_agents += 1
-    @current_agents += 1
-    $FRAME.logger.inc(:agents_created)
     if agent.role.proficiency > 0
       @trainers[agent.role.office][agent.role.proficiency-1] += 1
     end
@@ -111,7 +121,7 @@ class Organization < Scene
     #search through resources
     minv = 10000
     mink = nil
-    @resources.each do |k,v|
+    @old_resources.each do |k,v|
       if v < minv
         minv = v
         mink = k
@@ -124,7 +134,7 @@ class Organization < Scene
   def least_need
     maxv = -100
     maxk = nil
-    @resources.each do |k,v|
+    @old_resources.each do |k,v|
       if v > maxv
         maxv = v
         maxk = k
@@ -136,7 +146,8 @@ class Organization < Scene
   # Uses default data to create parameters for a new agent.
   # @param role [String] is the role to create for; default is "default".
   def parse_default(role="default")
-    agent_data = @default_data["#{role}_agent"]
+    agent_data = @@default_data["#{role}_agent"]
+    #$FRAME.log(9, "Creating defaults...#{agent_data}")
     params = {}
     agent_data.each do |k,v|
       if k != "consumption"
@@ -158,12 +169,14 @@ class Organization < Scene
         end
       end
     end
+    #$FRAME.log(9, "#{params}")
+    return params
   end
   
   # This is where we need to distribute resources.
   def update
     return nil if @game.end_game
-    if @preferences["iterations"] == 0 || @current_agents < 5
+    if @@preferences["iterations"] == 0 || @current_agents < 5
       @game.end_game = true
       $FRAME.log(0, to_s)
       return nil
@@ -175,6 +188,9 @@ class Organization < Scene
       @resources.each do |k,v|
         old[k] = v
       end
+    end
+    while not @retrainees.empty?
+      add_agent(@retrainees.pop)
     end
     #determine need for basic things: food, shelter, equipment, data
     #and what role needs to be created or retrained from/to
@@ -197,23 +213,72 @@ class Organization < Scene
         $FRAME.logger.add("#{k}_used", n) #actual use
       end
     end
-    #TODO determine which resources ran out and go through
-    # to retrain agents that could not produce output, unless
-    # they are already in that resource band
-    #determine whether to add an agent based on
-    # acquisition and formal schools resources
-    #if there are agents to retrain then retrain them
-    if @current_agents < @preferences["max_agents"]
-      add_agent(create_agent)
+    if @current_agents < @@preferences["max_agents"]
+      add_agent
     end
+    @old_resources = @resources
     @resources = nr
-    @preferences["iterations"] -= 1
-    
+    @@preferences["iterations"] -= 1
+  end
+  
+  # Changes the role of an agent based on the set parameters,
+  # agent desire and organization needs.
+  # @param agent [Agent] is the agent to change the role of.
+  def retrain(agent)
+    return false if agent.role.proficiency == 0
+    #$FRAME.log(9, "Retraining #{agent.serial_number}")
+    if @@preferences["priority"] == "organization"
+      #the organization decides where they go
+      r = priority_need
+    elsif @@preferences["priority"] == "agent"
+      #the agent decides
+      r = agent.desired_role
+    else
+      #both try to compromise
+      #to           agent         from
+      #needed +     desired +     not needed  = yes X
+      #needed +     desired +     needed      = yes X
+      #needed +     not desired + not needed  = yes 
+      #needed +     not desired + needed      = no  X
+      #not needed + desired +     not needed  = yes X
+      #not needed + desired +     needed      = no  X
+      #not needed + not desired + not needed  = no
+      #not needed + not desired + needed      = no  X
+      r = agent.desired_role
+      if @old_resources[r] >= @@default_data["resources"][r]
+        #find something else yo
+        q = agent.role.role_name
+        if @old_resources[q] >= @@default_data["resources"][q]
+          #not needed + desired + not needed
+          o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
+          d = @@role_data[o][r]
+          role = RoleProgress.new(o,r,d)
+          return agent.change_role(role)
+        end
+        #not needed + desired + needed
+      else
+        #needed + desired
+        o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
+        d = @@role_data[o][r]
+        role = RoleProgress.new(o,r,d)
+        return agent.change_role(role)
+      end
+      r = priority_need
+      q = agent.role.role_name
+      return nil if r == q
+      if @old_resources[q] < @@default_data["resources"][q]
+        return nil
+      end
+    end
+    o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
+    d = @@role_data[o][r]
+    role = RoleProgress.new(o,r,d)
+    return agent.change_role(role)
   end
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
-    super if @preferences[:draw] == 1
+    super if @@preferences[:draw] == 1
   end
   def to_s
     text = "Agents:#{@current_agents}/#{@total_agents}," +
@@ -231,7 +296,7 @@ class Organization < Scene
     return text
   end
   def brief
-    "I:#{@preferences["iterations"]}" +
+    "I:#{@@preferences["iterations"]}" +
         "{A:#{@current_agents}/#{@total_agents}," +
         "U:#{@groups[:units].size}/#{@total_units}}"
   end
@@ -264,6 +329,15 @@ class Organization < Scene
     "professional" => k.to_f,
     "formal" =>       l.to_f
     }
+  end
+  def self.preferences
+    @@preferences
+  end
+  def self.default_data
+    @@default_data
+  end
+  def self.role_data
+    @@role_data
   end
 end
 

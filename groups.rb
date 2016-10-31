@@ -10,23 +10,42 @@ class Unit < GameObject
   attr_accessor :agents
   attr_accessor :unit_serial
   # Creates an object that holds a certain number of agents.
-  def initialize(game, group, unit_serial)
+  def initialize(game, group, unit_serial, ratios)
     super(game,group)
     @unit_serial = unit_serial
+    @role_ratios = ratios
     @agents = Hash.new
   end
   def update (resources, new_resources, trainers)
     @agents.each do |k,v|
+      i = []
       v.each do |j|
         j.update(resources, new_resources,
           trainers)
-        if j.retrain > 0 and not j.in_queue
-          @game.scene.push(:retrain, j)
+        if not j.remove and j.role.proficiency > 0 and
+            j.motivation <= Organization.preferences["motivation"]
+          $FRAME.log(8, "Retraining #{j.to_s}")
+          j.retrained = @game.scene.retrain(j)
+          if j.retrained
+            $FRAME.log(8, "Retrained #{j.to_s}")
+            i.push(j)
+          end
         end
       end
+      #$FRAME.log(7, "#{@unit_serial} retraining #{i.size}")
+      i.each do |t|
+        t.retrained = false
+        @game.scene.retrainees.push(v.delete(t))
+      end
+      #Find agents that have low motivation and
+      # tag to retrain them.
+      #options = organization decides, agent decides, both try to agree
+      # how do I get the agent to talk to the org?
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
+          $FRAME.log(6,"#{j.serial_number} died at #{j.months}/#{j.months_total}.")
+          #$FRAME.log(7, "Deleted agent: #{@game.scene.current_agents}")
           true
         end
       end
@@ -35,10 +54,10 @@ class Unit < GameObject
     @remove = true if @agents.size == 0
   end
   def has?(role)
-    #TODO I can modify this so that it checks if
-    # the role is full, that is to have multiple
-    # agents in some roles
-    @agents[role]
+    if @agents[role]
+      return @agents[role].size >= @role_ratios[role]
+    end
+    false
   end
   def add_agent(agent)
     rn = agent.role.role_name
@@ -68,32 +87,5 @@ class UnitGroup < Group
   def update(resources, new_resources, trainers)
       @entities.each {|i| i.update(resources, new_resources, trainers)}
       @entities.delete_if {|i| i.remove}
-  end
-end
-
-class RetrainGroup < Group
-  MAX_RETRAINEES = 10
-  def update (resources)
-    if size > MAX_RETRAINEES
-      #find a resource that is needed
-      minv = 10000
-      mink = nil
-      resources.each do |k,v|
-        if v < minv
-          minv = v
-          mink = k
-        end
-      end
-    end
-  end
-  def draw(graphics, tick)
-    #don't do anything
-  end
-  def load(app)
-    #don't do anything
-  end
-  def get_top
-    @entries.sort!{|a,b| a.retrain <=> b.retrain}
-    return @entries[-1]
   end
 end

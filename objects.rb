@@ -28,7 +28,7 @@ class RoleProgress
   #  progress they make.
   def update(ratio)
     if @proficiency > 0 && @proficiency < 3
-      if ratio > 0.0
+      if ratio > 1
         @progress += ratio
       else
         @progress += 1
@@ -71,76 +71,90 @@ class Agent < GameObject
   attr_reader   :serial_number
   # @return [Array] list of the progress the agent has made in training.
   attr_accessor :roles
-  # @return [FixNum] base resources needed to produce output.
-  #attr_accessor :tolerance
+  # @return [Float] a measure of how much the agent puts up with.
+  attr_accessor :tolerance
   # @return [Float] determines how much output the agent produces.
   attr_accessor :motivation
   # @return [FixNum] how many months the agent has been active.
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
-  attr_accessor :retrain
-  attr_accessor :in_queue
+  attr_accessor :desired_role
+  attr_accessor :remove
+  attr_accessor :retrained
   def initialize(game, group, serial_number,
       office, role_name, role_data, params={})
     super(game, group)
     @serial_number = serial_number
     @roles = [RoleProgress.new(office,role_name,role_data)]
-    @tolerance = params[:tolerance] ? params[:tolerance] : 0.8
-    @motivation = params[:motivation] ? params[:motivation] : 0.7
-    @months_total = params[:months_total] ? params[:months_total] : 240
-    @output_level = params[:output_level] ? params[:output_level] : 5.0
-    if params[:consumption]
-      @consumption = params[:consumption]
+    @tolerance = params["tolerance"] ? params["tolerance"] : 10
+    @motivation = params["motivation"] ? params["motivation"] : 0.7
+    @months_total = params["months_total"] ? params["months_total"] : 240
+    @output = params["output"] ? params["output"] : 5.0
+    if params["consumption"]
+      @consumption = params["consumption"]
     else
       @consumption = Organization.create_resource_list(
-          1,1,1,1,1,1,1,1,1,1,1,1
-      )
+          1,1,1,1,1,1,1,1,1,1,1,1)
     end
+    @desired_role = Organization.role_data["roles"][params["desired_role"].to_i]
+    #$FRAME.log(1, "#{@desired_role}")
     @months = 0
-    @retrain = 0
+    @retrained = false
+    @remove = false
   end
   # Changes the role of an agent. If the agent has previously
   # held the role, it reverts to the previously held role.
   # This also resets retraining, motivation and sets the
   # months back by 36.
   # @param role [RoleProgress] is the role to switch to.
+  # @return [Boolean] true if the agent changed roles;
+  #                   false if it did not.
   def change_role(r)
     #if there is a role with the same office
+    return false if role.proficiency == 0
     a = []
-    p = r
+    p = nil
     o = role.role_name
-    @roles.delete_if do |i|
+    @roles.each do |i|
       if i.office == r.office
+        $FRAME.log(7, "#{i.office}==#{r.office}")
         a.push(i)
-        p.proficiency = 1
-        true
+        r.proficiency = 1
       end
     end
-    #if there is a role with the same name
-    if a
-      a.each do |i|
-        if i.role_name == r.role_name
-          p = i
-          break
-        end
-      end
-      a.delete(p)
-      a.each do |i|
-        @roles.push(i)
+    a.each do |j|
+      if j.role_name == r.role_name
+        p = @roles.delete(j)
+        break
       end
     end
-    if p.role_name == o
+    if not p
+      @roles.push(r)
+    else
+      @roles.push(p)
+    end
+    if role.role_name == o
+      if @motivation < Organization.preferences["motivation"] and
+          o == @desired_role
+        @remove = true
+      end
       return false
     end
-    @retrain = 0
     @months -= 36
-    @roles.push(p)
-    @motivation = WeightedRandom.rand(0,1,0.5,0.9,0.75)
+    a = Organization.default_data["default_agent"]["motivation"]
+    @motivation = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
+    a = Organization.default_data["default_agent"]["consumption"]["ojt"]
+    @consumption["ojt"] = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
+    if role.role_name == @desired_role
+      @motivation *= 1.5
+    end
     return true
   end
+  # Returns the most current role assigned.
+  # @return [RoleProgress] is the most recent role.
   def role
-    #TODO i need the latest...do this when doing cross-training stuff
+    #$FRAME.log(2, "#{@serial_number}:#{@roles}")
     @roles[-1]
   end
   # Updates the agent, consumes resources and produces output.
@@ -148,39 +162,34 @@ class Agent < GameObject
   # @param new_resources [Hash] a list of resources for the next iteration.
   # @param trainers [Hash] a list of trainers for each role.
   def update (resources, new_resources, trainers)
-    #$FRAME.log(6, "#{@serial_number}")
+    #$FRAME.log(6, "#{to_s}")
     #signifies death
-    if @months >= @months_total
+    if @months >= @months_total or @motivation <= 0
       @remove = true
       if trainers[role.office][role.proficiency-1] > 0 and
           role.proficiency > 0
         trainers[role.office][role.proficiency-1] -= 1
       end
-      $FRAME.log(6,"#{@serial_number} died at #{@months}/#{@months_total}.")
       return nil
     end
     (ret = Equations.consume(resources, @consumption, role.proficiency))
     #$FRAME.log(3, "#{@serial_number}:#{ret}")
+    # Reduce motivation if there isn't enough resources.
+    if ret[:shortfall] >= @tolerance
+      $FRAME.log(6, "Shortfall: #{ret[:shortfall]}")
+      @motivation -= (ret[:shortfall] * 0.01)
+    end
     o = Equations.output(ret, @consumption, @motivation, role.proficiency)
-    if role.proficiency > 0 and o < @tolerance
-      #TODO it needs to start dying...
-      @months += (@months_total*(1.0-@motivation))
-      @retrain += 1
-      $FRAME.log(3, "#{@serial_number}:#{o}:#{@months}/#{@months_total}")
-    end
-    if @motivation < 0.5
-      @retrain += 1
-    end
     #$FRAME.log(3, "#{@serial_number}:#{o}")
-    new_resources[role.role_name] += @output_level * o
+    new_resources[role.role_name] += @output * o
     #$FRAME.log(3, "#{new_resources}")
     if role.proficiency < 3
       t = Equations.train(ret, @consumption,
           trainers[role.office][role.proficiency], @motivation)
-      role.update(t)
     else
       t = 0.0
     end
+    role.update(t)
     b = role.upgrade?
     if b
       $FRAME.log(3, "#{@serial_number} upgraded to #{role.proficiency}")

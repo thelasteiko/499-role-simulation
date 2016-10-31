@@ -3,5 +3,6 @@
   "draw":       0,
   "verbose":    1,
   "max_agents": 70,
-  "priority":   "organization"
+  "priority":   "compromise",
+  "motivation": 0.5
 }

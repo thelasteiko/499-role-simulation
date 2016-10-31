@@ -1,0 +1,755 @@
+2016-10-30 22:13:53 -0700
+22:13:53:0.03002: LittleFrame.log: I:100{A:12/12,U:1/1}
+22:13:53:0.032021: LittleFrame.log: IN:{"food"=>50.0, "shelter"=>50.0, "health"=>50.0, "acquisition"=>50.0, "role"=>50.0, "audit"=>50.0, "equipment"=>50.0, "security"=>50.0, "data"=>50.0, "ojt"=>50.0, "professional"=>50.0, "formal"=>50.0}
+22:13:53:0.033022: LittleFrame.log: Retraining 1:0.3:1/285.143401634344{
+	{service:shelter:[4, 35, 36],P:2,MOS:1,T:1.5}}
+22:13:53:0.034023: LittleFrame.log: 1 died at 1/285.143401634344.
+22:13:53:0.034023: LittleFrame.log: Retraining 4:0.3:1/311.22063975939506{
+	{technical:security:[6, 206, 50],P:2,MOS:1,T:1.5}}
+22:13:53:0.035025: LittleFrame.log: Retrained 4:1.300522357982485:-35/311.22063975939506{
+	{technical:security:[6, 206, 50],P:2,MOS:1,T:1.5}
+	{service:food:[4, 35, 96],P:0,MOS:0,T:0.0}}
+22:13:53:0.036024: LittleFrame.log: Retraining 6:0.3:1/169.6464193151682{
+	{administration:acquisition:[2, 60, 3],P:2,MOS:1,T:1.0}}
+22:13:53:0.036024: LittleFrame.log: Retrained 6:1.1262554655609591:-35/169.6464193151682{
+	{administration:acquisition:[2, 60, 3],P:2,MOS:1,T:1.0}
+	{training:professional:[3, 148, 16],P:0,MOS:0,T:0.0}}
+22:13:53:0.037025: LittleFrame.log: Retraining 7:0.3:1/140.1799144359145{
+	{administration:role:[2, 60, 3],P:2,MOS:1,T:1.5}}
+22:13:53:0.037025: LittleFrame.log: Retrained 7:1.0980869382919158:-35/140.1799144359145{
+	{administration:role:[2, 60, 3],P:2,MOS:1,T:1.5}
+	{service:food:[4, 35, 96],P:0,MOS:0,T:0.0}}
+22:13:53:0.038025: LittleFrame.log: R:{"food"=>26.20952620038756, "shelter"=>29.83534469113122, "health"=>30.962880806112217, "acquisition"=>50.0, "role"=>50.0, "audit"=>21.482417976293988, "equipment"=>19.7389765833464, "security"=>33.17612495981747, "data"=>26.967909856081363, "ojt"=>27.504996217090895, "professional"=>31.208101759626427, "formal"=>50.0}
+22:13:53:0.039026: LittleFrame.log: Created 12
+22:13:53:0.039026: LittleFrame.log: I:99{A:12/13,U:1/1}
+22:13:53:0.040026: LittleFrame.log: IN:{"food"=>16.969310988563496, "shelter"=>5.977979723914, "health"=>16.430461952180718, "acquisition"=>12.309213591345612, "role"=>32.88663689258515, "audit"=>18.10726417211, "equipment"=>38.22513421223814, "security"=>45.8841158713665, "data"=>37.06227341602561, "ojt"=>28.4960205707062, "professional"=>34.23658995365968, "formal"=>4.45909572104978}
+22:13:53:0.042029: LittleFrame.log: R:{"food"=>-0.4615736070616099, "shelter"=>-8.634106716380844, "health"=>3.1910269106265616, "acquisition"=>12.309213591345612, "role"=>32.88663689258515, "audit"=>2.9807308545872013, "equipment"=>17.809315120239795, "security"=>35.116150795528114, "data"=>22.31446609990495, "ojt"=>18.276874320897893, "professional"=>21.534733776008935, "formal"=>4.45909572104978}
+22:13:53:0.042029: LittleFrame.log: Created 13
+22:13:53:0.053037: LittleFrame.log: I:98{A:13/14,U:2/2}
+22:13:53:0.054036: LittleFrame.log: IN:{"food"=>16.969310988563496, "shelter"=>0.0, "health"=>16.430461952180718, "acquisition"=>0.0, "role"=>0.0, "audit"=>14.521667306345643, "equipment"=>38.22513421223814, "security"=>0.0, "data"=>29.77186580410372, "ojt"=>22.853244220071304, "professional"=>27.457067190558757, "formal"=>3.4222549408358476}
+22:13:53:0.055038: LittleFrame.log: R:{"food"=>-0.4615736070616099, "shelter"=>-14.612086440294842, "health"=>3.1910269106265616, "acquisition"=>0.0, "role"=>0.0, "audit"=>-0.6048660111771538, "equipment"=>17.809315120239795, "security"=>-10.76796507583838, "data"=>15.024058487983059, "ojt"=>12.634097970262996, "professional"=>14.755211012908012, "formal"=>3.4222549408358476}
+22:13:53:0.05604: LittleFrame.log: Created 14
+22:13:53:0.057038: LittleFrame.log: I:97{A:14/15,U:2/2}
+22:13:53:0.057038: LittleFrame.log: IN:{"food"=>11.928921586019884, "shelter"=>0.0, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>26.871133951177306, "security"=>0.0, "data"=>28.916718819096904, "ojt"=>20.031856044753862, "professional"=>24.067305809008293, "formal"=>2.654059060396114}
+22:13:53:0.058039: LittleFrame.log: 6 upgraded to 1
+22:13:53:0.059039: LittleFrame.log: R:{"food"=>-5.501963009605221, "shelter"=>-14.612086440294842, "health"=>-0.42006362831425514, "acquisition"=>0.0, "role"=>0.0, "audit"=>-2.3976644440593318, "equipment"=>6.45531485917896, "security"=>-10.76796507583838, "data"=>14.168911502976243, "ojt"=>9.812709794945551, "professional"=>11.365449631357546, "formal"=>2.654059060396114}
+22:13:53:0.060039: LittleFrame.log: Created 15
+22:13:53:0.071046: LittleFrame.log: I:96{A:15/16,U:2/2}
+22:13:53:0.071046: LittleFrame.log: IN:{"food"=>11.928921586019884, "shelter"=>0.0, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>26.871133951177306, "security"=>0.0, "data"=>28.916718819096904, "ojt"=>20.031856044753862, "professional"=>18.329564652563064, "formal"=>1.3028914726022927}
+22:13:53:0.072048: LittleFrame.log: 7 upgraded to 1
+22:13:53:0.073049: LittleFrame.log: 4 upgraded to 1
+22:13:53:0.074049: LittleFrame.log: R:{"food"=>-7.39748838102812, "shelter"=>-15.973430318136579, "health"=>-1.5006337088531674, "acquisition"=>0.0, "role"=>0.0, "audit"=>-2.3976644440593318, "equipment"=>3.778657897065454, "security"=>-10.76796507583838, "data"=>11.817032793234535, "ojt"=>9.812709794945551, "professional"=>3.839810433979193, "formal"=>1.3028914726022927}
+22:13:53:0.074049: LittleFrame.log: Created 16
+22:13:53:0.085056: LittleFrame.log: I:95{A:16/17,U:2/2}
+22:13:53:0.086059: LittleFrame.log: IN:{"food"=>11.928921586019884, "shelter"=>0.0, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>26.871133951177306, "security"=>0.0, "data"=>28.916718819096904, "ojt"=>20.031856044753862, "professional"=>23.33148202960193, "formal"=>1.3028914726022927}
+22:13:53:0.08706: LittleFrame.log: R:{"food"=>-9.439547023897259, "shelter"=>-19.164655308868767, "health"=>-4.221698307414556, "acquisition"=>0.0, "role"=>0.0, "audit"=>-11.265223392923247, "equipment"=>-1.598567320258688, "security"=>-15.11521733208103, "data"=>6.922919582494122, "ojt"=>9.812709794945551, "professional"=>5.591542646672185, "formal"=>1.3028914726022927}
+22:13:53:0.088061: LittleFrame.log: Created 17
+22:13:53:0.098575: LittleFrame.log: I:94{A:17/18,U:2/2}
+22:13:53:0.099576: LittleFrame.log: IN:{"food"=>39.11792582517511, "shelter"=>0.0, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>26.871133951177306, "security"=>0.0, "data"=>25.827361704691803, "ojt"=>14.426789556992462, "professional"=>14.63982245062455, "formal"=>1.0840412907665133}
+22:13:53:0.099576: LittleFrame.log: 12 upgraded to 1
+22:13:53:0.100575: LittleFrame.log: 14 upgraded to 1
+22:13:53:0.101576: LittleFrame.log: R:{"food"=>17.74945721525797, "shelter"=>-19.164655308868767, "health"=>-4.221698307414556, "acquisition"=>0.0, "role"=>0.0, "audit"=>-11.265223392923247, "equipment"=>-1.598567320258688, "security"=>-15.11521733208103, "data"=>3.8335624680890223, "ojt"=>4.207643307184152, "professional"=>-3.1001169323051965, "formal"=>1.0840412907665133}
+22:13:53:0.102577: LittleFrame.log: Created 18
+22:13:53:0.112582: LittleFrame.log: I:93{A:18/19,U:3/3}
+22:13:53:0.112582: LittleFrame.log: IN:{"food"=>42.72534544974058, "shelter"=>0.0, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>26.871133951177306, "security"=>0.0, "data"=>25.827361704691803, "ojt"=>14.426789556992462, "professional"=>20.905503228347705, "formal"=>1.6226412408151523}
+22:13:53:0.113586: LittleFrame.log: 13 upgraded to 1
+22:13:53:0.114587: LittleFrame.log: 15 upgraded to 1
+22:13:53:0.115587: LittleFrame.log: R:{"food"=>18.899568991766582, "shelter"=>-21.858384231612476, "health"=>-5.416797091448391, "acquisition"=>0.0, "role"=>0.0, "audit"=>-17.89339825958622, "equipment"=>-5.359180900472914, "security"=>-16.489783772503323, "data"=>1.8335624680890215, "ojt"=>4.207643307184152, "professional"=>-1.383671363310065, "formal"=>1.6226412408151523}
+22:13:53:0.115587: LittleFrame.log: Created 19
+22:13:53:0.126615: LittleFrame.log: I:92{A:19/20,U:3/3}
+22:13:53:0.127613: LittleFrame.log: IN:{"food"=>41.47088794548158, "shelter"=>4.234486294582799, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>30.09603765375179, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>14.426789556992462, "professional"=>17.80119697359094, "formal"=>1.6157998501459163}
+22:13:53:0.128616: LittleFrame.log: 16 upgraded to 1
+22:13:53:0.128616: LittleFrame.log: Shortfall: 15.26855492736005
+22:13:53:0.129616: LittleFrame.log: Shortfall: 11.577984478565668
+22:13:53:0.129616: LittleFrame.log: Retraining 15:0.4118923407582911:5/151.58470970666127{
+	{service:shelter:[4, 35, 36],P:1,MOS:1,T:1}}
+22:13:53:0.130615: LittleFrame.log: Retrained 15:1.472648953719691:-31/151.58470970666127{
+	{service:shelter:[4, 35, 36],P:1,MOS:1,T:1}
+	{training:professional:[3, 148, 16],P:0,MOS:0,T:0.0}}
+22:13:53:0.131616: LittleFrame.log: R:{"food"=>14.23620558313241, "shelter"=>-20.457752350005183, "health"=>-9.45633390032221, "acquisition"=>0.0, "role"=>0.0, "audit"=>-22.808809097804346, "equipment"=>-4.381081983186673, "security"=>-19.16157638935688, "data"=>-15.413806514683964, "ojt"=>4.207643307184152, "professional"=>-7.845174631520707, "formal"=>1.6157998501459163}
+22:13:53:0.131616: LittleFrame.log: Created 20
+22:13:53:0.143286: LittleFrame.log: I:91{A:20/21,U:3/3}
+22:13:53:0.144276: LittleFrame.log: IN:{"food"=>49.08287501221987, "shelter"=>4.5856859594680595, "health"=>13.847071999147515, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>32.35140126311301, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>13.023167324471407, "professional"=>13.307938101309425, "formal"=>1.0771999000972776}
+22:13:53:0.145277: LittleFrame.log: Shortfall: 11.211298999314216
+22:13:53:0.145277: LittleFrame.log: 17 upgraded to 1
+22:13:53:0.146278: LittleFrame.log: Shortfall: 14.134277729461619
+22:13:53:0.146278: LittleFrame.log: R:{"food"=>20.5985963166274, "shelter"=>-20.655168691515932, "health"=>-6.164895424659864, "acquisition"=>0.0, "role"=>0.0, "audit"=>-24.77963700444448, "equipment"=>-2.0952368826436016, "security"=>-19.19488975227332, "data"=>-15.85161971137946, "ojt"=>2.8040210746630967, "professional"=>-12.27539693283928, "formal"=>1.0771999000972776}
+22:13:53:0.147278: LittleFrame.log: Created 21
+22:13:53:0.157309: LittleFrame.log: I:90{A:21/22,U:3/3}
+22:13:53:0.157309: LittleFrame.log: IN:{"food"=>50.19835502668446, "shelter"=>5.794855642366598, "health"=>14.327372646140928, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>32.575925357426236, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>13.023167324471407, "professional"=>14.484191505138671, "formal"=>1.0771999000972776}
+22:13:53:0.15831: LittleFrame.log: Shortfall: 11.211298999314216
+22:13:53:0.159312: LittleFrame.log: Shortfall: 15.27417651669197
+22:13:53:0.160311: LittleFrame.log: 18 upgraded to 1
+22:13:53:0.160311: LittleFrame.log: Retraining 18:0.3:4/36{
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0}}
+22:13:53:0.161311: LittleFrame.log: Retrained 18:0.44999999999999996:-32/36{
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0}
+	{administration:audit:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.161311: LittleFrame.log: R:{"food"=>17.600547792171053, "shelter"=>-21.141504280510162, "health"=>-6.806267548370502, "acquisition"=>0.0, "role"=>0.0, "audit"=>-24.77963700444448, "equipment"=>-3.3562220813367416, "security"=>-20.727336926953402, "data"=>-17.954087291523845, "ojt"=>2.8040210746630967, "professional"=>-13.044221515235504, "formal"=>1.0771999000972776}
+22:13:53:0.162312: LittleFrame.log: Created 22
+22:13:53:0.172351: LittleFrame.log: I:89{A:22/23,U:3/3}
+22:13:53:0.172351: LittleFrame.log: IN:{"food"=>48.36733382347, "shelter"=>6.319194078843315, "health"=>15.981033053848696, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>32.35140126311301, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>13.023167324471407, "professional"=>14.629156606648156, "formal"=>1.136584849928134}
+22:13:53:0.173352: LittleFrame.log: 8 upgraded to 3
+22:13:53:0.174352: LittleFrame.log: 11 upgraded to 3
+22:13:53:0.174352: LittleFrame.log: Shortfall: 11.211298999314216
+22:13:53:0.175353: LittleFrame.log: Retraining 16:0.3978020021775574:7/166.0140139841767{
+	{service:shelter:[4, 35, 36],P:1,MOS:3,T:3}}
+22:13:53:0.175353: LittleFrame.log: Retrained 16:1.3210186883457733:-29/166.0140139841767{
+	{service:shelter:[4, 35, 36],P:1,MOS:3,T:3}
+	{administration:role:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.176354: LittleFrame.log: Shortfall: 15.498700611005194
+22:13:53:0.176354: LittleFrame.log: 19 upgraded to 1
+22:13:53:0.177354: LittleFrame.log: 15 upgraded to 1
+22:13:53:0.177354: LittleFrame.log: 21 upgraded to 1
+22:13:53:0.178356: LittleFrame.log: R:{"food"=>15.76952658895659, "shelter"=>-20.617165844033444, "health"=>-5.152607140662735, "acquisition"=>0.0, "role"=>0.0, "audit"=>-24.77963700444448, "equipment"=>-3.580746175649966, "security"=>-20.727336926953402, "data"=>-17.954087291523845, "ojt"=>2.8040210746630967, "professional"=>-12.89925641372602, "formal"=>1.136584849928134}
+22:13:53:0.178356: LittleFrame.log: Created 23
+22:13:53:0.189898: LittleFrame.log: I:88{A:23/24,U:5/5}
+22:13:53:0.190402: LittleFrame.log: IN:{"food"=>47.75026817355305, "shelter"=>6.111425652100408, "health"=>16.430461952180718, "acquisition"=>0.0, "role"=>0.0, "audit"=>12.728868873463465, "equipment"=>33.63818388468178, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>13.023167324471407, "professional"=>14.629156606648156, "formal"=>1.3734298726240288}
+22:13:53:0.191901: LittleFrame.log: Shortfall: 14.134277729461619
+22:13:53:0.1924: LittleFrame.log: 20 upgraded to 1
+22:13:53:0.192902: LittleFrame.log: Retraining 20:0.3:4/94.78288741945502{
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0}}
+22:13:53:0.193902: LittleFrame.log: Retrained 20:1.1039039294945203:-32/94.78288741945502{
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0}
+	{administration:acquisition:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.194402: LittleFrame.log: 22 upgraded to 1
+22:13:53:0.194402: LittleFrame.log: Shortfall: 14.189728215872432
+22:13:53:0.194402: LittleFrame.log: Shortfall: 11.577984478565668
+22:13:53:0.19559: LittleFrame.log: 18 upgraded to 1
+22:13:53:0.19559: LittleFrame.log: Retraining 18:0.44999999999999996:-30/36{
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0}
+	{administration:audit:[2, 60, 3],P:1,MOS:0,T:0}}
+22:13:53:0.19559: LittleFrame.log: 18 died at -30/36.
+22:13:53:0.196591: LittleFrame.log: R:{"food"=>11.37041156596058, "shelter"=>-22.977347121813185, "health"=>-9.629445596463022, "acquisition"=>0.0, "role"=>0.0, "audit"=>-26.93340223023443, "equipment"=>-7.661843045059115, "security"=>-23.824867752309444, "data"=>-21.2358575561781, "ojt"=>6.428990481952177, "professional"=>-16.681195884933597, "formal"=>1.3734298726240288}
+22:13:53:0.196591: LittleFrame.log: Created 24
+22:13:53:0.207634: LittleFrame.log: I:87{A:23/25,U:5/6}
+22:13:53:0.208627: LittleFrame.log: IN:{"food"=>48.7899883472388, "shelter"=>3.378492438283284, "health"=>16.413974185906824, "acquisition"=>0.0, "role"=>0.0, "audit"=>17.629228708319854, "equipment"=>34.06168388490644, "security"=>0.0, "data"=>12.846734474108045, "ojt"=>13.023167324471407, "professional"=>18.749723340557086, "formal"=>1.8834298726240288}
+22:13:53:0.208627: LittleFrame.log: Shortfall: 14.134277729461619
+22:13:53:0.209629: LittleFrame.log: Retraining 4:0.41607970554806406:-22/311.22063975939506{
+	{technical:security:[6, 206, 50],P:2,MOS:1,T:1.5}
+	{service:food:[4, 35, 96],P:1,MOS:9,T:9}}
+22:13:53:0.209629: LittleFrame.log: 4 died at -22/311.22063975939506.
+22:13:53:0.210629: LittleFrame.log: Shortfall: 14.189728215872432
+22:13:53:0.210629: LittleFrame.log: Shortfall: 11.577984478565668
+22:13:53:0.21163: LittleFrame.log: 23 upgraded to 1
+22:13:53:0.21163: LittleFrame.log: 16 upgraded to 1
+22:13:53:0.21263: LittleFrame.log: R:{"food"=>11.14443638406317, "shelter"=>-26.958882540597443, "health"=>-10.741691568358672, "acquisition"=>0.0, "role"=>0.0, "audit"=>-25.229569475479213, "equipment"=>-8.565488153069376, "security"=>-25.110358489628602, "data"=>-22.43723565994632, "ojt"=>6.428990481952177, "professional"=>-14.429322849683322, "formal"=>1.8834298726240288}
+22:13:53:0.21263: LittleFrame.log: Created 25
+22:13:53:0.223666: LittleFrame.log: I:86{A:23/26,U:6/7}
+22:13:53:0.223666: LittleFrame.log: IN:{"food"=>47.90710013984216, "shelter"=>3.621226078680876, "health"=>12.8193714132399, "acquisition"=>0.0, "role"=>0.0, "audit"=>20.453703131567906, "equipment"=>35.169846127950194, "security"=>0.0, "data"=>27.643821568204043, "ojt"=>13.023167324471407, "professional"=>18.54730286032232, "formal"=>1.8834298726240288}
+22:13:53:0.225668: LittleFrame.log: Shortfall: 12.052596269984257
+22:13:53:0.225668: LittleFrame.log: Retraining 19:0.4901259265889741:7/121.94274079907808{
+	{service:shelter:[4, 35, 36],P:1,MOS:3,T:3}}
+22:13:53:0.226668: LittleFrame.log: Retrained 19:1.1195693662632191:-29/121.94274079907808{
+	{service:shelter:[4, 35, 36],P:1,MOS:3,T:3}
+	{training:ojt:[3, 148, 16],P:0,MOS:0,T:0.0}}
+22:13:53:0.226668: LittleFrame.log: Shortfall: 11.577984478565668
+22:13:53:0.227669: LittleFrame.log: Shortfall: 12.211298999314216
+22:13:53:0.227669: LittleFrame.log: 24 upgraded to 1
+22:13:53:0.22867: LittleFrame.log: 20 upgraded to 1
+22:13:53:0.22867: LittleFrame.log: R:{"food"=>5.826194643246558, "shelter"=>-27.826886225708385, "health"=>-14.538448346625882, "acquisition"=>0.0, "role"=>0.0, "audit"=>-26.286134211410896, "equipment"=>-7.006498898182718, "security"=>-25.885853476978433, "data"=>-9.931695424360896, "ojt"=>6.428990481952177, "professional"=>-16.58589702863847, "formal"=>1.8834298726240288}
+22:13:53:0.22967: LittleFrame.log: Created 26
+22:13:53:0.239719: LittleFrame.log: I:85{A:24/27,U:6/7}
+22:13:53:0.239719: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>8.109511326267707, "health"=>13.008377353555396, "acquisition"=>0.0, "role"=>2.4927816168022336, "audit"=>27.821154755204486, "equipment"=>37.42520973731142, "security"=>0.0, "data"=>28.916718819096904, "ojt"=>20.031856044753862, "professional"=>27.672805631324433, "formal"=>2.2157998501459164}
+22:13:53:0.240726: LittleFrame.log: 9 upgraded to 3
+22:13:53:0.241727: LittleFrame.log: 10 upgraded to 3
+22:13:53:0.242729: LittleFrame.log: Shortfall: 7.095612934009894
+22:13:53:0.242729: LittleFrame.log: Shortfall: 12.211298999314216
+22:13:53:0.24373: LittleFrame.log: 25 upgraded to 1
+22:13:53:0.244729: LittleFrame.log: R:{"food"=>0.2979313644612649, "shelter"=>-24.773077794495634, "health"=>-15.920628061427989, "acquisition"=>0.0, "role"=>2.4927816168022336, "audit"=>-18.852272347582755, "equipment"=>-5.779616187989085, "security"=>-25.71652589006345, "data"=>-8.984755822029475, "ojt"=>13.437679202234632, "professional"=>-8.603480499262373, "formal"=>2.2157998501459164}
+22:13:53:0.24573: LittleFrame.log: Created 27
+22:13:53:0.255741: LittleFrame.log: I:84{A:25/28,U:6/7}
+22:13:53:0.255741: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>12.487202619152145, "health"=>16.430461952180718, "acquisition"=>0.4207807858989041, "role"=>2.354348660420471, "audit"=>28.566970993956975, "equipment"=>53.077190769449885, "security"=>0.0, "data"=>28.916718819096904, "ojt"=>20.031856044753862, "professional"=>40.36112493150864, "formal"=>3.2489677550790774}
+22:13:53:0.256748: LittleFrame.log: Shortfall: 7.095612934009894
+22:13:53:0.257749: LittleFrame.log: Shortfall: 9.748441718811778
+22:13:53:0.258749: LittleFrame.log: R:{"food"=>-2.238998516979583, "shelter"=>-22.17378054420113, "health"=>-14.330606440167767, "acquisition"=>0.4207807858989041, "role"=>2.354348660420471, "audit"=>-22.758518776898555, "equipment"=>6.37478562263165, "security"=>-28.305035450824846, "data"=>-10.49036713584199, "ojt"=>13.437679202234632, "professional"=>2.665933459099828, "formal"=>3.2489677550790774}
+22:13:53:0.258749: LittleFrame.log: Created 28
+22:13:53:0.269767: LittleFrame.log: I:83{A:26/29,U:6/7}
+22:13:53:0.270774: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>14.353732976785665, "health"=>16.430461952180718, "acquisition"=>0.8415615717978082, "role"=>4.487671595842116, "audit"=>38.15673305515492, "equipment"=>53.60050439278359, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>25.479301376585642, "professional"=>47.017593159935075, "formal"=>3.8446118435102417}
+22:13:53:0.270774: LittleFrame.log: 2 upgraded to 3
+22:13:53:0.271776: LittleFrame.log: Shortfall: 7.094960251789792
+22:13:53:0.272775: LittleFrame.log: 19 upgraded to 1
+22:13:53:0.272775: LittleFrame.log: R:{"food"=>-2.238998516979583, "shelter"=>-20.307250186567607, "health"=>-14.330606440167767, "acquisition"=>0.8415615717978082, "role"=>4.487671595842116, "audit"=>-13.168756715700606, "equipment"=>6.898099245965357, "security"=>-28.305035450824846, "data"=>-2.3448125389132795, "ojt"=>18.885124534066414, "professional"=>9.322401687526265, "formal"=>3.8446118435102417}
+22:13:53:0.273777: LittleFrame.log: Created 29
+22:13:53:0.283787: LittleFrame.log: I:82{A:27/30,U:6/7}
+22:13:53:0.284292: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>14.353732976785665, "health"=>16.430461952180718, "acquisition"=>0.909222606671489, "role"=>7.278337802725569, "audit"=>61.88615007789162, "equipment"=>53.60050439278359, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>32.656569369990045, "professional"=>60.04637208678248, "formal"=>3.8446118435102417}
+22:13:53:0.285792: LittleFrame.log: 26 upgraded to 1
+22:13:53:0.286292: LittleFrame.log: R:{"food"=>-4.5601605114099435, "shelter"=>-21.307250186567607, "health"=>-15.860792555849795, "acquisition"=>0.909222606671489, "role"=>7.278337802725569, "audit"=>6.436067174606011, "equipment"=>4.261028231728048, "security"=>-29.708945411590204, "data"=>-4.0188548903518395, "ojt"=>28.82784705564065, "professional"=>20.53125497305458, "formal"=>3.8446118435102417}
+22:13:53:0.286794: LittleFrame.log: Created 30
+22:13:53:0.297328: LittleFrame.log: I:81{A:28/31,U:6/7}
+22:13:53:0.298324: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>14.353732976785665, "health"=>22.967535062965812, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>67.81448557813141, "equipment"=>53.60050439278359, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>60.04637208678248, "formal"=>3.8446118435102417}
+22:13:53:0.299325: LittleFrame.log: Shortfall: 8.945494589647431
+22:13:53:0.299325: LittleFrame.log: 27 upgraded to 1
+22:13:53:0.300326: LittleFrame.log: R:{"food"=>-6.609988973581138, "shelter"=>-23.149634989446152, "health"=>-11.239615194767726, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>8.187946774913756, "equipment"=>2.2479125775365585, "security"=>-31.551692781771422, "data"=>-5.313493095065289, "ojt"=>29.911695830082106, "professional"=>19.16724605654479, "formal"=>3.8446118435102417}
+22:13:53:0.300326: LittleFrame.log: Created 31
+22:13:53:0.311938: LittleFrame.log: I:80{A:29/32,U:6/7}
+22:13:53:0.312912: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>22.382699495065175, "health"=>22.967535062965812, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>71.58285880491454, "equipment"=>56.22309028541903, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>65.27301721832072, "formal"=>3.8446118435102417}
+22:13:53:0.313913: LittleFrame.log: Shortfall: 8.945494589647431
+22:13:53:0.313913: LittleFrame.log: R:{"food"=>-7.737615995924684, "shelter"=>-16.12066847116664, "health"=>-12.258584383786005, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>9.546796314776257, "equipment"=>2.529556531964136, "security"=>-33.082624071133935, "data"=>-8.956360721419449, "ojt"=>29.911695830082106, "professional"=>24.393891188083035, "formal"=>3.8446118435102417}
+22:13:53:0.314913: LittleFrame.log: Created 32
+22:13:53:0.324936: LittleFrame.log: I:79{A:30/33,U:6/7}
+22:13:53:0.325929: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>28.02734846565065, "health"=>22.967535062965812, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>71.58285880491454, "equipment"=>60.33154961458945, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>74.59943141127394, "formal"=>4.927601095203268}
+22:13:53:0.327934: LittleFrame.log: Shortfall: 8.945494589647431
+22:13:53:0.328931: LittleFrame.log: R:{"food"=>-7.737615995924684, "shelter"=>-10.476019500581163, "health"=>-12.258584383786005, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>9.546796314776257, "equipment"=>6.638015861134551, "security"=>-33.082624071133935, "data"=>-8.956360721419449, "ojt"=>29.911695830082106, "professional"=>33.72030538103625, "formal"=>4.927601095203268}
+22:13:53:0.329933: LittleFrame.log: Created 33
+22:13:53:0.340797: LittleFrame.log: I:78{A:31/34,U:6/7}
+22:13:53:0.341757: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>32.24182145964037, "health"=>22.967535062965812, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>80.26812864814613, "equipment"=>60.99142827202894, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>81.95161852989631, "formal"=>4.927601095203268}
+22:13:53:0.342758: LittleFrame.log: Shortfall: 8.945494589647431
+22:13:53:0.343759: LittleFrame.log: 28 upgraded to 1
+22:13:53:0.344759: LittleFrame.log: R:{"food"=>-7.737615995924684, "shelter"=>-6.261546506591446, "health"=>-12.258584383786005, "acquisition"=>2.312249266170054, "role"=>19.40883852020492, "audit"=>18.232066158007854, "equipment"=>7.297894518574044, "security"=>-33.082624071133935, "data"=>-8.956360721419449, "ojt"=>29.911695830082106, "professional"=>41.07249249965862, "formal"=>4.927601095203268}
+22:13:53:0.344759: LittleFrame.log: Created 34
+22:13:53:0.356003: LittleFrame.log: I:77{A:32/35,U:7/8}
+22:13:53:0.356003: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>32.10505185034241, "health"=>22.967535062965812, "acquisition"=>2.904339886852998, "role"=>25.87845136027323, "audit"=>83.95901962631146, "equipment"=>60.99142827202894, "security"=>0.0, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>81.95161852989631, "formal"=>4.927601095203268}
+22:13:53:0.358006: LittleFrame.log: 29 upgraded to 1
+22:13:53:0.358006: LittleFrame.log: Shortfall: 8.945494589647431
+22:13:53:0.359007: LittleFrame.log: Retraining 26:0.4988476259991167:9/179.88902616512956{
+	{service:shelter:[4, 35, 36],P:1,MOS:5,T:5}}
+22:13:53:0.359007: LittleFrame.log: Retrained 26:1.4086147802607756:-27/179.88902616512956{
+	{service:shelter:[4, 35, 36],P:1,MOS:5,T:5}
+	{technical:data:[6, 246, 71],P:0,MOS:0,T:0.0}}
+22:13:53:0.360008: LittleFrame.log: R:{"food"=>-10.250606837050249, "shelter"=>-7.75733963643323, "health"=>-13.643142799372768, "acquisition"=>2.904339886852998, "role"=>25.87845136027323, "audit"=>18.113552252793802, "equipment"=>6.297894518574044, "security"=>-34.58793910388232, "data"=>-12.693439521384098, "ojt"=>29.911695830082106, "professional"=>38.51527157844788, "formal"=>4.927601095203268}
+22:13:53:0.360008: LittleFrame.log: Created 35
+22:13:53:0.371045: LittleFrame.log: I:76{A:33/36,U:8/9}
+22:13:53:0.372042: LittleFrame.log: IN:{"food"=>43.905639878421226, "shelter"=>31.96828224104446, "health"=>22.967535062965812, "acquisition"=>2.802312585890127, "role"=>25.87845136027323, "audit"=>83.95901962631146, "equipment"=>60.99142827202894, "security"=>6.850137466557558, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>81.95161852989631, "formal"=>4.927601095203268}
+22:13:53:0.373042: LittleFrame.log: 30 upgraded to 1
+22:13:53:0.373042: LittleFrame.log: Shortfall: 8.01619064153632
+22:13:53:0.374043: LittleFrame.log: R:{"food"=>-10.508336094239528, "shelter"=>-8.013935896527169, "health"=>-12.962043053223702, "acquisition"=>2.802312585890127, "role"=>25.87845136027323, "audit"=>22.29000815272584, "equipment"=>7.311010172765533, "security"=>-27.53839356923989, "data"=>-12.565018843982934, "ojt"=>29.911695830082106, "professional"=>38.71012837492942, "formal"=>4.927601095203268}
+22:13:53:0.375044: LittleFrame.log: Created 36
+22:13:53:0.385061: LittleFrame.log: I:75{A:34/37,U:9/10}
+22:13:53:0.385565: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>24.568282264316068, "health"=>22.967535062965812, "acquisition"=>2.7002852849272614, "role"=>25.87845136027323, "audit"=>84.59563399375955, "equipment"=>64.77609502571588, "security"=>8.76280052271214, "data"=>37.06227341602561, "ojt"=>33.7404181444315, "professional"=>81.95161852989631, "formal"=>4.927601095203268}
+22:13:53:0.386565: LittleFrame.log: 5 upgraded to 3
+22:13:53:0.387066: LittleFrame.log: 31 upgraded to 1
+22:13:53:0.388067: LittleFrame.log: Shortfall: 6.006564286637116
+22:13:53:0.388567: LittleFrame.log: R:{"food"=>-8.383391116597371, "shelter"=>-17.09410772007188, "health"=>-14.700478421076909, "acquisition"=>2.7002852849272614, "role"=>25.87845136027323, "audit"=>19.135987912281664, "equipment"=>8.149133470096226, "security"=>-26.878900776712666, "data"=>-13.565018843982935, "ojt"=>29.911695830082106, "professional"=>38.71012837492942, "formal"=>4.927601095203268}
+22:13:53:0.389067: LittleFrame.log: Created 37
+22:13:53:0.400582: LittleFrame.log: I:74{A:35/38,U:10/11}
+22:13:53:0.400582: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>24.568282264316068, "health"=>22.967535062965812, "acquisition"=>2.1401800973141354, "role"=>19.40883852020492, "audit"=>77.95833265215299, "equipment"=>64.77609502571588, "security"=>30.948692828009374, "data"=>37.06227341602561, "ojt"=>36.13710452373498, "professional"=>74.59943141127394, "formal"=>4.927601095203268}
+22:13:53:0.402584: LittleFrame.log: 32 upgraded to 1
+22:13:53:0.402584: LittleFrame.log: Retraining 32:0.3:6/88.9372530466317{
+	{technical:security:[6, 206, 50],P:1,MOS:0,T:0}}
+22:13:53:0.403584: LittleFrame.log: Retrained 32:1.1063952611175485:-30/88.9372530466317{
+	{technical:security:[6, 206, 50],P:1,MOS:0,T:0}
+	{service:health:[4, 35, 36],P:0,MOS:0,T:0.0}}
+22:13:53:0.404585: LittleFrame.log: Shortfall: 5.75713655248465
+22:13:53:0.404585: LittleFrame.log: Retraining 29:0.47611932070201496:9/99.57695032555803{
+	{technical:security:[6, 206, 50],P:1,MOS:3,T:3}}
+22:13:53:0.404585: LittleFrame.log: Retrained 29:1.1707935341749893:-27/99.57695032555803{
+	{technical:security:[6, 206, 50],P:1,MOS:3,T:3}
+	{administration:role:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.405586: LittleFrame.log: R:{"food"=>-9.892621307284191, "shelter"=>-18.09410772007188, "health"=>-16.12622929004964, "acquisition"=>2.1401800973141354, "role"=>19.40883852020492, "audit"=>9.338179513487773, "equipment"=>6.919097648580506, "security"=>-4.693008471415434, "data"=>-16.237180394433892, "ojt"=>36.13710452373498, "professional"=>29.47513578549924, "formal"=>4.927601095203268}
+22:13:53:0.406586: LittleFrame.log: Created 38
+22:13:53:0.417591: LittleFrame.log: I:73{A:36/39,U:10/11}
+22:13:53:0.418598: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>26.938536421070033, "health"=>22.967535062965812, "acquisition"=>2.1401800973141354, "role"=>18.507130369950474, "audit"=>87.19436904917261, "equipment"=>67.16026401902083, "security"=>40.11159691205586, "data"=>43.12686332607439, "ojt"=>37.32905214113371, "professional"=>82.37578762660611, "formal"=>5.46909572104978}
+22:13:53:0.419596: LittleFrame.log: 33 upgraded to 1
+22:13:53:0.421598: LittleFrame.log: R:{"food"=>-7.5850635879237185, "shelter"=>-13.761642109643383, "health"=>-14.89143328649568, "acquisition"=>2.1401800973141354, "role"=>18.507130369950474, "audit"=>18.57421591050739, "equipment"=>10.303266641885461, "security"=>6.113234914727382, "data"=>-9.006372957072834, "ojt"=>37.32905214113371, "professional"=>38.420644120859684, "formal"=>5.46909572104978}
+22:13:53:0.421598: LittleFrame.log: Created 39
+22:13:53:0.432866: LittleFrame.log: I:72{A:37/40,U:10/11}
+22:13:53:0.432866: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>29.70509353499301, "health"=>22.967535062965812, "acquisition"=>3.210270145971203, "role"=>22.64364494023907, "audit"=>100.61900493151063, "equipment"=>67.16026401902083, "security"=>47.508199418559016, "data"=>43.12686332607439, "ojt"=>37.87097652835444, "professional"=>89.72797474522848, "formal"=>5.46909572104978}
+22:13:53:0.434869: LittleFrame.log: 34 upgraded to 1
+22:13:53:0.434869: LittleFrame.log: 29 upgraded to 1
+22:13:53:0.435869: LittleFrame.log: R:{"food"=>-9.767764080293125, "shelter"=>-11.995084995720404, "health"=>-16.685797639542603, "acquisition"=>3.210270145971203, "role"=>22.64364494023907, "audit"=>29.243402316903357, "equipment"=>8.825464471552893, "security"=>12.267925681970734, "data"=>-11.437596928489938, "ojt"=>37.87097652835444, "professional"=>45.77283123948204, "formal"=>5.46909572104978}
+22:13:53:0.435869: LittleFrame.log: Created 40
+22:13:53:0.446968: LittleFrame.log: I:71{A:38/41,U:10/11}
+22:13:53:0.447939: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>29.634612855901615, "health"=>22.967535062965812, "acquisition"=>1.3578139573630337, "role"=>22.64364494023907, "audit"=>90.59233818356515, "equipment"=>67.16026401902083, "security"=>75.85141095715426, "data"=>43.12686332607439, "ojt"=>37.87097652835444, "professional"=>86.52271127446116, "formal"=>5.46909572104978}
+22:13:53:0.44894: LittleFrame.log: 35 upgraded to 1
+22:13:53:0.44994: LittleFrame.log: 26 upgraded to 1
+22:13:53:0.44994: LittleFrame.log: Shortfall: 6.670782703901252
+22:13:53:0.450941: LittleFrame.log: R:{"food"=>-15.961647820906276, "shelter"=>-15.46087351832462, "health"=>-19.445432831080375, "acquisition"=>1.3578139573630337, "role"=>22.64364494023907, "audit"=>19.21673556895786, "equipment"=>6.605291842961167, "security"=>36.62211976574251, "data"=>-15.417956451158883, "ojt"=>37.87097652835444, "professional"=>39.15359471781998, "formal"=>5.46909572104978}
+22:13:53:0.450941: LittleFrame.log: Created 41
+22:13:53:0.46196: LittleFrame.log: I:70{A:39/42,U:10/11}
+22:13:53:0.46196: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>29.634612855901615, "health"=>22.967535062965812, "acquisition"=>1.3578139573630337, "role"=>25.998197085522275, "audit"=>90.35089154131457, "equipment"=>67.16026401902083, "security"=>79.27154118210831, "data"=>43.12686332607439, "ojt"=>37.87097652835444, "professional"=>86.52271127446116, "formal"=>5.46909572104978}
+22:13:53:0.463971: LittleFrame.log: Shortfall: 7.102747219466216
+22:13:53:0.46497: LittleFrame.log: 36 upgraded to 1
+22:13:53:0.46497: LittleFrame.log: Shortfall: 6.670782703901252
+22:13:53:0.46597: LittleFrame.log: 32 upgraded to 1
+22:13:53:0.46597: LittleFrame.log: R:{"food"=>-19.119566815164873, "shelter"=>-18.303258321203167, "health"=>-22.551418730336202, "acquisition"=>1.3578139573630337, "role"=>25.998197085522275, "audit"=>14.798833026775238, "equipment"=>0.7273774046027821, "security"=>36.198446541867845, "data"=>-18.178409158302774, "ojt"=>37.87097652835444, "professional"=>36.1083745163809, "formal"=>5.46909572104978}
+22:13:53:0.466972: LittleFrame.log: Created 42
+22:13:53:0.476987: LittleFrame.log: I:69{A:40/43,U:10/11}
+22:13:53:0.476987: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>29.634612855901615, "health"=>22.967535062965812, "acquisition"=>1.3578139573630337, "role"=>25.891844533655224, "audit"=>90.35089154131457, "equipment"=>67.16026401902083, "security"=>83.59919528380556, "data"=>56.15041426092141, "ojt"=>37.87097652835444, "professional"=>86.52271127446116, "formal"=>5.46909572104978}
+22:13:53:0.479492: LittleFrame.log: Shortfall: 7.102747219466216
+22:13:53:0.479993: LittleFrame.log: 37 upgraded to 1
+22:13:53:0.480494: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.480993: LittleFrame.log: 39 upgraded to 1
+22:13:53:0.481494: LittleFrame.log: R:{"food"=>-24.29053132537051, "shelter"=>-22.056274831852857, "health"=>-25.597835386998536, "acquisition"=>1.3578139573630337, "role"=>25.891844533655224, "audit"=>13.424543547541129, "equipment"=>-3.126560293688227, "security"=>36.65655629569007, "data"=>-8.69210803321614, "ojt"=>37.87097652835444, "professional"=>34.72423652380464, "formal"=>5.46909572104978}
+22:13:53:0.481994: LittleFrame.log: Created 43
+22:13:53:0.492564: LittleFrame.log: I:68{A:41/44,U:10/11}
+22:13:53:0.493566: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>35.026765725564786, "health"=>24.31978028764305, "acquisition"=>2.2973496353035654, "role"=>23.685612940935954, "audit"=>98.0115203933492, "equipment"=>67.16026401902083, "security"=>92.56039264140038, "data"=>55.98752109401824, "ojt"=>38.954825302795896, "professional"=>86.52271127446116, "formal"=>5.46909572104978}
+22:13:53:0.495069: LittleFrame.log: 38 upgraded to 1
+22:13:53:0.496071: LittleFrame.log: Shortfall: 7.102747219466216
+22:13:53:0.49707: LittleFrame.log: 40 upgraded to 1
+22:13:53:0.498073: LittleFrame.log: Retraining 40:0.3:4/186.58705330783826{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}}
+22:13:53:0.498073: LittleFrame.log: Retrained 40:0.44999999999999996:-32/186.58705330783826{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}
+	{service:food:[4, 35, 96],P:1,MOS:0,T:0.0}}
+22:13:53:0.499073: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.500073: LittleFrame.log: R:{"food"=>-26.938396874646276, "shelter"=>-19.921443235975758, "health"=>-25.822846773439466, "acquisition"=>2.2973496353035654, "role"=>23.685612940935954, "audit"=>18.372804993827245, "equipment"=>-10.290052399896139, "security"=>42.038122409898975, "data"=>-13.8500587109328, "ojt"=>38.954825302795896, "professional"=>30.78818971354925, "formal"=>5.46909572104978}
+22:13:53:0.501074: LittleFrame.log: Created 44
+22:13:53:0.511138: LittleFrame.log: I:67{A:42/45,U:10/11}
+22:13:53:0.513554: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>38.762276080284174, "health"=>24.31978028764305, "acquisition"=>2.2973496353035654, "role"=>30.11446058389576, "audit"=>103.1319257206689, "equipment"=>67.16026401902083, "security"=>99.60129923998095, "data"=>55.824627927115074, "ojt"=>38.954825302795896, "professional"=>88.93821970496337, "formal"=>5.46909572104978}
+22:13:53:0.515534: LittleFrame.log: Shortfall: 7.102747219466216
+22:13:53:0.516535: LittleFrame.log: 41 upgraded to 1
+22:13:53:0.516535: LittleFrame.log: Retraining 41:0.3:4/133.36959510675916{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}}
+22:13:53:0.517535: LittleFrame.log: Retrained 41:1.4574161267450025:-32/133.36959510675916{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}
+	{service:shelter:[4, 35, 36],P:1,MOS:0,T:0.0}}
+22:13:53:0.517535: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.518537: LittleFrame.log: Retraining 40:0.44999999999999996:-31/186.58705330783826{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}
+	{service:food:[4, 35, 96],P:1,MOS:1,T:1.0}}
+22:13:53:0.519537: LittleFrame.log: 40 died at -31/186.58705330783826.
+22:13:53:0.519537: LittleFrame.log: R:{"food"=>-31.645108947223306, "shelter"=>-19.98823085219686, "health"=>-27.818359017933204, "acquisition"=>2.2973496353035654, "role"=>30.11446058389576, "audit"=>15.880045691673255, "equipment"=>-13.687204615839743, "security"=>46.064053371542116, "data"=>-17.528667517567758, "ojt"=>38.954825302795896, "professional"=>29.486342899609248, "formal"=>5.46909572104978}
+22:13:53:0.520537: LittleFrame.log: Created 45
+22:13:53:0.530553: LittleFrame.log: I:66{A:42/46,U:10/11}
+22:13:53:0.530553: LittleFrame.log: IN:{"food"=>53.199256747487716, "shelter"=>38.762276080284174, "health"=>24.31978028764305, "acquisition"=>3.367439683960633, "role"=>30.07369538678726, "audit"=>106.18547616513379, "equipment"=>67.16026401902083, "security"=>112.88171277066941, "data"=>55.66173476021191, "ojt"=>38.954825302795896, "professional"=>88.93821970496337, "formal"=>5.46909572104978}
+22:13:53:0.532561: LittleFrame.log: 42 upgraded to 1
+22:13:53:0.532561: LittleFrame.log: Shortfall: 7.102747219466216
+22:13:53:0.533562: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.534562: LittleFrame.log: R:{"food"=>-26.228715721415515, "shelter"=>-19.032937461312745, "health"=>-29.341248131953478, "acquisition"=>3.367439683960633, "role"=>30.07369538678726, "audit"=>21.257231524436282, "equipment"=>-13.322454459047922, "security"=>59.03784070605811, "data"=>-19.2486337379661, "ojt"=>35.44762734073129, "professional"=>31.39329474295002, "formal"=>5.46909572104978}
+22:13:53:0.534562: LittleFrame.log: Created 46
+22:13:53:0.545594: LittleFrame.log: I:65{A:43/47,U:10/11}
+22:13:53:0.5466: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>40.779198288428795, "health"=>24.31978028764305, "acquisition"=>4.280360194628271, "role"=>30.03293018967876, "audit"=>110.53943854340481, "equipment"=>67.16026401902083, "security"=>117.47408945732565, "data"=>55.49884159330874, "ojt"=>38.954825302795896, "professional"=>88.93821970496337, "formal"=>5.46909572104978}
+22:13:53:0.547601: LittleFrame.log: 43 upgraded to 1
+22:13:53:0.547601: LittleFrame.log: Shortfall: 9.606680179884197
+22:13:53:0.548602: LittleFrame.log: Shortfall: 7.877766367024829
+22:13:53:0.549603: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.550603: LittleFrame.log: R:{"food"=>-33.302652707375856, "shelter"=>-19.787307918116856, "health"=>-30.985418154545997, "acquisition"=>4.280360194628271, "role"=>30.03293018967876, "audit"=>23.934922583394115, "equipment"=>-14.548097482605442, "security"=>61.30260487861119, "data"=>-21.997628689283076, "ojt"=>35.44762734073129, "professional"=>30.36313631480675, "formal"=>5.46909572104978}
+22:13:53:0.551604: LittleFrame.log: Created 47
+22:13:53:0.561644: LittleFrame.log: I:64{A:44/48,U:10/11}
+22:13:53:0.561644: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>45.840328768179084, "health"=>31.17501339376534, "acquisition"=>3.367439683960633, "role"=>29.99216499257026, "audit"=>110.83042365816473, "equipment"=>67.16026401902083, "security"=>112.15277467351542, "data"=>52.18919377966584, "ojt"=>38.954825302795896, "professional"=>88.93821970496337, "formal"=>5.46909572104978}
+22:13:53:0.563646: LittleFrame.log: Shortfall: 9.606680179884197
+22:13:53:0.563646: LittleFrame.log: Shortfall: 9.115862873657704
+22:13:53:0.564647: LittleFrame.log: 44 upgraded to 1
+22:13:53:0.564647: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.565653: LittleFrame.log: R:{"food"=>-34.302652707375856, "shelter"=>-16.64040934467359, "health"=>-25.906038500852752, "acquisition"=>3.367439683960633, "role"=>29.99216499257026, "audit"=>24.225907698154035, "equipment"=>-15.970964662530967, "security"=>54.14777777171986, "data"=>-26.397051757350756, "ojt"=>35.44762734073129, "professional"=>28.935328918066716, "formal"=>5.46909572104978}
+22:13:53:0.566648: LittleFrame.log: Created 48
+22:13:53:0.577441: LittleFrame.log: I:63{A:45/49,U:10/11}
+22:13:53:0.577441: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>46.171351158091966, "health"=>36.43660545810382, "acquisition"=>3.367439683960633, "role"=>29.951399795461757, "audit"=>113.7114844306945, "equipment"=>67.16026401902083, "security"=>122.26884231679726, "data"=>47.12094643800293, "ojt"=>39.291586231849486, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.579947: LittleFrame.log: Shortfall: 9.606680179884197
+22:13:53:0.580447: LittleFrame.log: Shortfall: 9.115862873657704
+22:13:53:0.580946: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.581447: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.581947: LittleFrame.log: 45 upgraded to 1
+22:13:53:0.582949: LittleFrame.log: R:{"food"=>-35.82774991118129, "shelter"=>-17.48167773333378, "health"=>-22.460012047986396, "acquisition"=>3.367439683960633, "role"=>29.951399795461757, "audit"=>24.623364908869245, "equipment"=>-17.269926129072996, "security"=>62.46358929000782, "data"=>-32.46529909901366, "ojt"=>35.78438826978488, "professional"=>28.345198090020467, "formal"=>5.46909572104978}
+22:13:53:0.583449: LittleFrame.log: Created 49
+22:13:53:0.594369: LittleFrame.log: I:62{A:46/50,U:10/11}
+22:13:53:0.594871: LittleFrame.log: IN:{"food"=>48.73043546945652, "shelter"=>40.779198288428795, "health"=>40.000345369284354, "acquisition"=>3.95598921072202, "role"=>29.91063459835326, "audit"=>110.5360421536826, "equipment"=>67.16026401902083, "security"=>125.49018708744569, "data"=>47.051259234509075, "ojt"=>38.954825302795896, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.596375: LittleFrame.log: Shortfall: 9.606680179884197
+22:13:53:0.596375: LittleFrame.log: Retraining 42:0.45918429476565903:8/72.96004846475567{
+	{service:health:[4, 35, 36],P:1,MOS:4,T:4}}
+22:13:53:0.597376: LittleFrame.log: Retrained 42:1.0523364377882083:-28/72.96004846475567{
+	{service:health:[4, 35, 36],P:1,MOS:4,T:4}
+	{service:food:[4, 35, 96],P:1,MOS:0,T:0.0}}
+22:13:53:0.597376: LittleFrame.log: Shortfall: 9.115862873657704
+22:13:53:0.598376: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.599377: LittleFrame.log: Shortfall: 7.670782703901252
+22:13:53:0.599377: LittleFrame.log: Retraining 29:0.4237152637848646:-15/99.57695032555803{
+	{technical:security:[6, 206, 50],P:1,MOS:3,T:3}
+	{administration:role:[2, 60, 3],P:1,MOS:10,T:10}}
+22:13:53:0.599377: LittleFrame.log: 29 died at -15/99.57695032555803.
+22:13:53:0.600378: LittleFrame.log: 46 upgraded to 1
+22:13:53:0.601378: LittleFrame.log: R:{"food"=>-38.03393280406023, "shelter"=>-25.43763324275786, "health"=>-20.06021251246813, "acquisition"=>3.95598921072202, "role"=>29.91063459835326, "audit"=>21.447922631857356, "equipment"=>-19.10997712048976, "security"=>64.41387100430599, "data"=>-33.91940310159298, "ojt"=>35.44762734073129, "professional"=>26.390285576812467, "formal"=>5.46909572104978}
+22:13:53:0.601378: LittleFrame.log: Created 50
+22:13:53:0.61239: LittleFrame.log: I:61{A:46/51,U:10/11}
+22:13:53:0.61239: LittleFrame.log: IN:{"food"=>48.91623221487598, "shelter"=>43.41385997683066, "health"=>37.53026485343299, "acquisition"=>3.95598921072202, "role"=>29.869869401244756, "audit"=>113.12180086511589, "equipment"=>67.16026401902083, "security"=>116.94267235645562, "data"=>46.98157203101522, "ojt"=>38.36426941269123, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.613395: LittleFrame.log: 7 upgraded to 2
+22:13:53:0.615398: LittleFrame.log: Shortfall: 8.074990523392835
+22:13:53:0.616398: LittleFrame.log: 47 upgraded to 1
+22:13:53:0.616398: LittleFrame.log: Shortfall: 10.832323203441714
+22:13:53:0.616398: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.617397: LittleFrame.log: R:{"food"=>-36.75035753575599, "shelter"=>-21.921092635824497, "health"=>-23.347248739886798, "acquisition"=>3.95598921072202, "role"=>29.869869401244756, "audit"=>24.033681343290635, "equipment"=>-19.372306438263536, "security"=>55.51014430923916, "data"=>-34.777275007668926, "ojt"=>32.11446525515078, "professional"=>26.340393636636037, "formal"=>5.46909572104978}
+22:13:53:0.618398: LittleFrame.log: Created 51
+22:13:53:0.629431: LittleFrame.log: I:60{A:47/52,U:10/11}
+22:13:53:0.629431: LittleFrame.log: IN:{"food"=>52.46871689473829, "shelter"=>40.779198288428795, "health"=>31.492935057224482, "acquisition"=>4.089645945690024, "role"=>29.11325778030738, "audit"=>112.3420763418605, "equipment"=>67.16026401902083, "security"=>123.93074258601999, "data"=>50.84212673489888, "ojt"=>38.954825302795896, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.631439: LittleFrame.log: Shortfall: 8.074990523392835
+22:13:53:0.631439: LittleFrame.log: Shortfall: 10.832323203441714
+22:13:53:0.63244: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.63244: LittleFrame.log: 48 upgraded to 1
+22:13:53:0.63344: LittleFrame.log: R:{"food"=>-35.65963910809, "shelter"=>-26.479991305939517, "health"=>-30.908888600972535, "acquisition"=>4.089645945690024, "role"=>29.11325778030738, "audit"=>20.639414227611713, "equipment"=>-20.780874584606956, "security"=>60.798672471691134, "data"=>-32.035821507300085, "ojt"=>32.70502114525545, "professional"=>24.538787751280243, "formal"=>5.46909572104978}
+22:13:53:0.634441: LittleFrame.log: Created 52
+22:13:53:0.644822: LittleFrame.log: I:59{A:48/53,U:10/11}
+22:13:53:0.645797: LittleFrame.log: IN:{"food"=>57.96281232121923, "shelter"=>44.61631442325697, "health"=>34.000793800117556, "acquisition"=>4.280360194628271, "role"=>29.11325778030738, "audit"=>115.89848517309348, "equipment"=>67.16026401902083, "security"=>119.2815384699553, "data"=>50.71656201147163, "ojt"=>37.87097652835444, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.646798: LittleFrame.log: 14 upgraded to 2
+22:13:53:0.647799: LittleFrame.log: Shortfall: 8.074990523392835
+22:13:53:0.647799: LittleFrame.log: Retraining 26:0.45897415370570005:-9/179.88902616512956{
+	{service:shelter:[4, 35, 36],P:1,MOS:5,T:5}
+	{technical:data:[6, 246, 71],P:1,MOS:12,T:12}}
+22:13:53:0.648799: LittleFrame.log: 26 died at -9/179.88902616512956.
+22:13:53:0.648799: LittleFrame.log: Shortfall: 10.832323203441714
+22:13:53:0.648799: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.6498: LittleFrame.log: Shortfall: 7.985555084505744
+22:13:53:0.6498: LittleFrame.log: 49 upgraded to 1
+22:13:53:0.650801: LittleFrame.log: R:{"food"=>-32.88211109663582, "shelter"=>-23.65556104478411, "health"=>-30.266042484509438, "acquisition"=>4.280360194628271, "role"=>29.11325778030738, "audit"=>24.195823058844685, "equipment"=>-21.84721400609491, "security"=>54.82854403831062, "data"=>-33.48633597861561, "ojt"=>31.621172370813994, "professional"=>21.670807389995076, "formal"=>5.46909572104978}
+22:13:53:0.651801: LittleFrame.log: Created 53
+22:13:53:0.661836: LittleFrame.log: I:58{A:48/54,U:10/11}
+22:13:53:0.661836: LittleFrame.log: IN:{"food"=>58.98291103338248, "shelter"=>50.153629461380426, "health"=>35.554626681656806, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>121.52956773518454, "equipment"=>67.16026401902083, "security"=>126.8832448857002, "data"=>50.59099728804438, "ojt"=>40.03867407723735, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.663842: LittleFrame.log: 50 upgraded to 1
+22:13:53:0.664842: LittleFrame.log: Shortfall: 10.14987048121014
+22:13:53:0.664842: LittleFrame.log: Shortfall: 6.811915060392657
+22:13:53:0.664842: LittleFrame.log: Shortfall: 7.985555084505744
+22:13:53:0.665843: LittleFrame.log: R:{"food"=>-32.13725228802711, "shelter"=>-18.192982751866463, "health"=>-29.690663618769516, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>32.69561231855756, "equipment"=>-20.83409835190342, "security"=>61.96397388788989, "data"=>-35.04981057519466, "ojt"=>33.78886991969691, "professional"=>21.75138154234007, "formal"=>5.46909572104978}
+22:13:53:0.666843: LittleFrame.log: Created 54
+22:13:53:0.677922: LittleFrame.log: I:57{A:49/55,U:10/11}
+22:13:53:0.677922: LittleFrame.log: IN:{"food"=>62.09013091755578, "shelter"=>55.65983382519362, "health"=>45.864194666310055, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>121.52956773518454, "equipment"=>67.16026401902083, "security"=>136.9438776070935, "data"=>43.12686332607439, "ojt"=>40.03867407723735, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.679925: LittleFrame.log: 51 upgraded to 1
+22:13:53:0.680929: LittleFrame.log: Shortfall: 8.701123525310534
+22:13:53:0.680929: LittleFrame.log: Shortfall: 8.06103053849299
+22:13:53:0.681429: LittleFrame.log: Shortfall: 6.0236554700368
+22:13:53:0.68193: LittleFrame.log: Retraining 44:0.4573762243330604:11/156.4734602539449{
+	{service:health:[4, 35, 36],P:1,MOS:7,T:7}}
+22:13:53:0.68243: LittleFrame.log: 44 died at 11/156.4734602539449.
+22:13:53:0.68293: LittleFrame.log: Shortfall: 7.985555084505744
+22:13:53:0.683431: LittleFrame.log: R:{"food"=>-31.499312725240266, "shelter"=>-14.315883218793456, "health"=>-20.834664103408915, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>32.69561231855756, "equipment"=>-23.80006827050847, "security"=>72.02460660928318, "data"=>-44.32624935319101, "ojt"=>33.78886991969691, "professional"=>20.442701416208916, "formal"=>5.46909572104978}
+22:13:53:0.684431: LittleFrame.log: Created 55
+22:13:53:0.695912: LittleFrame.log: I:56{A:49/56,U:10/11}
+22:13:53:0.695912: LittleFrame.log: IN:{"food"=>67.36942529514826, "shelter"=>54.82909982167252, "health"=>53.74927170923671, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>118.08228475176895, "equipment"=>67.16026401902083, "security"=>143.33138524947088, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.696888: LittleFrame.log: 17 upgraded to 2
+22:13:53:0.69889: LittleFrame.log: 52 upgraded to 1
+22:13:53:0.69889: LittleFrame.log: Shortfall: 7.247555056017884
+22:13:53:0.69889: LittleFrame.log: Shortfall: 7.279718941539392
+22:13:53:0.69989: LittleFrame.log: Retraining 42:0.4724605420725315:-22/72.96004846475567{
+	{service:health:[4, 35, 36],P:1,MOS:4,T:4}
+	{service:food:[4, 35, 96],P:1,MOS:6,T:6.758948030712649}}
+22:13:53:0.69989: LittleFrame.log: 42 died at -22/72.96004846475567.
+22:13:53:0.700891: LittleFrame.log: Shortfall: 6.243570123976326
+22:13:53:0.701891: LittleFrame.log: R:{"food"=>-25.798804757866964, "shelter"=>-15.794710456215167, "health"=>-11.134021449010135, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>31.73193289695652, "equipment"=>-25.193547335541183, "security"=>79.06705631720546, "data"=>-44.81091385240294, "ojt"=>34.38498674563971, "professional"=>20.16629245459478, "formal"=>5.46909572104978}
+22:13:53:0.701891: LittleFrame.log: Created 56
+22:13:53:0.712902: LittleFrame.log: I:55{A:49/57,U:10/11}
+22:13:53:0.712902: LittleFrame.log: IN:{"food"=>77.97737363743299, "shelter"=>54.82909982167252, "health"=>44.78494835909161, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>118.08228475176895, "equipment"=>67.16026401902083, "security"=>146.87873014833144, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.714907: LittleFrame.log: 53 upgraded to 1
+22:13:53:0.715907: LittleFrame.log: Shortfall: 7.117137882934975
+22:13:53:0.715907: LittleFrame.log: Shortfall: 7.985555084505744
+22:13:53:0.716908: LittleFrame.log: Retraining 48:0.44611705466985396:9/121.52759289637942{
+	{service:food:[4, 35, 96],P:1,MOS:5,T:5}}
+22:13:53:0.716908: LittleFrame.log: Retrained 48:1.0735952920228982:-27/121.52759289637942{
+	{service:food:[4, 35, 96],P:1,MOS:5,T:5}
+	{administration:role:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.717908: LittleFrame.log: R:{"food"=>-14.402266478477669, "shelter"=>-15.81714670958715, "health"=>-20.52179932283602, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>29.62367003553634, "equipment"=>-26.56467754219873, "security"=>82.50511423985753, "data"=>-45.0292159329663, "ojt"=>37.127592941115545, "professional"=>19.862857898331413, "formal"=>5.46909572104978}
+22:13:53:0.71891: LittleFrame.log: Created 57
+22:13:53:0.729948: LittleFrame.log: I:54{A:50/58,U:10/11}
+22:13:53:0.729948: LittleFrame.log: IN:{"food"=>89.57710058753544, "shelter"=>55.83909982167253, "health"=>47.28838822053316, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>118.08228475176895, "equipment"=>67.16026401902083, "security"=>143.74559452221672, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.730944: LittleFrame.log: 21 died at 36/36.
+22:13:53:0.732947: LittleFrame.log: Shortfall: 7.390292473203428
+22:13:53:0.733946: LittleFrame.log: R:{"food"=>0.054521405235173015, "shelter"=>-15.07761542618282, "health"=>-16.27289059994835, "acquisition"=>3.929374043449126, "role"=>29.11325778030738, "audit"=>28.193187848520406, "equipment"=>-24.460849649371553, "security"=>82.4198371585658, "data"=>-43.019415016946795, "ojt"=>37.127592941115545, "professional"=>22.653224562657446, "formal"=>5.46909572104978}
+22:13:53:0.734947: LittleFrame.log: Created 58
+22:13:53:0.746288: LittleFrame.log: I:53{A:50/59,U:10/11}
+22:13:53:0.747263: LittleFrame.log: IN:{"food"=>113.79341477512493, "shelter"=>67.34396494740054, "health"=>49.99287866988763, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>116.23247619781225, "equipment"=>67.16026401902083, "security"=>147.27419178777325, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.748264: LittleFrame.log: Shortfall: 6.090070647138644
+22:13:53:0.749264: LittleFrame.log: 48 upgraded to 1
+22:13:53:0.750265: LittleFrame.log: R:{"food"=>24.270835592824632, "shelter"=>-3.5727503004547905, "health"=>-13.568400150593876, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>26.34337929456371, "equipment"=>-24.460849649371553, "security"=>85.9484344241223, "data"=>-43.019415016946795, "ojt"=>37.127592941115545, "professional"=>22.653224562657446, "formal"=>5.46909572104978}
+22:13:53:0.750265: LittleFrame.log: Created 59
+22:13:53:0.761298: LittleFrame.log: I:52{A:51/60,U:10/11}
+22:13:53:0.761298: LittleFrame.log: IN:{"food"=>119.44352644877699, "shelter"=>78.84883007312857, "health"=>55.79923392501226, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>116.23247619781225, "equipment"=>67.16026401902083, "security"=>149.6734953460482, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.763304: LittleFrame.log: 41 upgraded to 2
+22:13:53:0.764304: LittleFrame.log: 54 upgraded to 1
+22:13:53:0.764304: LittleFrame.log: R:{"food"=>27.204379851449954, "shelter"=>6.919428951600447, "health"=>-9.62705752189923, "acquisition"=>4.868909721389658, "role"=>29.11325778030738, "audit"=>26.34337929456371, "equipment"=>-25.527189070859507, "security"=>87.02681366508143, "data"=>-44.34436476483507, "ojt"=>37.127592941115545, "professional"=>19.78524420137228, "formal"=>5.46909572104978}
+22:13:53:0.765306: LittleFrame.log: Created 60
+22:13:53:0.775344: LittleFrame.log: I:51{A:52/61,U:10/11}
+22:13:53:0.775344: LittleFrame.log: IN:{"food"=>125.34322321962934, "shelter"=>78.84883007312857, "health"=>56.09213355299598, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>116.23247619781225, "equipment"=>67.16026401902083, "security"=>150.0140942818628, "data"=>43.12686332607439, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.777346: LittleFrame.log: 55 upgraded to 1
+22:13:53:0.778347: LittleFrame.log: Retraining 55:0.3:6/235.65910035871048{
+	{technical:data:[6, 246, 71],P:1,MOS:0,T:0}}
+22:13:53:0.778347: LittleFrame.log: Retrained 55:1.2072125261835123:-30/235.65910035871048{
+	{technical:data:[6, 246, 71],P:1,MOS:0,T:0}
+	{administration:audit:[2, 60, 3],P:0,MOS:0,T:0.0}}
+22:13:53:0.779858: LittleFrame.log: R:{"food"=>30.773165521728, "shelter"=>5.919428951600447, "health"=>-10.473321457542076, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>26.34337929456371, "equipment"=>-28.42485308027899, "security"=>85.98086495506998, "data"=>-45.34436476483507, "ojt"=>40.63479090318015, "professional"=>18.606724632214842, "formal"=>5.46909572104978}
+22:13:53:0.780358: LittleFrame.log: Created 61
+22:13:53:0.790893: LittleFrame.log: I:50{A:53/62,U:10/11}
+22:13:53:0.791393: LittleFrame.log: IN:{"food"=>125.34322321962934, "shelter"=>81.61404077102526, "health"=>56.334069267770886, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>116.23247619781225, "equipment"=>67.16026401902083, "security"=>150.0140942818628, "data"=>48.42882935513707, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.791889: LittleFrame.log: 3 upgraded to 3
+22:13:53:0.793891: LittleFrame.log: 56 upgraded to 1
+22:13:53:0.794891: LittleFrame.log: R:{"food"=>30.773165521728, "shelter"=>8.684639649497143, "health"=>-10.231385742767172, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>26.34337929456371, "equipment"=>-28.42485308027899, "security"=>85.98086495506998, "data"=>-40.04239873577241, "ojt"=>40.63479090318015, "professional"=>18.606724632214842, "formal"=>5.46909572104978}
+22:13:53:0.795391: LittleFrame.log: Created 62
+22:13:53:0.805568: LittleFrame.log: I:49{A:54/63,U:10/11}
+22:13:53:0.805568: LittleFrame.log: IN:{"food"=>125.34322321962934, "shelter"=>85.23782846306909, "health"=>56.53390868199813, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>123.8931050498469, "equipment"=>67.16026401902083, "security"=>152.63516010095813, "data"=>48.42882935513707, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.807571: LittleFrame.log: 57 upgraded to 1
+22:13:53:0.808572: LittleFrame.log: 55 upgraded to 1
+22:13:53:0.808572: LittleFrame.log: R:{"food"=>27.54160509448702, "shelter"=>10.166828106437062, "health"=>-11.978339727389734, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>34.004008146598345, "equipment"=>-29.634974964422323, "security"=>87.01066006238412, "data"=>-42.572115857631644, "ojt"=>40.63479090318015, "professional"=>16.975300250253653, "formal"=>5.46909572104978}
+22:13:53:0.809572: LittleFrame.log: Created 63
+22:13:53:0.819648: LittleFrame.log: I:48{A:55/64,U:10/11}
+22:13:53:0.819648: LittleFrame.log: IN:{"food"=>124.64207244547933, "shelter"=>85.23782846306909, "health"=>55.79923392501226, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>123.8931050498469, "equipment"=>72.79673835560189, "security"=>152.63516010095813, "data"=>57.98481125453901, "ojt"=>40.63479090318015, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.821641: LittleFrame.log: 58 upgraded to 1
+22:13:53:0.821641: LittleFrame.log: Retraining 58:0.3:6/125.65194273185568{
+	{technical:data:[6, 246, 71],P:1,MOS:0,T:0}}
+22:13:53:0.822641: LittleFrame.log: Retrained 58:1.4544081765677552:-30/125.65194273185568{
+	{technical:data:[6, 246, 71],P:1,MOS:0,T:0}
+	{service:food:[4, 35, 96],P:0,MOS:0,T:0.0}}
+22:13:53:0.823642: LittleFrame.log: R:{"food"=>24.19846182432799, "shelter"=>7.476075026436517, "health"=>-15.835342861427296, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>24.7236759556584, "equipment"=>-27.863054437957153, "security"=>83.08862828216402, "data"=>-37.53931331622456, "ojt"=>40.63479090318015, "professional"=>14.148443902120857, "formal"=>5.46909572104978}
+22:13:53:0.824643: LittleFrame.log: Created 64
+22:13:53:0.834821: LittleFrame.log: I:47{A:56/65,U:10/11}
+22:13:53:0.834821: LittleFrame.log: IN:{"food"=>127.0895338659082, "shelter"=>87.00619364068842, "health"=>61.50948535944346, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>142.51218176180646, "equipment"=>72.79673835560189, "security"=>162.29067876112933, "data"=>88.11758438558051, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:53:0.836825: LittleFrame.log: 59 upgraded to 1
+22:13:53:0.836825: LittleFrame.log: 28 died at 36/36.
+22:13:53:0.837825: LittleFrame.log: R:{"food"=>29.158914085882397, "shelter"=>10.603463724599687, "health"=>-8.74053301140933, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>47.15215755099729, "equipment"=>-26.863054437957153, "security"=>94.24946197508363, "data"=>-3.6694613852183924, "ojt"=>41.71863967762161, "professional"=>16.705664823331606, "formal"=>5.46909572104978}
+22:13:53:0.838826: LittleFrame.log: Created 65
+22:13:53:0.848836: LittleFrame.log: I:46{A:56/66,U:11/12}
+22:13:54:0.849844: LittleFrame.log: IN:{"food"=>146.34422662333105, "shelter"=>105.34409560776555, "health"=>73.4606339757889, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>142.51218176180646, "equipment"=>72.79673835560189, "security"=>133.48910016648247, "data"=>98.69088410161002, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.850844: LittleFrame.log: 60 upgraded to 1
+22:13:54:0.850844: LittleFrame.log: 27 upgraded to 2
+22:13:54:0.852846: LittleFrame.log: R:{"food"=>47.35906466195325, "shelter"=>27.941365691676804, "health"=>1.540997880381565, "acquisition"=>4.868909721389658, "role"=>35.63874139331052, "audit"=>42.8520994901754, "equipment"=>-27.93874481803993, "security"=>63.606062613254494, "data"=>3.8836656691944444, "ojt"=>41.71863967762161, "professional"=>15.168264572213598, "formal"=>5.46909572104978}
+22:13:54:0.852846: LittleFrame.log: Created 66
+22:13:54:0.863895: LittleFrame.log: I:45{A:57/67,U:11/12}
+22:13:54:0.863895: LittleFrame.log: IN:{"food"=>147.88155784444925, "shelter"=>106.55316521826279, "health"=>71.03814366999475, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>154.0560093232214, "equipment"=>72.79673835560189, "security"=>133.48910016648247, "data"=>142.87508728140844, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.865904: LittleFrame.log: 30 died at 36/36.
+22:13:54:0.866905: LittleFrame.log: 61 upgraded to 1
+22:13:54:0.867906: LittleFrame.log: R:{"food"=>50.596246496464595, "shelter"=>29.51629754687179, "health"=>-0.972951603205745, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>58.18656165948261, "equipment"=>-28.53632105376336, "security"=>62.965549556617546, "data"=>45.76632006376966, "ojt"=>41.71863967762161, "professional"=>13.828680218402997, "formal"=>5.46909572104978}
+22:13:54:0.867906: LittleFrame.log: Created 67
+22:13:54:0.878954: LittleFrame.log: I:44{A:57/68,U:11/12}
+22:13:54:0.878954: LittleFrame.log: IN:{"food"=>147.88155784444925, "shelter"=>113.80549466058896, "health"=>68.64551318960619, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>151.9240223834133, "equipment"=>72.79673835560189, "security"=>98.41124487222737, "data"=>156.43889197026127, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.880965: LittleFrame.log: 62 upgraded to 1
+22:13:54:0.882966: LittleFrame.log: 58 upgraded to 1
+22:13:54:0.883967: LittleFrame.log: R:{"food"=>45.67574793718356, "shelter"=>35.76862698919798, "health"=>-5.968032945891404, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>56.05457471967451, "equipment"=>-33.24230168697428, "security"=>25.47005935547749, "data"=>58.193776045472916, "ojt"=>41.71863967762161, "professional"=>12.596269868524868, "formal"=>5.46909572104978}
+22:13:54:0.884967: LittleFrame.log: Created 68
+22:13:54:0.896152: LittleFrame.log: I:43{A:58/69,U:11/12}
+22:13:54:0.897127: LittleFrame.log: IN:{"food"=>147.22321082818254, "shelter"=>113.80549466058896, "health"=>68.64551318960619, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>72.79673835560189, "security"=>98.41124487222737, "data"=>167.97026175475878, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.898128: LittleFrame.log: 63 upgraded to 1
+22:13:54:0.899128: LittleFrame.log: R:{"food"=>38.53529861218929, "shelter"=>32.872204183347264, "health"=>-7.274514755142573, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>49.11069350387931, "equipment"=>-38.15393316723101, "security"=>22.48544003369527, "data"=>64.90411299979542, "ojt"=>41.71863967762161, "professional"=>7.911384363692292, "formal"=>5.46909572104978}
+22:13:54:0.900129: LittleFrame.log: Created 69
+22:13:54:0.911103: LittleFrame.log: I:42{A:59/70,U:11/12}
+22:13:54:0.911103: LittleFrame.log: IN:{"food"=>179.29543267908903, "shelter"=>113.80549466058896, "health"=>67.82087978347951, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>72.79673835560189, "security"=>96.85770118403633, "data"=>188.72059380682163, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.913104: LittleFrame.log: 64 upgraded to 1
+22:13:54:0.914105: LittleFrame.log: R:{"food"=>67.94213011869233, "shelter"=>31.016442072326146, "health"=>-9.706357977866006, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>44.717936510020415, "equipment"=>-40.35939215427348, "security"=>19.07086399833647, "data"=>84.29809890071509, "ojt"=>41.71863967762161, "professional"=>6.721381601306318, "formal"=>5.46909572104978}
+22:13:54:0.915106: LittleFrame.log: Created 70
+22:13:54:0.925117: LittleFrame.log: I:41{A:60/71,U:11/12}
+22:13:54:0.926121: LittleFrame.log: IN:{"food"=>179.15238114103943, "shelter"=>110.73295792302375, "health"=>67.82087978347951, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>72.79673835560189, "security"=>95.52614213776253, "data"=>221.4553621247686, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.928122: LittleFrame.log: 65 upgraded to 1
+22:13:54:0.929123: LittleFrame.log: R:{"food"=>65.38151813671253, "shelter"=>25.782076027128568, "health"=>-11.117933585891521, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>41.83922994185668, "equipment"=>-43.06638169102739, "security"=>15.966014251077835, "data"=>114.5447770076463, "ojt"=>41.71863967762161, "professional"=>5.402389410850402, "formal"=>5.46909572104978}
+22:13:54:0.929123: LittleFrame.log: Created 71
+22:13:54:0.941243: LittleFrame.log: I:40{A:61/72,U:11/12}
+22:13:54:0.941243: LittleFrame.log: IN:{"food"=>175.4814570187409, "shelter"=>107.0555278907847, "health"=>67.82087978347951, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>72.79673835560189, "security"=>95.52614213776253, "data"=>240.94396671709382, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.944246: LittleFrame.log: 66 upgraded to 1
+22:13:54:0.945248: LittleFrame.log: R:{"food"=>59.30360056234137, "shelter"=>20.841092937759594, "health"=>-12.255172476244738, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>41.83922994185668, "equipment"=>-44.57888877970747, "security"=>13.896810234442619, "data"=>132.53581365639192, "ojt"=>41.71863967762161, "professional"=>3.8055766983372865, "formal"=>5.46909572104978}
+22:13:54:0.945248: LittleFrame.log: Created 72
+22:13:54:0.956258: LittleFrame.log: I:39{A:62/73,U:11/12}
+22:13:54:0.956258: LittleFrame.log: IN:{"food"=>175.4814570187409, "shelter"=>107.0555278907847, "health"=>67.82087978347951, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>72.79673835560189, "security"=>95.52614213776253, "data"=>242.26138684990948, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.959265: LittleFrame.log: 67 upgraded to 1
+22:13:54:0.959265: LittleFrame.log: R:{"food"=>57.66430753707153, "shelter"=>19.438858505207683, "health"=>-13.961083550990228, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>37.304238726253224, "equipment"=>-46.01415427676241, "security"=>12.19338560307976, "data"=>131.57595990704348, "ojt"=>41.71863967762161, "professional"=>2.1605020763759186, "formal"=>5.46909572104978}
+22:13:54:0.960266: LittleFrame.log: Created 73
+22:13:54:0.971119: LittleFrame.log: I:38{A:63/74,U:11/12}
+22:13:54:0.971119: LittleFrame.log: IN:{"food"=>175.4814570187409, "shelter"=>107.0555278907847, "health"=>67.82087978347951, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>97.30684588684298, "security"=>95.52614213776253, "data"=>242.26138684990948, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.974122: LittleFrame.log: 68 upgraded to 1
+22:13:54:0.975124: LittleFrame.log: R:{"food"=>56.250310629311734, "shelter"=>17.610630261165472, "health"=>-16.279260133729355, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>37.304238726253224, "equipment"=>-22.72635361564891, "security"=>10.930227027625845, "data"=>130.28554125912484, "ojt"=>41.71863967762161, "professional"=>0.6695403966468731, "formal"=>5.46909572104978}
+22:13:54:0.975124: LittleFrame.log: Created 74
+22:13:54:0.986156: LittleFrame.log: I:37{A:64/75,U:11/12}
+22:13:54:0.986661: LittleFrame.log: IN:{"food"=>193.40130175193423, "shelter"=>107.0555278907847, "health"=>73.4606339757889, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>149.95981244659026, "equipment"=>104.51163465192988, "security"=>99.16218242946822, "data"=>255.96994639578864, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:0.988162: LittleFrame.log: 38 died at 36/36.
+22:13:54:0.989663: LittleFrame.log: 69 upgraded to 1
+22:13:54:0.989663: LittleFrame.log: Retraining 69:0.3:6/241.96328139086387{
+	{technical:equipment:[6, 197, 51],P:1,MOS:0,T:0}}
+22:13:54:0.990164: LittleFrame.log: Retrained 69:1.1920709234530964:-30/241.96328139086387{
+	{technical:equipment:[6, 197, 51],P:1,MOS:0,T:0}
+	{technical:security:[6, 206, 50],P:1,MOS:0,T:0.0}}
+22:13:54:0.991165: LittleFrame.log: R:{"food"=>74.66964998456702, "shelter"=>18.090480634153312, "health"=>-10.19149494369254, "acquisition"=>4.868909721389658, "role"=>38.24893483851178, "audit"=>41.106838924207075, "equipment"=>-17.00566064841196, "security"=>16.096923329185334, "data"=>144.84695966200812, "ojt"=>41.71863967762161, "professional"=>1.4326836166105004, "formal"=>5.46909572104978}
+22:13:54:0.991665: LittleFrame.log: Created 75
+22:13:54:1.002616: LittleFrame.log: I:36{A:64/76,U:11/12}
+22:13:54:1.003618: LittleFrame.log: IN:{"food"=>194.83979402709704, "shelter"=>124.39580434567057, "health"=>76.16512442514338, "acquisition"=>4.868909721389658, "role"=>38.44266889826999, "audit"=>149.95981244659026, "equipment"=>111.82472069691285, "security"=>74.72662436976677, "data"=>257.1363789221824, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.006619: LittleFrame.log: 70 upgraded to 1
+22:13:54:1.008621: LittleFrame.log: R:{"food"=>73.28803766097002, "shelter"=>33.84769499179671, "health"=>-8.89697961549805, "acquisition"=>4.868909721389658, "role"=>38.44266889826999, "audit"=>38.22389672324588, "equipment"=>-11.268208871639736, "security"=>-9.756302710633712, "data"=>144.32266457679006, "ojt"=>41.71863967762161, "professional"=>1.4326836166105004, "formal"=>5.46909572104978}
+22:13:54:1.008621: LittleFrame.log: Created 76
+22:13:54:1.020091: LittleFrame.log: I:35{A:65/77,U:11/12}
+22:13:54:1.021092: LittleFrame.log: IN:{"food"=>197.45523452739312, "shelter"=>126.41644406547564, "health"=>76.16512442514338, "acquisition"=>4.868909721389658, "role"=>39.9040627808417, "audit"=>148.6270088973893, "equipment"=>107.29402122600885, "security"=>93.2723520613866, "data"=>259.0240847442402, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.025095: LittleFrame.log: 32 upgraded to 2
+22:13:54:1.026095: LittleFrame.log: 71 upgraded to 1
+22:13:54:1.027096: LittleFrame.log: R:{"food"=>73.9556233598293, "shelter"=>33.74435599301412, "health"=>-11.279430155810587, "acquisition"=>4.868909721389658, "role"=>39.9040627808417, "audit"=>36.89109317404493, "equipment"=>-17.177772105130483, "security"=>7.650181399152699, "data"=>142.9008676853385, "ojt"=>41.71863967762161, "professional"=>-0.5111299212275076, "formal"=>5.46909572104978}
+22:13:54:1.028096: LittleFrame.log: Created 77
+22:13:54:1.039102: LittleFrame.log: I:34{A:66/78,U:11/12}
+22:13:54:1.040104: LittleFrame.log: IN:{"food"=>195.65958561123333, "shelter"=>126.41644406547564, "health"=>76.16512442514338, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>152.3508242397812, "equipment"=>124.82574691659659, "security"=>96.36330667665658, "data"=>257.1363789221824, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.043106: LittleFrame.log: 72 upgraded to 1
+22:13:54:1.044106: LittleFrame.log: 39 upgraded to 2
+22:13:54:1.046108: LittleFrame.log: R:{"food"=>68.5259254098432, "shelter"=>32.567060460836984, "health"=>-12.28537865227769, "acquisition"=>4.868909721389658, "role"=>39.68454123337247, "audit"=>40.614908516436834, "equipment"=>-1.79960855005894, "security"=>9.177935671913588, "data"=>140.00772148046454, "ojt"=>41.71863967762161, "professional"=>-1.6537721769234612, "formal"=>5.46909572104978}
+22:13:54:1.047109: LittleFrame.log: Created 78
+22:13:54:1.057115: LittleFrame.log: I:33{A:67/79,U:11/12}
+22:13:54:1.057115: LittleFrame.log: IN:{"food"=>197.45523452739312, "shelter"=>126.41644406547564, "health"=>82.64903417434876, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>159.79845492456502, "equipment"=>150.10551852938823, "security"=>96.36330667665658, "data"=>259.6335710860406, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.060117: LittleFrame.log: 73 upgraded to 1
+22:13:54:1.062119: LittleFrame.log: R:{"food"=>67.48581486681174, "shelter"=>30.662779210403894, "health"=>-7.142856681861019, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>43.48361179566887, "equipment"=>20.730734494918725, "security"=>7.260349322603276, "data"=>140.30210248992483, "ojt"=>41.71863967762161, "professional"=>-4.601834209064955, "formal"=>5.46909572104978}
+22:13:54:1.063119: LittleFrame.log: Created 79
+22:13:54:1.073137: LittleFrame.log: I:32{A:68/80,U:11/12}
+22:13:54:1.073137: LittleFrame.log: IN:{"food"=>197.45523452739312, "shelter"=>135.65172692867648, "health"=>82.64903417434876, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>161.5036400080052, "equipment"=>193.03541600789967, "security"=>102.54521590719652, "data"=>259.81123250677206, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.075142: LittleFrame.log: 43 died at 36/36.
+22:13:54:1.076143: LittleFrame.log: 74 upgraded to 1
+22:13:54:1.077143: LittleFrame.log: R:{"food"=>66.00167888578171, "shelter"=>40.00228111630172, "health"=>-8.12810945751421, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>45.18879687910907, "equipment"=>60.79243468122515, "security"=>14.232919000199974, "data"=>140.56953916508107, "ojt"=>41.71863967762161, "professional"=>-4.795125232148622, "formal"=>5.46909572104978}
+22:13:54:1.078144: LittleFrame.log: Created 80
+22:13:54:1.08915: LittleFrame.log: I:31{A:68/81,U:11/12}
+22:13:54:1.089653: LittleFrame.log: IN:{"food"=>197.45523452739312, "shelter"=>135.65172692867648, "health"=>71.58988025257369, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>161.5036400080052, "equipment"=>206.93250910030247, "security"=>102.54521590719652, "data"=>259.6335710860406, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.092154: LittleFrame.log: 75 upgraded to 1
+22:13:54:1.093155: LittleFrame.log: R:{"food"=>61.6912442671317, "shelter"=>37.723867455112796, "health"=>-20.48085704718821, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>40.98096007674089, "equipment"=>71.29075326855684, "security"=>12.302008384077219, "data"=>137.53963477808995, "ojt"=>41.71863967762161, "professional"=>-5.9211421658567005, "formal"=>5.46909572104978}
+22:13:54:1.093655: LittleFrame.log: Created 81
+22:13:54:1.105019: LittleFrame.log: I:30{A:69/82,U:11/12}
+22:13:54:1.105019: LittleFrame.log: IN:{"food"=>196.0167422522303, "shelter"=>134.00990947017624, "health"=>71.58988025257369, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>157.4074431313741, "equipment"=>236.48104794086157, "security"=>102.54521590719652, "data"=>258.4671385596468, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.107022: LittleFrame.log: 76 upgraded to 1
+22:13:54:1.108022: LittleFrame.log: 45 died at 36/36.
+22:13:54:1.110025: LittleFrame.log: R:{"food"=>61.33674217564906, "shelter"=>37.32709764621248, "health"=>-21.23135655919503, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>31.922623064927933, "equipment"=>100.82316382747904, "security"=>12.170175968142203, "data"=>136.43534394006403, "ojt"=>41.71863967762161, "professional"=>-5.799305056053264, "formal"=>5.46909572104978}
+22:13:54:1.110025: LittleFrame.log: Created 82
+22:13:54:1.121558: LittleFrame.log: I:29{A:69/83,U:11/12}
+22:13:54:1.122549: LittleFrame.log: IN:{"food"=>194.34457154345515, "shelter"=>134.00990947017624, "health"=>71.58988025257369, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>157.4074431313741, "equipment"=>269.2301891379124, "security"=>102.54521590719652, "data"=>258.4671385596468, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.124549: LittleFrame.log: 77 upgraded to 1
+22:13:54:1.125551: LittleFrame.log: 79 upgraded to 1
+22:13:54:1.126551: LittleFrame.log: R:{"food"=>56.93323523751254, "shelter"=>36.04243295065402, "health"=>-22.366724357741628, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>28.955672630040848, "equipment"=>132.18178848574365, "security"=>10.74175121694871, "data"=>133.48176954657717, "ojt"=>41.71863967762161, "professional"=>-8.617849468477953, "formal"=>5.46909572104978}
+22:13:54:1.126551: LittleFrame.log: Created 83
+22:13:54:1.137625: LittleFrame.log: I:28{A:70/84,U:11/12}
+22:13:54:1.137625: LittleFrame.log: IN:{"food"=>194.34457154345515, "shelter"=>131.21327594946018, "health"=>71.58988025257369, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>157.4074431313741, "equipment"=>297.46988482734275, "security"=>102.54521590719652, "data"=>258.4671385596468, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.139601: LittleFrame.log: 22 upgraded to 2
+22:13:54:1.140601: LittleFrame.log: 78 upgraded to 1
+22:13:54:1.141602: LittleFrame.log: 80 upgraded to 1
+22:13:54:1.141602: LittleFrame.log: Retraining 80:0.3:4/107.75330748409951{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}}
+22:13:54:1.142602: LittleFrame.log: Retrained 80:0.8817217606402868:-32/107.75330748409951{
+	{service:health:[4, 35, 36],P:1,MOS:0,T:0}
+	{training:professional:[3, 148, 16],P:0,MOS:0,T:0.0}}
+22:13:54:1.144604: LittleFrame.log: R:{"food"=>51.58920463963874, "shelter"=>30.1590193864587, "health"=>-25.462756257368323, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>22.867853267772734, "equipment"=>157.34262374890653, "security"=>8.518011579190341, "data"=>129.49769666074783, "ojt"=>41.71863967762161, "professional"=>-11.261444001471347, "formal"=>5.46909572104978}
+22:13:54:1.154616: LittleFrame.log: I:27{A:70/84,U:11/12}
+22:13:54:1.154616: LittleFrame.log: IN:{"food"=>194.34457154345515, "shelter"=>127.70988186989763, "health"=>95.1696950190735, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>157.4074431313741, "equipment"=>321.6598987697073, "security"=>102.54521590719652, "data"=>258.4671385596468, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.156618: LittleFrame.log: 23 upgraded to 2
+22:13:54:1.156618: LittleFrame.log: 16 upgraded to 2
+22:13:54:1.157619: LittleFrame.log: 81 upgraded to 1
+22:13:54:1.159623: LittleFrame.log: 46 upgraded to 2
+22:13:54:1.161621: LittleFrame.log: R:{"food"=>50.125908980998524, "shelter"=>24.197335352945956, "health"=>-1.8829414908685362, "acquisition"=>4.868909721389658, "role"=>40.859128283713034, "audit"=>22.867853267772734, "equipment"=>180.53263769127102, "security"=>8.518011579190341, "data"=>126.83994440071278, "ojt"=>41.71863967762161, "professional"=>-12.485166243595708, "formal"=>5.46909572104978}
+22:13:54:1.171649: LittleFrame.log: I:26{A:70/84,U:11/12}
+22:13:54:1.172643: LittleFrame.log: IN:{"food"=>195.57868739865657, "shelter"=>135.65172692867648, "health"=>95.55012077049663, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>169.45638116369247, "equipment"=>346.18822305632165, "security"=>105.51232517306062, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.173644: LittleFrame.log: 24 upgraded to 2
+22:13:54:1.173644: LittleFrame.log: 20 upgraded to 2
+22:13:54:1.174644: LittleFrame.log: 82 upgraded to 1
+22:13:54:1.175645: LittleFrame.log: 47 upgraded to 2
+22:13:54:1.176646: LittleFrame.log: R:{"food"=>49.14400030266717, "shelter"=>30.544927681272316, "health"=>-1.502515739445411, "acquisition"=>4.868909721389658, "role"=>42.294734678573725, "audit"=>34.9167913000911, "equipment"=>204.06096197788537, "security"=>10.303838669386506, "data"=>124.67054891143054, "ojt"=>41.71863967762161, "professional"=>-13.614693584910848, "formal"=>5.46909572104978}
+22:13:54:1.18768: LittleFrame.log: I:25{A:70/84,U:11/12}
+22:13:54:1.188185: LittleFrame.log: IN:{"food"=>202.900771198839, "shelter"=>135.65172692867648, "health"=>107.93362566267044, "acquisition"=>4.868909721389658, "role"=>47.39614365851041, "audit"=>174.9863248766191, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.189686: LittleFrame.log: 83 upgraded to 1
+22:13:54:1.190186: LittleFrame.log: 25 upgraded to 2
+22:13:54:1.190687: LittleFrame.log: 50 died at 36/36.
+22:13:54:1.192187: LittleFrame.log: 80 upgraded to 1
+22:13:54:1.192688: LittleFrame.log: R:{"food"=>57.44304061052647, "shelter"=>29.57654029620739, "health"=>11.05042876178091, "acquisition"=>4.868909721389658, "role"=>47.39614365851041, "audit"=>36.29753255637025, "equipment"=>205.2953552326806, "security"=>10.736779480319386, "data"=>123.88749202999564, "ojt"=>41.71863967762161, "professional"=>-13.776026297641971, "formal"=>5.46909572104978}
+22:13:54:1.193188: LittleFrame.log: Created 84
+22:13:54:1.20373: LittleFrame.log: I:24{A:70/85,U:11/12}
+22:13:54:1.204722: LittleFrame.log: IN:{"food"=>194.39363091874438, "shelter"=>135.65172692867648, "health"=>150.34820985403627, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>175.9963248766191, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>89.92055980761825, "formal"=>5.46909572104978}
+22:13:54:1.206724: LittleFrame.log: 49 upgraded to 2
+22:13:54:1.207725: LittleFrame.log: R:{"food"=>44.13644918733808, "shelter"=>26.7515426131657, "health"=>53.46501295314674, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>31.55411324142562, "equipment"=>199.79278773190725, "security"=>8.879099260134394, "data"=>116.28066458173868, "ojt"=>41.71863967762161, "professional"=>-13.776026297641971, "formal"=>5.46909572104978}
+22:13:54:1.218946: LittleFrame.log: I:23{A:70/85,U:11/12}
+22:13:54:1.218946: LittleFrame.log: IN:{"food"=>194.39363091874438, "shelter"=>135.65172692867648, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>183.1952103609487, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>103.52863871659922, "formal"=>5.46909572104978}
+22:13:54:1.22095: LittleFrame.log: 14 upgraded to 3
+22:13:54:1.22295: LittleFrame.log: R:{"food"=>44.13644918733808, "shelter"=>26.7515426131657, "health"=>87.57164890837699, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>38.75299872575524, "equipment"=>199.79278773190725, "security"=>8.879099260134394, "data"=>116.28066458173868, "ojt"=>41.71863967762161, "professional"=>-0.1679473886609968, "formal"=>5.46909572104978}
+22:13:54:1.234699: LittleFrame.log: I:22{A:70/85,U:11/12}
+22:13:54:1.235699: LittleFrame.log: IN:{"food"=>202.4555029070639, "shelter"=>135.65172692867648, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>183.1952103609487, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>103.52863871659922, "formal"=>5.46909572104978}
+22:13:54:1.235699: LittleFrame.log: 8 died at 78/77.93557437426362.
+22:13:54:1.237701: LittleFrame.log: 51 upgraded to 2
+22:13:54:1.238701: LittleFrame.log: 84 upgraded to 1
+22:13:54:1.2397: LittleFrame.log: R:{"food"=>53.19832117565764, "shelter"=>28.70232979771876, "health"=>88.81884064752943, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>38.75299872575524, "equipment"=>200.90796899035155, "security"=>10.71547389689063, "data"=>117.28066458173869, "ojt"=>41.71863967762161, "professional"=>1.551637896495824, "formal"=>5.46909572104978}
+22:13:54:1.240702: LittleFrame.log: Created 85
+22:13:54:1.250712: LittleFrame.log: I:21{A:70/86,U:11/12}
+22:13:54:1.251719: LittleFrame.log: IN:{"food"=>202.4555029070639, "shelter"=>141.3437915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>103.52863871659922, "formal"=>5.46909572104978}
+22:13:54:1.252719: LittleFrame.log: 52 upgraded to 2
+22:13:54:1.254721: LittleFrame.log: R:{"food"=>52.19832117565764, "shelter"=>32.43688084696556, "health"=>87.60955044065017, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>199.42446288975216, "security"=>9.156464960833146, "data"=>115.09711516619561, "ojt"=>41.71863967762161, "professional"=>0.5235906281932434, "formal"=>5.46909572104978}
+22:13:54:1.264735: LittleFrame.log: I:20{A:70/86,U:11/12}
+22:13:54:1.264735: LittleFrame.log: IN:{"food"=>208.88337065894453, "shelter"=>141.3437915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>129.71677504610398, "formal"=>5.46909572104978}
+22:13:54:1.265736: LittleFrame.log: 17 upgraded to 3
+22:13:54:1.266738: LittleFrame.log: 53 upgraded to 2
+22:13:54:1.268739: LittleFrame.log: R:{"food"=>58.626188927538266, "shelter"=>32.43688084696556, "health"=>87.60955044065017, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>199.42446288975216, "security"=>9.156464960833146, "data"=>115.09711516619561, "ojt"=>41.71863967762161, "professional"=>26.71172695769796, "formal"=>5.46909572104978}
+22:13:54:1.27977: LittleFrame.log: I:19{A:70/86,U:11/12}
+22:13:54:1.280774: LittleFrame.log: IN:{"food"=>215.532582316234, "shelter"=>141.3437915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>129.71677504610398, "formal"=>5.46909572104978}
+22:13:54:1.283776: LittleFrame.log: 85 upgraded to 1
+22:13:54:1.284777: LittleFrame.log: R:{"food"=>65.27540058482778, "shelter"=>32.43688084696556, "health"=>87.60955044065017, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>199.42446288975216, "security"=>9.156464960833146, "data"=>115.09711516619561, "ojt"=>41.71863967762161, "professional"=>26.71172695769796, "formal"=>5.46909572104978}
+22:13:54:1.29583: LittleFrame.log: I:18{A:70/86,U:11/12}
+22:13:54:1.296835: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>142.3537915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>129.71677504610398, "formal"=>5.46909572104978}
+22:13:54:1.299836: LittleFrame.log: R:{"food"=>69.91624061151484, "shelter"=>32.44688084696555, "health"=>86.1086581909688, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>196.7593898711505, "security"=>6.826277658442526, "data"=>112.4451936888971, "ojt"=>41.71863967762161, "professional"=>24.54069550964669, "formal"=>5.46909572104978}
+22:13:54:1.309887: LittleFrame.log: I:17{A:70/86,U:11/12}
+22:13:54:1.310861: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>142.3537915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.313863: LittleFrame.log: R:{"food"=>69.91624061151484, "shelter"=>32.44688084696555, "health"=>86.1086581909688, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>196.7593898711505, "security"=>6.826277658442526, "data"=>112.4451936888971, "ojt"=>41.71863967762161, "professional"=>36.9670976825206, "formal"=>5.46909572104978}
+22:13:54:1.323914: LittleFrame.log: I:16{A:70/86,U:11/12}
+22:13:54:1.323914: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>142.3537915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.325924: LittleFrame.log: 22 upgraded to 3
+22:13:54:1.326925: LittleFrame.log: 41 upgraded to 3
+22:13:54:1.328926: LittleFrame.log: R:{"food"=>69.91624061151484, "shelter"=>32.44688084696555, "health"=>86.1086581909688, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>196.7593898711505, "security"=>6.826277658442526, "data"=>112.4451936888971, "ojt"=>41.71863967762161, "professional"=>36.9670976825206, "formal"=>5.46909572104978}
+22:13:54:1.338976: LittleFrame.log: I:15{A:70/86,U:11/12}
+22:13:54:1.338976: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>142.3537915139423, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>158.63808460797446, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.340987: LittleFrame.log: 23 upgraded to 3
+22:13:54:1.340987: LittleFrame.log: 16 upgraded to 3
+22:13:54:1.342987: LittleFrame.log: R:{"food"=>69.91624061151484, "shelter"=>32.44688084696555, "health"=>86.1086581909688, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>11.262382095345597, "equipment"=>196.7593898711505, "security"=>6.826277658442526, "data"=>112.4451936888971, "ojt"=>41.71863967762161, "professional"=>36.9670976825206, "formal"=>5.46909572104978}
+22:13:54:1.35404: LittleFrame.log: I:14{A:70/86,U:11/12}
+22:13:54:1.355027: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>166.59082576366174, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>259.84059424976874, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.356027: LittleFrame.log: 24 upgraded to 3
+22:13:54:1.356027: LittleFrame.log: 20 upgraded to 3
+22:13:54:1.357027: LittleFrame.log: 61 died at 36/36.
+22:13:54:1.359029: LittleFrame.log: R:{"food"=>74.83673917079587, "shelter"=>39.0326064567169, "health"=>88.7111090532659, "acquisition"=>5.778909721389658, "role"=>47.39614365851041, "audit"=>19.21512325103288, "equipment"=>201.4653705043614, "security"=>9.243912565327475, "data"=>113.58154239604667, "ojt"=>41.71863967762161, "professional"=>38.199508032398754, "formal"=>5.46909572104978}
+22:13:54:1.359029: LittleFrame.log: Created 86
+22:13:54:1.37004: LittleFrame.log: I:13{A:70/87,U:11/12}
+22:13:54:1.371045: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>5.778909721389658, "role"=>52.49755263844709, "audit"=>172.12076947658838, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.372047: LittleFrame.log: 25 upgraded to 3
+22:13:54:1.374047: LittleFrame.log: R:{"food"=>74.83673917079587, "shelter"=>39.0326064567169, "health"=>88.7111090532659, "acquisition"=>5.778909721389658, "role"=>52.49755263844709, "audit"=>24.745066963959538, "equipment"=>201.4653705043614, "security"=>9.243912565327475, "data"=>97.7484802553056, "ojt"=>41.71863967762161, "professional"=>38.199508032398754, "formal"=>5.46909572104978}
+22:13:54:1.385089: LittleFrame.log: I:12{A:70/87,U:11/12}
+22:13:54:1.385598: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>173.13076947658837, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.389599: LittleFrame.log: R:{"food"=>74.83673917079587, "shelter"=>39.0326064567169, "health"=>88.7111090532659, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>25.75506696395953, "equipment"=>201.4653705043614, "security"=>9.243912565327475, "data"=>97.7484802553056, "ojt"=>41.71863967762161, "professional"=>38.199508032398754, "formal"=>5.46909572104978}
+22:13:54:1.400712: LittleFrame.log: I:11{A:70/87,U:11/12}
+22:13:54:1.401688: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.403689: LittleFrame.log: 86 upgraded to 1
+22:13:54:1.40469: LittleFrame.log: R:{"food"=>74.83673917079587, "shelter"=>39.0326064567169, "health"=>88.7111090532659, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>32.95395244828915, "equipment"=>201.4653705043614, "security"=>9.243912565327475, "data"=>97.7484802553056, "ojt"=>41.71863967762161, "professional"=>38.199508032398754, "formal"=>5.46909572104978}
+22:13:54:1.414797: LittleFrame.log: I:10{A:70/87,U:11/12}
+22:13:54:1.414797: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>5.46909572104978}
+22:13:54:1.416759: LittleFrame.log: 27 upgraded to 3
+22:13:54:1.418759: LittleFrame.log: R:{"food"=>72.0786009896811, "shelter"=>38.0326064567169, "health"=>87.43030324434395, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>32.95395244828915, "equipment"=>199.6478357731296, "security"=>7.30346874513449, "data"=>96.7484802553056, "ojt"=>41.71863967762161, "professional"=>36.94739873074417, "formal"=>5.46909572104978}
+22:13:54:1.429436: LittleFrame.log: I:9{A:70/87,U:11/12}
+22:13:54:1.429436: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>147.9395171236936, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.431438: LittleFrame.log: 58 upgraded to 2
+22:13:54:1.433439: LittleFrame.log: R:{"food"=>72.0786009896811, "shelter"=>38.0326064567169, "health"=>87.43030324434395, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>32.95395244828915, "equipment"=>199.6478357731296, "security"=>7.30346874513449, "data"=>96.7484802553056, "ojt"=>41.71863967762161, "professional"=>36.94739873074417, "formal"=>7.431415071881309}
+22:13:54:1.443584: LittleFrame.log: I:8{A:70/87,U:11/12}
+22:13:54:1.443584: LittleFrame.log: IN:{"food"=>222.08348496989885, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.446543: LittleFrame.log: R:{"food"=>72.0786009896811, "shelter"=>45.28493589904307, "health"=>87.43030324434395, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>32.95395244828915, "equipment"=>199.6478357731296, "security"=>7.30346874513449, "data"=>96.7484802553056, "ojt"=>41.71863967762161, "professional"=>36.94739873074417, "formal"=>7.431415071881309}
+22:13:54:1.45779: LittleFrame.log: I:7{A:70/87,U:11/12}
+22:13:54:1.45779: LittleFrame.log: IN:{"food"=>230.159344996457, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>346.18822305632165, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.460793: LittleFrame.log: 12 died at 92/91.06410768580349.
+22:13:54:1.462795: LittleFrame.log: R:{"food"=>81.24342462700324, "shelter"=>46.92315216682318, "health"=>88.62540202837778, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>37.374449107556636, "equipment"=>202.40844935334377, "security"=>7.30346874513449, "data"=>97.7484802553056, "ojt"=>41.71863967762161, "professional"=>39.51540961956084, "formal"=>7.431415071881309}
+22:13:54:1.463796: LittleFrame.log: Created 87
+22:13:54:1.474053: LittleFrame.log: I:6{A:70/88,U:11/12}
+22:13:54:1.474053: LittleFrame.log: IN:{"food"=>230.159344996457, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>341.33320008191896, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.475055: LittleFrame.log: 13 died at 92/91.23558198234738.
+22:13:54:1.478056: LittleFrame.log: R:{"food"=>83.09531349911033, "shelter"=>48.75700657979866, "health"=>90.40120094749687, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>39.51250462860313, "equipment"=>198.76974967304756, "security"=>8.9207416349045, "data"=>100.08922580558627, "ojt"=>41.71863967762161, "professional"=>41.34671278154934, "formal"=>7.431415071881309}
+22:13:54:1.479058: LittleFrame.log: Created 88
+22:13:54:1.489102: LittleFrame.log: I:5{A:70/89,U:11/12}
+22:13:54:1.489609: LittleFrame.log: IN:{"food"=>230.159344996457, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>317.25309324953895, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.490111: LittleFrame.log: 0 upgraded to 3
+22:13:54:1.49261: LittleFrame.log: 87 upgraded to 1
+22:13:54:1.493111: LittleFrame.log: R:{"food"=>83.09531349911033, "shelter"=>48.75700657979866, "health"=>90.40120094749687, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>39.51250462860313, "equipment"=>174.68964284066755, "security"=>8.9207416349045, "data"=>100.08922580558627, "ojt"=>41.71863967762161, "professional"=>41.34671278154934, "formal"=>7.431415071881309}
+22:13:54:1.504581: LittleFrame.log: I:4{A:70/89,U:11/12}
+22:13:54:1.504581: LittleFrame.log: IN:{"food"=>230.159344996457, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>317.25309324953895, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.508586: LittleFrame.log: 88 upgraded to 1
+22:13:54:1.509588: LittleFrame.log: R:{"food"=>80.77580920812736, "shelter"=>47.559755748831655, "health"=>88.91267083133637, "acquisition"=>6.688909721389658, "role"=>52.49755263844709, "audit"=>36.6907257001865, "equipment"=>172.43143174290847, "security"=>7.145941896649031, "data"=>99.001838649669, "ojt"=>41.71863967762161, "professional"=>39.79410367436604, "formal"=>7.431415071881309}
+22:13:54:1.521069: LittleFrame.log: I:3{A:70/89,U:11/12}
+22:13:54:1.522071: LittleFrame.log: IN:{"food"=>236.0863573161121, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>30.295845235796136, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>317.25309324953895, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.525072: LittleFrame.log: R:{"food"=>82.76414122127322, "shelter"=>46.559755748831655, "health"=>87.24444110321885, "acquisition"=>30.295845235796136, "role"=>52.49755263844709, "audit"=>33.319066405696226, "equipment"=>171.03182154278898, "security"=>5.705010152332594, "data"=>96.98581822306858, "ojt"=>41.71863967762161, "professional"=>37.84932125798369, "formal"=>7.431415071881309}
+22:13:54:1.535123: LittleFrame.log: I:2{A:70/89,U:11/12}
+22:13:54:1.535123: LittleFrame.log: IN:{"food"=>236.0863573161121, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>70.01482034538125, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>317.25309324953895, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.538133: LittleFrame.log: R:{"food"=>82.76414122127322, "shelter"=>46.559755748831655, "health"=>87.24444110321885, "acquisition"=>70.01482034538125, "role"=>52.49755263844709, "audit"=>33.319066405696226, "equipment"=>171.03182154278898, "security"=>5.705010152332594, "data"=>96.98581822306858, "ojt"=>41.71863967762161, "professional"=>37.84932125798369, "formal"=>7.431415071881309}
+22:13:54:1.549165: LittleFrame.log: I:1{A:70/89,U:11/12}
+22:13:54:1.55014: LittleFrame.log: IN:{"food"=>236.0863573161121, "shelter"=>155.1918465660198, "health"=>184.45484580926654, "acquisition"=>70.01482034538125, "role"=>52.49755263844709, "audit"=>180.32965496091796, "equipment"=>317.25309324953895, "security"=>105.9452659839935, "data"=>244.0075321090277, "ojt"=>41.71863967762161, "professional"=>142.14317721897794, "formal"=>7.431415071881309}
+22:13:54:1.55214: LittleFrame.log: 74 died at 36/36.
+22:13:54:1.553142: LittleFrame.log: R:{"food"=>87.07457583992323, "shelter"=>48.838169410020576, "health"=>88.5380347711178, "acquisition"=>70.01482034538125, "role"=>52.49755263844709, "audit"=>37.526903208064404, "equipment"=>174.43059604786006, "security"=>7.635920768455353, "data"=>99.83806118932824, "ojt"=>41.71863967762161, "professional"=>38.97533819169176, "formal"=>7.431415071881309}
+22:13:54:1.554142: LittleFrame.log: Created 89
+22:13:54:1.564191: LittleFrame.log: Agents:70/90,Units:12
+Resource{
+	food:236.0863573161121
+	shelter:155.1918465660198
+	health:184.45484580926654
+	acquisition:70.01482034538125
+	role:52.49755263844709
+	audit:180.32965496091796
+	equipment:284.4186703731085
+	security:105.9452659839935
+	data:244.0075321090277
+	ojt:41.71863967762161
+	professional:142.14317721897794
+	formal:7.431415071881309
+}
+Trainers{{"service"=>[19, 9, 6], "administration"=>[6, 0, 6], "technical"=>[33, 0, 2], "training"=>[7, 0, 3]}
+}
+Units{
+	U0:9
+	U1:4
+	U2:3
+	U4:3
+	U5:4
+	U6:7
+	U7:4
+	U8:4
+	U9:4
+	U10:10
+	U11:7
+}
