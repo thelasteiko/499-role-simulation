@@ -64,8 +64,9 @@ module Equations
   end
   # Consumes resources.
   # @param r [Hash] the overall resources available.
-  # @param consumption [Hash] the rate of consumption based
+  # @param c [Hash] the rate of consumption based
   #   on agent need.
+  # @param proficiency [Fixnum] the proficiency of the agent.
   def Equations.consume(r, c, proficiency)
     #$FRAME.log(99,"#{c}")
     ret = {shortfall: 0}
@@ -85,9 +86,71 @@ module Equations
         v > 0.0 ? a = v : a = 0.0
         r[k] -= x
         ret[k] = a
-        ret[:shortfall] += x-a
+        #if k == "food" or k == "shelter" or k == "equipment" or k == "data"
+          ret[:shortfall] += x-a
+        #end
       end
     end
     return ret
+  end
+  # Consumes resources when retraining.
+  # @param r [Hash] is the list of resources.
+  # @param c [Hash] is the list of consumption rates for the organization.
+  # @param cost [FixNum] is the number associated with level 0 training.
+  def Equations.consume_retrain(r, c, cost)
+    #using formal and role
+    x = c["role"]
+    n = {}
+    if r["role"] - x < 0.0
+      r["role"] > 0 ? a = r["role"] : a = 0.0
+      n["role"] = a
+    else
+      n["role"] = x
+    end
+    r["role"] -= x
+    ratio = c["role"] == 0 ? 0.0 : (n["role"]/c["role"]) * WEIGHT["role"]
+    x = c["formal"]
+    if cost > 0
+      if r["formal"] - x < 0.0
+        r["formal"] > 0 ? a = r["formal"] : a = 0.0
+        n["formal"] = a
+      else
+        n["formal"] = x
+      end
+      r["formal"] -= x
+      ratio += c["formal"] == 0 ? 0.0 : (n["formal"]/c["formal"]) * WEIGHT["formal"]
+      ratio /= cost
+    end
+    return ratio * 1.5
+  end
+  # Consumes resources when acquiring agents.
+  # @param r [Hash] is the list of resources.
+  # @param c [Hash] is the list of consumption rates for the organization.
+  # @param cost [FixNum] is the number associated with level 0 training.
+  def Equations.consume_acquire (r, c, cost)
+    #using formal and acquisition
+    x = c["acquisition"]
+    n = {}
+    if r["acquisition"] - x < 0.0
+      r["acquisition"] > 0 ? a = r["acquisition"] : a = 0.0
+      n["acquisition"] = a
+    else
+      n["acquisition"] = x
+    end
+    r["acquisition"] -= x
+    ratio = c["acquisition"] == 0 ? 0.0 : (n["acquisition"]/c["acquisition"]) * WEIGHT["acquisition"]
+    x = c["formal"]
+    if cost > 0
+      if r["formal"] - x < 0.0
+        r["formal"] > 0 ? a = r["formal"] : a = 0.0
+        n["formal"] = a
+      else
+        n["formal"] = x
+      end
+      r["formal"] -= x
+      ratio += c["formal"] == 0 ? 0.0 : (n["formal"]/c["formal"]) * WEIGHT["formal"]
+      ratio *= cost
+    end
+    return ratio * 0.19
   end
 end

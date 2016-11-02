@@ -22,7 +22,8 @@ class Unit < GameObject
       v.each do |j|
         j.update(resources, new_resources,
           trainers)
-        if not j.remove and j.role.proficiency > 0 and
+        if Organization.preferences["reassignment_start"] <= @game.num_runs and
+            not j.remove and j.role.proficiency > 0 and
             j.motivation <= Organization.preferences["motivation"]
           $FRAME.log(8, "Retraining #{j.to_s}")
           j.retrained = @game.scene.retrain(j)
@@ -37,16 +38,16 @@ class Unit < GameObject
         t.retrained = false
         @game.scene.retrainees.push(v.delete(t))
       end
-      #Find agents that have low motivation and
-      # tag to retrain them.
-      #options = organization decides, agent decides, both try to agree
-      # how do I get the agent to talk to the org?
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
+          #TODO I need to do this for each role
+          j.remove_trainer(trainers)
           $FRAME.log(6,"#{j.serial_number} died at #{j.months}/#{j.months_total}.")
-          #$FRAME.log(7, "Deleted agent: #{@game.scene.current_agents}")
+          #$FRAME.log(6, "Agents left #{@game.scene.current_agents}")
           true
+        else
+          false
         end
       end
     end
@@ -73,19 +74,30 @@ class Unit < GameObject
   def to_s
     text = "#{@unit_serial}{"
     @agents.each_pair do |k,v|
-      text += "\n\t#{k}:#{v}"
+      v.each do |i|
+        text += "\n\t#{k}:#{i.to_s}"
+      end
     end
     text += "\n}"
     return text
   end
   def brief
-    text = "#{@unit_serial}:#{@agents.size}"
+    n = 0
+    @agents.each do |k,v|
+      n += v.size
+    end
+    text = "#{@unit_serial}:#{n}"
   end
 end
 
 class UnitGroup < Group
   def update(resources, new_resources, trainers)
       @entities.each {|i| i.update(resources, new_resources, trainers)}
-      @entities.delete_if {|i| i.remove}
+      @entities.delete_if do |i|
+        if i.remove
+          $FRAME.log(6, "Unit #{i.unit_serial} died with #{i.to_s}")
+          true
+        end
+      end
   end
 end

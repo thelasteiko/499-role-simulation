@@ -37,7 +37,7 @@ require 'fox16'
 include Fox
 
 #How many milliseconds the loop should take to run.
-$MS_PER_FRAME = 0.01
+$MS_PER_FRAME = 0.001
 #Set this to true to display the debug window.
 $DEBUG = true
 #Set this to true to save statistics and comments to file.
@@ -220,6 +220,9 @@ class LittleGame
     # @!attribute [rw] end_game
     # @return [Boolean] determines whether or not to continue.
     attr_accessor   :end_game
+    # @!attribute [r] num_runs
+    # @return [Fixnum]
+    attr_reader     :num_runs
     
     # Creates the game and the variables needed
     # to time the loop correctly.
@@ -232,6 +235,7 @@ class LittleGame
         if newscene
           @newscene = newscene.new(self,param)
         end
+        @num_runs = 0
     end
     # Creates listeners for the canvas when it is added.
     # @param canvas [FXCanvas] is the canvas object for which input
@@ -314,6 +318,7 @@ class LittleGame
         input
         while (@tick > $MS_PER_FRAME) do
             update
+            @num_runs += 1
             @tick -= $MS_PER_FRAME
         end
         graphics = FXDCWindow.new(@canvas)

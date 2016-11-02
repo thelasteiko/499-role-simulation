@@ -1,7 +1,9 @@
 {
-  "iterations": 100,
+  "iterations": 25,
+  "reassignment_start": 10,
   "draw":       0,
   "verbose":    1,
+  "start_agents": 12,
   "max_agents": 70,
   "priority":   "compromise",
   "motivation": 0.5

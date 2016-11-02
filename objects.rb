@@ -118,7 +118,7 @@ class Agent < GameObject
     o = role.role_name
     @roles.each do |i|
       if i.office == r.office
-        $FRAME.log(7, "#{i.office}==#{r.office}")
+        #$FRAME.log(7, "#{i.office}==#{r.office}")
         a.push(i)
         r.proficiency = 1
       end
@@ -143,7 +143,7 @@ class Agent < GameObject
     end
     @months -= 36
     a = Organization.default_data["default_agent"]["motivation"]
-    @motivation = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
+    @motivation = WeightedRandom.rand(0.5,a[2],a[3],a[4],a[5])
     a = Organization.default_data["default_agent"]["consumption"]["ojt"]
     @consumption["ojt"] = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
     if role.role_name == @desired_role
@@ -164,20 +164,20 @@ class Agent < GameObject
   def update (resources, new_resources, trainers)
     #$FRAME.log(6, "#{to_s}")
     #signifies death
-    if @months >= @months_total or @motivation <= 0
+    if @months >= @months_total or @motivation <= 0.05
       @remove = true
-      if trainers[role.office][role.proficiency-1] > 0 and
-          role.proficiency > 0
-        trainers[role.office][role.proficiency-1] -= 1
-      end
       return nil
     end
     (ret = Equations.consume(resources, @consumption, role.proficiency))
     #$FRAME.log(3, "#{@serial_number}:#{ret}")
     # Reduce motivation if there isn't enough resources.
     if ret[:shortfall] >= @tolerance
-      $FRAME.log(6, "Shortfall: #{ret[:shortfall]}")
+      #$FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
       @motivation -= (ret[:shortfall] * 0.01)
+      $FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
+    end
+    if role.role_name != @desired_role and ret[:shortfall] > 0
+      @motivation -= (ret[:shortfall] * 0.0001)
     end
     o = Equations.output(ret, @consumption, @motivation, role.proficiency)
     #$FRAME.log(3, "#{@serial_number}:#{o}")
@@ -203,6 +203,14 @@ class Agent < GameObject
       @consumption["ojt"] = 0.0
     end
     @months += 1
+  end
+  def remove_trainer(trainers)
+    @roles.each do |i|
+      if trainers[i.office][i.proficiency-1] > 0 and
+          i.proficiency > 0
+        trainers[i.office][i.proficiency-1] -= 1
+      end
+    end
   end
   def to_s
     text = "#{@serial_number}:#{@motivation}:#{@months}/#{@months_total}{"
