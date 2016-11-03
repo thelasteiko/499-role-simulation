@@ -13,7 +13,7 @@ module Equations
     "equipment" =>    2.0,
     "security" =>     1.0,
     "data" =>         2.0,
-    "ojt" =>          1.0,
+    "ojt" =>          1.5,
     "professional" => 0.8,
     "formal" =>       1.0
   }
@@ -33,7 +33,7 @@ module Equations
     return 0.0 if c["ojt"] <= 0.0
     ratio = c["food"] == 0 ? 0.0 : (r["food"]/c["food"])  * WEIGHT["food"]
     ratio += c["shelter"] == 0 ? 0.0 : (r["shelter"]/c["shelter"])  * WEIGHT["shelter"]
-    ratio += c["ojt"] == 0 ? 0.0 : (r["ojt"]/c["ojt"]) * WEIGHT["ojt"]
+    ratio += c["ojt"] == 0 ? 0.0 : (r["ojt"]/c["ojt"]) * WEIGHT["ojt"] +
         trainers
     ratio *= motivation
   end
@@ -74,8 +74,12 @@ module Equations
       x = c[k]
       if proficiency == 0
         x = 0.0
-      elsif k == "ojt" and proficiency == 3
-        x = 0.0
+      elsif k == "ojt" 
+        if proficiency == 3
+          x = 0.0
+        elsif proficiency > 0
+          x = (x*2.5) / proficiency
+        end
       elsif k == "role" or k == "formal" or k == "acquisition"
         x = 0.0
       end

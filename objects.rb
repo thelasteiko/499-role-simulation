@@ -2,6 +2,7 @@ require_relative 'equations'
 
 class RoleProgress
   MIN_MONTH = [0,12,12]
+  RET_MONTH = [0,9,6]
   attr_accessor :office
   # @return [String] the name of the role.
   attr_accessor :role_name
@@ -39,7 +40,7 @@ class RoleProgress
   end
   # Determines if the agent is ready for upgrade to the next proficiency level.
   # @return [Boolean] true if they upgrade, false otherwise.
-  def upgrade?
+  def upgrade?(max_prof)
     if @proficiency == 0
       if @months_current >= @role_data[@proficiency]
         @proficiency += 1
@@ -48,8 +49,10 @@ class RoleProgress
         return true
       end
     elsif @proficiency < 3
-      if (@progress >= @role_data[@proficiency] and
-          @months_current >= MIN_MONTH[@proficiency])
+      if @progress >= @role_data[@proficiency] and
+          (@months_current >= MIN_MONTH[@proficiency] or
+          (max_prof >= @proficiency and
+          @months_current >= RET_MONTH[@proficiency]))          
         @proficiency += 1
         @months_current = 0
         @progress = 0
@@ -112,7 +115,6 @@ class Agent < GameObject
   #                   false if it did not.
   def change_role(r)
     #if there is a role with the same office
-    return false if role.proficiency == 0
     a = []
     p = nil
     o = role.role_name
@@ -157,6 +159,11 @@ class Agent < GameObject
     #$FRAME.log(2, "#{@serial_number}:#{@roles}")
     @roles[-1]
   end
+  def max_prof
+    max = 0
+    @roles.each {|i| max = max < i.proficiency ? i.proficiency : max}
+    return max
+  end
   # Updates the agent, consumes resources and produces output.
   # @param resources [Hash] a list of resources the agent needs.
   # @param new_resources [Hash] a list of resources for the next iteration.
@@ -177,7 +184,8 @@ class Agent < GameObject
       $FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
     end
     if role.role_name != @desired_role and ret[:shortfall] > 0
-      @motivation -= (ret[:shortfall] * 0.0001)
+      @motivation -= (ret[:shortfall] *
+          Organization.preferences["motivation_multiplier"])
     end
     o = Equations.output(ret, @consumption, @motivation, role.proficiency)
     #$FRAME.log(3, "#{@serial_number}:#{o}")
@@ -190,7 +198,7 @@ class Agent < GameObject
       t = 0.0
     end
     role.update(t)
-    b = role.upgrade?
+    b = role.upgrade?(max_prof)
     if b
       $FRAME.log(3, "#{@serial_number} upgraded to #{role.proficiency}")
     end

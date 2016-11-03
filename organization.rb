@@ -77,7 +77,7 @@ class Organization < Scene
       params = parse_default
       a = Agent.new(@game,:units,sn,o,r,d,params)
       a.role.proficiency = t
-      @groups[:units][0].add_agent(a)
+      add_agent(a)
       @total_agents += 1
       @current_agents += 1
     end
@@ -218,8 +218,6 @@ class Organization < Scene
     @groups.each do |k,v|
       if k == :units
         v.update(@resources, nr, @trainers)
-      elsif k == :retrain
-        v.update(@resources)
       else
         v.update
       end
@@ -245,7 +243,11 @@ class Organization < Scene
   # agent desire and organization needs.
   # @param agent [Agent] is the agent to change the role of.
   def retrain(agent)
-    return false if agent.role.proficiency == 0
+    #check preferences for what proficiency level
+    #they can change roles at
+    if @@preferences["reassignment_levels"][agent.role.proficiency] == 0
+      return false
+    end
     #$FRAME.log(9, "Retraining #{agent.serial_number}")
     if @@preferences["priority"] == "organization"
       #the organization decides where they go
@@ -294,15 +296,15 @@ class Organization < Scene
         end
       end
     end
-    return nil if r == nil
+    return false if r == nil
     o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
     d = @@role_data[o][r]
-    role = RoleProgress.new(o,r,d)
     ratio = Equations.consume_retrain(@resources, @consumption, d[0])
     if Random.rand < ratio
+      role = RoleProgress.new(o,r,d)
       return agent.change_role(role)
     end
-    nil
+    false
   end
   
   # Draws if draw is on.

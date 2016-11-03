@@ -15,7 +15,7 @@ class WeightedRandom
     else
       a = Random.rand
       if a < 0.5
-        if r1 < b
+        if r1 > b
           return Random.rand((r1-b).to_f)+b
         else
           return b
