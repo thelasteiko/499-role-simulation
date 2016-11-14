@@ -37,11 +37,13 @@ require 'fox16'
 include Fox
 
 #How many milliseconds the loop should take to run.
-$MS_PER_FRAME = 0.001
+$MS_PER_FRAME = 0.01
 #Set this to true to display the debug window.
 $DEBUG = true
-#Set this to true to save statistics and comments to file.
+#Set this to true to save comments to file.
 $LOG = true
+#Set this to true for tracking performance.
+$PERFORMANCE = true
 
 #Game objects do all the heavy lifting in the game.
 #If there's something to see there's a game object
@@ -310,16 +312,18 @@ class LittleGame
         lasttick = (@time.to_f)
         @time = Time.now
         @tick = (@time.to_f)-lasttick
-        loop
+        #$FRAME.log(self,"run","#{@tick}")
+        loopy
     end
     # The guts and glory of the game loop.
     # This guy does all the heavy lifting.
-    def loop
+    def loopy
         input
-        while (@tick > $MS_PER_FRAME) do
+        loop do
             update
             @num_runs += 1
             @tick -= $MS_PER_FRAME
+            break if (@tick <= $MS_PER_FRAME)
         end
         graphics = FXDCWindow.new(@canvas)
         draw(graphics, @tick)
@@ -386,10 +390,11 @@ class LittleFrame < FXMainWindow
           @@console = FXText.new(debugframe, opts: TEXT_READONLY|TEXT_WORDWRAP|TEXT_AUTOSCROLL|LAYOUT_FILL_X)
           @@console.setText("Starting...\n")
         end
+        if $PERFORMANCE
+          @@performance_log = LittleLog::Performance.new
+        end
         if $LOG
-          @@logger = LittleLogger.new
-          @@logger.set(:date, Time.now)
-          @@logger.start(:run)
+          @@debug_log = LittleLog::Debug.new
         end        
         @canvas.backColor = Fox.FXRGB(0, 0, 0)
         self.connect(SEL_CLOSE, method(:on_close))
@@ -401,9 +406,10 @@ class LittleFrame < FXMainWindow
       game.canvas = @canvas
       @game = game
       @app.create
-      @app.addTimeout($MS_PER_FRAME * 1000.0, :repeat => true) do
-        if $LOG
-          @@logger.inc(:run)
+      #@app.addTimeout($MS_PER_FRAME * 1000.0, :repeat => true) do
+      @chore = @app.addChore(:repeat => true) do |sender, selector, data|
+        if $PERFORMANCE
+          @@performance_log.inc(:runs)
         end
         begin
           @game.run
@@ -411,9 +417,6 @@ class LittleFrame < FXMainWindow
           @game.end_game = true
           $FRAME.log(1, "Frame:run:An error occured; " + @game.to_s, true)
         end
-        #Messages can be logged by using this command
-        #anywhere in the running game.
-        #$FRAME.log(0, "Game is running")
       end
       show(PLACEMENT_SCREEN)
       @app.run
@@ -431,24 +434,17 @@ class LittleFrame < FXMainWindow
     # @param message [String] is the message to pint to the console.
     # @param exit [true, false] is the optional parameter to signal
     #                          the application to close.
-    def log (id=0, message="test", exit=false)
+    def log (sender, method, note="test", exit=false)
       if @@console
         time = Time.now
-        @@console.appendText("#{time}: #{id}: #{message}\n")
+        @@console.appendText("#{time}:#{sender.class.name}:#{method}:#{note}\n")
       end
       if $LOG
-        logtofile(self,"log",message)
+        @@debug_log.log(sender,method,note)
       end
       if exit
         on_close(self,nil,:error)
       end
-    end
-    # Adds a line to the log file.
-    # @param sender [Object] is the object that made the request.
-    # @param method [String] is the method name this was called from.
-    # @param note [String] is the note to save to the log file.
-    def logtofile(sender, method="", note="")
-      @@logger.logtofile(sender, method, note) if @@logger
     end
     def logger
       @@logger
@@ -456,8 +452,11 @@ class LittleFrame < FXMainWindow
     # Overwrite exiting so that the log file can be saved
     # and any cleanup operations can be performed.
     def on_close(sender, selector, event)
-      if $LOG
-        @@logger.save
+      if $PERFORMANCE
+        @@performance_log.save
+      end
+      if @chore and getApp().hasChore?(@chore)
+        getApp().removeChore(@chore)
       end
       getApp().exit(0)
     end

@@ -181,7 +181,7 @@ class Agent < GameObject
     if ret[:shortfall] >= @tolerance
       #$FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
       @motivation -= (ret[:shortfall] * 0.01)
-      $FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
+      $FRAME.log(self,"update", "Shortfall: #{ret[:shortfall]} : #{@motivation}")
     end
     if role.role_name != @desired_role and ret[:shortfall] > 0
       @motivation -= (ret[:shortfall] *
@@ -200,7 +200,7 @@ class Agent < GameObject
     role.update(t)
     b = role.upgrade?(max_prof)
     if b
-      $FRAME.log(3, "#{@serial_number} upgraded to #{role.proficiency}")
+      $FRAME.log(self,"update", "#{@serial_number} upgraded to #{role.proficiency}")
     end
     if b and role.proficiency > 0
       trainers[role.office][role.proficiency-1] += 1

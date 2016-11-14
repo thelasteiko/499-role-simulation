@@ -17,13 +17,6 @@ module Equations
     "professional" => 0.8,
     "formal" =>       1.0
   }
-  # The minimum requirement for training and output.
-  TOLERANCE = 1
-  # Compares tolerance to the available resources.
-  def Equations.basic_tolerance(r)
-    return (r["food"] >= TOLERANCE and
-        r["shelter"] >= TOLERANCE)
-  end
   # Consumes resources and produces a ratio for training.
   # @param r [Hash] a listing of available resources.
   # @param trainers [FixNum] the number of trainers available.
@@ -53,14 +46,6 @@ module Equations
     ratio += c["security"] == 0 ? 0.0 : (r["security"]/c["security"]) * WEIGHT["security"]
     ratio *= (motivation + proficiency + (r["audit"]  * WEIGHT["audit"]))
     ratio *= 0.1
-  end
-  
-  def Equations.cross_train
-    #TODO
-  end
-  
-  def Equations.acquire_agent(r)
-    #TODO
   end
   # Consumes resources.
   # @param r [Hash] the overall resources available.

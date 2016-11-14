@@ -25,10 +25,10 @@ class Unit < GameObject
         if Organization.preferences["reassignment_start"] <= @game.num_runs and
             not j.remove and j.role.proficiency > 0 and
             j.motivation <= Organization.preferences["motivation"]
-          $FRAME.log(8, "Retraining #{j.to_s}")
+          $FRAME.log(self,"update", "Retraining #{j.to_s}")
           j.retrained = @game.scene.retrain(j)
           if j.retrained
-            $FRAME.log(8, "Retrained #{j.to_s}")
+            $FRAME.log(self,"update", "Retrained #{j.to_s}")
             i.push(j)
           end
         end
@@ -41,10 +41,10 @@ class Unit < GameObject
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
-          #TODO I need to do this for each role
+          @game.scene.total_stat.dec("#{j.role.role_name}_from")
           j.remove_trainer(trainers)
-          $FRAME.log(6,"#{j.serial_number} died at #{j.months}/#{j.months_total}.")
-          #$FRAME.log(6, "Agents left #{@game.scene.current_agents}")
+          $FRAME.log(self,"update",
+              "#{j.serial_number} died at #{j.months}/#{j.months_total}.")
           true
         else
           false
@@ -71,6 +71,15 @@ class Unit < GameObject
     agent.group = self
     true
   end
+  
+  def remove_agent(role)
+    if has?(role)
+      @agents[role][0].remove = true
+      true
+    end
+    false
+  end
+  
   def to_s
     text = "#{@unit_serial}{"
     @agents.each_pair do |k,v|
@@ -95,7 +104,7 @@ class UnitGroup < Group
       @entities.each {|i| i.update(resources, new_resources, trainers)}
       @entities.delete_if do |i|
         if i.remove
-          $FRAME.log(6, "Unit #{i.unit_serial} died with #{i.to_s}")
+          $FRAME.log(self,"update", "Unit #{i.unit_serial} died with #{i.to_s}")
           true
         end
       end

@@ -1,7 +1,6 @@
 #!/usr/bin/env ruby
 =begin
 An Agent-based simulation using FXRuby to run the simulation loop.
-
 =end
 
 require_relative 'littleengine'
@@ -17,8 +16,10 @@ Manages distribution of resources to various units.
     "ojt","professional","formal"]
 =end
 class Organization < Scene
-  # @return [FixNum] the total or max amount of agents.
+  # @!attribute [rw] total_agents
+  #   @return [FixNum] the total or max amount of agents.
   attr_accessor :total_agents
+  # @!attribute [rw] current_agents
   # @return [FixNum] the current number of agents.
   attr_accessor :current_agents
   # @return [FixNum] the total number of units created.
@@ -29,6 +30,7 @@ class Organization < Scene
   attr_accessor :trainers
   attr_accessor :retrainees
   attr_accessor :consumption
+  attr_accessor :total_stat
   def initialize (game,param)
     super
     #read file things
@@ -37,6 +39,7 @@ class Organization < Scene
     @@default_data = JSON.parse(File.read('start.json'))
     @total_agents = 0
     @current_agents = 0
+    @cap = 70
     @trainers = {
       "service"         =>  [0,0,0],
       "administration"  =>  [0,0,0],
@@ -44,20 +47,78 @@ class Organization < Scene
       "training"        =>  [0,0,0]
     }
     @groups[:units] = UnitGroup.new(game, self)
-    #@groups[:retrain] = RetrainGroup.new(game, self)
-    @total_units = 1;
+    @total_units = 1
     push(:units, Unit.new(game,:units,"U0",
         @@default_data["role_ratios"]))
     @retrainees = []
     @consumption = Hash.new
+    type = "#{@@preferences["priority"]}"
+    a = @@preferences["reassignment_levels"]
+    type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
+    @resource_stat = LittleLog::Statistical.new("resource",
+        type: type,
+        run: 0,
+        "food_needed" =>  0,
+        "food_used" =>    0,
+        "shelter_needed" => 0,
+        "shelter_used" =>   0,
+        "health_needed" =>  0,
+        "health_used" =>    0,
+        "acquisition_needed" => 0,
+        "acquisition_used" =>   0,
+        "role_needed" =>  0,
+        "role_used" =>    0,
+        "audit_needed" => 0,
+        "audit_used" =>   0,
+        "equipment_needed" => 0,
+        "equipment_used" =>   0,
+        "security_needed" =>  0,
+        "security_used" =>    0,
+        "data_needed" =>  0,
+        "data_used" =>    0,
+        "ojt_needed" => 0,
+        "ojt_used" =>   0,
+        "professional_needed" =>  0,
+        "professional_used" =>    0,
+        "formal_needed" =>  0,
+        "formal_used" =>    0)
+    @retrain_stat = LittleLog::Statistical.new("retrain",
+        type: type,
+        run:  0,
+        attempts: 0,
+        successes:  0)
+    @total_stat = LittleLog::Statistical.new("total",
+        type: type,
+        run: 0,
+        "food_orig" => 0,"food_from" => 0,"food_to" => 0,
+        "shelter_orig" =>  0,
+        "shelter_from" =>  0,"shelter_to" =>  0,
+        "health_orig" =>   0,
+        "health_from" =>   0,"health_to" =>   0,
+        "acquisition_orig" =>  0,
+        "acquisition_from" =>  0,
+        "acquisition_to" =>  0,
+        "role_orig" => 0,"role_from" => 0,"role_to" => 0,
+        "audit_orig" =>  0,"audit_from" =>  0,"audit_to" =>  0,
+        "equipment_orig" =>  0,
+        "equipment_from" =>  0,
+        "equipment_to" =>  0,
+        "security_orig" => 0,
+        "security_from" => 0,
+        "security_to" => 0,
+        "data_orig" => 0,"data_from" => 0,"data_to" => 0,
+        "ojt_orig" =>  0,"ojt_from" =>  0,"ojt_to" =>  0,
+        "professional_orig" => 0,
+        "professional_from" => 0,
+        "professional_to" => 0,
+        "formal_orig" => 0,"formal_from" => 0,"formal_to" => 0)
   end
   # Loads base data to start the simulation with.
   # @see Scene::load
   def load (app)
-    #$FRAME.log(0,"Organization::load::Loading objects.")
     #create an office for each role
     @resources = Organization.create_resource_list(
-        50,50,50,50,50,50,50,50,50,50,50,50
+        150,150,150,150,150,150,150,150,150,150,150,150
     )
     @old_resources = @resources
     @@default_data["org_consumption"].each do |k,v|
@@ -71,21 +132,24 @@ class Organization < Scene
     for i in 0...@@preferences["start_agents"]
       sn = @total_agents
       r = @@role_data["roles"][i % 12] #name of the role
-      o = @@role_data["offices"][((i % 12) /3).to_i] #name of the office
-      d = @@role_data[o][r] #data for the role
-      t = 3 #proficiency level
       params = parse_default
+      n = Random.rand
+      if n < @@preferences["satisfaction"]
+        r = @@role_data["roles"][params["desired_role"]]
+      end
+      o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
+      d = @@role_data[o][r] #data for the role
       a = Agent.new(@game,:units,sn,o,r,d,params)
-      a.role.proficiency = t
+      a.months = a.months_total * Random.rand
+      a.role.proficiency = Random.rand(4)
       add_agent(a)
       @total_agents += 1
       @current_agents += 1
+      @total_stat.inc("#{r}_orig")
+      @total_stat.inc(:total_agents)
     end
     #set statistics
-    if $LOG
-      $FRAME.logger.set(:agents_created, @total_agents)
-      $FRAME.logger.set(:units_created, @total_units)
-    end
+    $FRAME.log(self,"load","Loaded agents #{@current_agents}")
     super
   end
   
@@ -94,22 +158,33 @@ class Organization < Scene
   def add_agent (agent=nil)
     if not agent
       sn = @total_agents
-      r = priority_need
+      params = parse_default#(r)
+      if Random.rand < @@preferences["pcs"]
+        r = @@role_data["roles"][params["desired_role"]]
+        months = Random.rand * params["months_total"]
+        proficiency = Random.rand(4)
+        school = 0
+      else
+        r = priority_need
+        months = 0
+        proficiency = 0
+      end
       o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
       d = @@role_data[o][r]
-      params = parse_default#(r)
       agent = Agent.new(@game,:units,sn,o,r,d,params)
+      agent.months = months
+      agent.role.proficiency = proficiency
       ratio = Equations.consume_acquire(@resources,
-          @consumption, d[0])
-      n = Random.rand
-      if n > ratio
-        $FRAME.log(3, "Failed to add #{n}>#{ratio}.")
+          @consumption, proficiency == 0 ? d[0] : 0)
+      if Random.rand > ratio
+        $FRAME.log(self,"add_agent", "Failed to add #{sn}.")
         return nil
       end
       @total_agents += 1
       @current_agents += 1
-      $FRAME.logger.inc(:agents_created)
-      $FRAME.log(2, "Created #{sn}")
+      @total_stat.inc("#{r}_orig")
+      #@total_stat.inc(:total_agents)
+      #$FRAME.log(self,"add_agent", "Created #{sn}")
     end
     u = nil #get last unit
     n = @groups[:units].size-1
@@ -125,14 +200,27 @@ class Organization < Scene
           @@default_data["role_ratios"])
       push(:units,u)
       @total_units += 1
-      $FRAME.logger.inc(:units_created)
+      #@total_stat.inc(:total_units)
       b = u.add_agent(agent)
     end
     if b
-      #$FRAME.log(6,"Added #{agent.serial_number} to #{u.to_s}")
+      $FRAME.log(self,"add_agent","Added #{agent.serial_number} to #{u.unit_serial}")
     end
     if agent.role.proficiency > 0
       @trainers[agent.role.office][agent.role.proficiency-1] += 1
+    end
+  end
+  
+  def remove_agent
+    role = least_need
+    u = nil #get last unit
+    n = 0
+    u = @groups[:units][n]
+    b = u ? u.remove_agent(role) : false
+    while n < @groups[:units].size and not b
+      u = @groups[:units][n]
+      n += 1
+      b = u.remove_agent(role)
     end
   end
   
@@ -196,18 +284,16 @@ class Organization < Scene
   # This is where we need to distribute resources.
   def update
     return nil if @game.end_game
-    $FRAME.log(0, brief)
-    $FRAME.log(0, "IN:#{@resources}")
+    $FRAME.log(self,"update", brief)
+    $FRAME.log(self,"update", "IN:#{@resources}")
     if @@preferences["iterations"] == @game.num_runs || @current_agents < 5
       @game.end_game = true
-      $FRAME.log(0, to_s)
+      $FRAME.log(self,"EOG", to_s)
       return nil
     end
-    if $LOG
-      old = {} #for updating the log
-      @resources.each do |k,v|
-        old[k] = v
-      end
+    old = {} #for updating the log
+    @resources.each do |k,v|
+      old[k] = v
     end
     while not @retrainees.empty?
       add_agent(@retrainees.pop)
@@ -222,27 +308,33 @@ class Organization < Scene
         v.update
       end
     end
-    if @current_agents < @@preferences["max_agents"]
+    if @current_agents < @cap
       add_agent
+    else
+      remove_agent
     end
-    $FRAME.log(0, "R:#{@resources}")
-    if $LOG #track resource use
-      @resources.each do |k,v|
-        #difference b/t used and needed
-        $FRAME.logger.add("#{k}_needed", old[k] - v) #needed
-        v < 0 ? n = old[k] : n = old[k] - v
-        $FRAME.logger.add("#{k}_used", n) #actual use
-      end
+    rand = Random.rand(@@preferences["cap_modifier"])
+    @cap += (rand * Random.rand < 0.5 ? 1 : -1)
+    $FRAME.log(self,"update", "R:#{@resources}")
+    #track resource use
+    @resources.each do |k,v|
+      #difference b/t used and needed
+      @resource_stat.add("#{k}_needed", old[k] - v)
+      v < 0 ? n = old[k] : n = old[k] - v
+      @resource_stat.add("#{k}_used", n) #actual use
     end
+    @resource_stat.save.inc(:run).reset([:run,:type])
+    @retrain_stat.save.inc(:run).reset([:run, :type])
+    @total_stat.save.inc(:run).reset([:run, :type])
     @old_resources = @resources
     @resources = nr
-    #@@preferences["iterations"] -= 1
   end
   
   # Changes the role of an agent based on the set parameters,
   # agent desire and organization needs.
   # @param agent [Agent] is the agent to change the role of.
   def retrain(agent)
+    @retrain_stat.inc(:attempts)
     #check preferences for what proficiency level
     #they can change roles at
     if @@preferences["reassignment_levels"][agent.role.proficiency] == 0
@@ -302,7 +394,14 @@ class Organization < Scene
     ratio = Equations.consume_retrain(@resources, @consumption, d[0])
     if Random.rand < ratio
       role = RoleProgress.new(o,r,d)
-      return agent.change_role(role)
+      oldrole = agent.role.role_name
+      b = agent.change_role(role)
+      if b
+        @total_stat.inc("#{oldrole}_from")
+        @retrain_stat.inc(:successes)
+        @total_stat.inc("#{r}_to")
+        return b
+      end
     end
     false
   end
@@ -310,6 +409,8 @@ class Organization < Scene
   # Draws if draw is on.
   # @see LittleGame::draw
   def draw (graphics, tick)
+    #$FRAME.log(self,"draw","#{tick}")
+    #@retrain_stat.set(:runtime, tick)
     super if @@preferences[:draw] == 1
   end
   def to_s
@@ -322,7 +423,7 @@ class Organization < Scene
     text += "\n}\nUnits{"
     g = @groups[:units]
     for i in 0...g.size
-      text += "\n\t#{g[i].brief}"
+      text += "\n\t#{g[i].to_s}"
     end
     text += "\n}"
     return text
@@ -334,16 +435,9 @@ class Organization < Scene
         "U:#{@groups[:units].size}/#{@total_units}}"
   end
   def on_close
-    if $LOG
-      $FRAME.logger.set(:agents_current, @current_agents)
-      $FRAME.logger.set(:units_current, @groups[:units].size)
-      #track resource use as well, average resource use per run
-      #avg = resources used / runs
-      @resources.each do |k,v|
-        $FRAME.logger.avg("#{k}_needed")
-        $FRAME.logger.avg("#{k}_used")
-      end
-    end
+    #@total_stat.set(:agents_current, @current_agents)
+    #@total_stat.set(:units_current, @groups[:units].size)
+    #@total_stat.save
   end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.

@@ -1,12 +1,14 @@
 {
   "iterations": 250,
-  "reassignment_start": 10,
+  "reassignment_start": 3,
   "draw":       0,
   "verbose":    1,
-  "start_agents": 12,
-  "max_agents": 70,
-  "priority":   "compromise",
+  "start_agents": 70,
+  "cap_modifier": 3,
+  "priority":   "combination",
   "motivation": 0.5,
-  "motivation_multiplier": 0.001,
+  "motivation_multiplier": 0.01,
+  "satisfaction":   0.6,
+  "pcs":  0.1,
   "reassignment_levels": [0,1,1,1]
 }
