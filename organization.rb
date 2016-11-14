@@ -31,15 +31,19 @@ class Organization < Scene
   attr_accessor :retrainees
   attr_accessor :consumption
   attr_accessor :total_stat
+  attr_accessor :num_runs
+  attr_accessor :end_run
   def initialize (game,param)
     super
     #read file things
     @@preferences = JSON.parse(File.read('pref.json'))
     @@role_data = JSON.parse(File.read('roles.json'))
-    @@default_data = JSON.parse(File.read('start.json'))
+    @@default_data = JSON.parse(File.read('default.json'))
+    @@control_data = param
     @total_agents = 0
     @current_agents = 0
     @cap = 70
+    @end_run = false
     @trainers = {
       "service"         =>  [0,0,0],
       "administration"  =>  [0,0,0],
@@ -52,11 +56,11 @@ class Organization < Scene
         @@default_data["role_ratios"]))
     @retrainees = []
     @consumption = Hash.new
-    type = "#{@@preferences["priority"]}"
-    a = @@preferences["reassignment_levels"]
-    type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
+    @type = "#{@@control_data["priority"]}"
+    a = @@control_data["reassignment_level"]
+    @type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
     @resource_stat = LittleLog::Statistical.new("resource",
-        type: type,
+        type: @type,
         run: 0,
         "food_needed" =>  0,
         "food_used" =>    0,
@@ -83,12 +87,12 @@ class Organization < Scene
         "formal_needed" =>  0,
         "formal_used" =>    0)
     @retrain_stat = LittleLog::Statistical.new("retrain",
-        type: type,
+        type: @type,
         run:  0,
         attempts: 0,
         successes:  0)
     @total_stat = LittleLog::Statistical.new("total",
-        type: type,
+        type: @type,
         run: 0,
         "food_orig" => 0,"food_from" => 0,"food_to" => 0,
         "shelter_orig" =>  0,
@@ -116,6 +120,7 @@ class Organization < Scene
   # Loads base data to start the simulation with.
   # @see Scene::load
   def load (app)
+    $FRAME.log(self,"load","Starting run #{@type}")
     #create an office for each role
     @resources = Organization.create_resource_list(
         150,150,150,150,150,150,150,150,150,150,150,150
@@ -150,6 +155,7 @@ class Organization < Scene
     end
     #set statistics
     $FRAME.log(self,"load","Loaded agents #{@current_agents}")
+    @num_runs = 0
     super
   end
   
@@ -283,11 +289,11 @@ class Organization < Scene
   
   # This is where we need to distribute resources.
   def update
-    return nil if @game.end_game
+    return nil if @end_run
     $FRAME.log(self,"update", brief)
     $FRAME.log(self,"update", "IN:#{@resources}")
-    if @@preferences["iterations"] == @game.num_runs || @current_agents < 5
-      @game.end_game = true
+    if @@preferences["iterations"] == @num_runs || @current_agents < 5
+      @end_run = true
       $FRAME.log(self,"EOG", to_s)
       return nil
     end
@@ -328,6 +334,7 @@ class Organization < Scene
     @total_stat.save.inc(:run).reset([:run, :type])
     @old_resources = @resources
     @resources = nr
+    @num_runs += 1
   end
   
   # Changes the role of an agent based on the set parameters,
@@ -337,14 +344,14 @@ class Organization < Scene
     @retrain_stat.inc(:attempts)
     #check preferences for what proficiency level
     #they can change roles at
-    if @@preferences["reassignment_levels"][agent.role.proficiency] == 0
+    if @@control_data["reassignment_level"][agent.role.proficiency] == 0
       return false
     end
     #$FRAME.log(9, "Retraining #{agent.serial_number}")
-    if @@preferences["priority"] == "organization"
+    if @@control_data["priority"] == "organization"
       #the organization decides where they go
       r = priority_need
-    elsif @@preferences["priority"] == "agent"
+    elsif @@control_data["priority"] == "agent"
       #the agent decides
       r = agent.desired_role
     else
@@ -429,7 +436,7 @@ class Organization < Scene
     return text
   end
   def brief
-    "I:#{@game.num_runs}/#{@@preferences["iterations"]}" +
+    "I:#{@num_runs}/#{@@preferences["iterations"]}" +
         "{A:#{@current_agents}/#{@total_agents}," +
         "R:#{@retrainees.size}," +
         "U:#{@groups[:units].size}/#{@total_units}}"
@@ -465,6 +472,9 @@ class Organization < Scene
   end
   def self.role_data
     @@role_data
+  end
+  def self.control_data
+    @@control_data
   end
 end
 
