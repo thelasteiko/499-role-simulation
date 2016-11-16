@@ -100,7 +100,7 @@ class Agent < GameObject
       @consumption = Organization.create_resource_list(
           1,1,1,1,1,1,1,1,1,1,1,1)
     end
-    @desired_role = Organization.role_data["roles"][params["desired_role"].to_i]
+    @desired_role = SimControl.role_data["roles"][params["desired_role"].to_i]
     #$FRAME.log(1, "#{@desired_role}")
     @months = 0
     @retrained = false
@@ -137,16 +137,16 @@ class Agent < GameObject
       @roles.push(p)
     end
     if role.role_name == o
-      if @motivation < Organization.preferences["motivation"] and
+      if @motivation < SimControl.preferences["motivation"] and
           o == @desired_role
         @remove = true
       end
       return false
     end
     @months -= 36
-    a = Organization.default_data["default_agent"]["motivation"]
+    a = SimControl.default_data["default_agent"]["motivation"]
     @motivation = WeightedRandom.rand(0.5,a[2],a[3],a[4],a[5])
-    a = Organization.default_data["default_agent"]["consumption"]["ojt"]
+    a = SimControl.default_data["default_agent"]["consumption"]["ojt"]
     @consumption["ojt"] = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
     if role.role_name == @desired_role
       @motivation *= 1.5
@@ -185,7 +185,7 @@ class Agent < GameObject
     end
     if role.role_name != @desired_role and ret[:shortfall] > 0
       @motivation -= (ret[:shortfall] *
-          Organization.preferences["motivation_multiplier"])
+          SimControl.preferences["motivation_multiplier"])
     end
     o = Equations.output(ret, @consumption, @motivation, role.proficiency)
     #$FRAME.log(3, "#{@serial_number}:#{o}")

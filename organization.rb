@@ -36,9 +36,6 @@ class Organization < Scene
   def initialize (game,param)
     super
     #read file things
-    @@preferences = JSON.parse(File.read('pref.json'))
-    @@role_data = JSON.parse(File.read('roles.json'))
-    @@default_data = JSON.parse(File.read('default.json'))
     @@control_data = param
     @total_agents = 0
     @current_agents = 0
@@ -126,7 +123,7 @@ class Organization < Scene
         150,150,150,150,150,150,150,150,150,150,150,150
     )
     @old_resources = @resources
-    @@default_data["org_consumption"].each do |k,v|
+    SimControl.default_data["org_consumption"].each do |k,v|
       if v[0] < 0
         a = WeightedRandom.rand(v[1],v[2],v[3],v[4],v[5])
       else
@@ -134,16 +131,16 @@ class Organization < Scene
       end
       @consumption[k] = a
     end
-    for i in 0...@@preferences["start_agents"]
+    for i in 0...SimControl.preferences["start_agents"]
       sn = @total_agents
-      r = @@role_data["roles"][i % 12] #name of the role
+      r = SimControl.role_data["roles"][i % 12] #name of the role
       params = parse_default
       n = Random.rand
-      if n < @@preferences["satisfaction"]
-        r = @@role_data["roles"][params["desired_role"]]
+      if n < SimControl.preferences["satisfaction"]
+        r = SimControl.role_data["roles"][params["desired_role"]]
       end
-      o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
-      d = @@role_data[o][r] #data for the role
+      o = SimControl.role_data["offices"][(SimControl.role_data["roles"].index(r)/3).to_i]
+      d = SimControl.role_data[o][r] #data for the role
       a = Agent.new(@game,:units,sn,o,r,d,params)
       a.months = a.months_total * Random.rand
       a.role.proficiency = Random.rand(4)
@@ -165,8 +162,8 @@ class Organization < Scene
     if not agent
       sn = @total_agents
       params = parse_default#(r)
-      if Random.rand < @@preferences["pcs"]
-        r = @@role_data["roles"][params["desired_role"]]
+      if Random.rand < SimControl.preferences["pcs"]
+        r = SimControl.role_data["roles"][params["desired_role"]]
         months = Random.rand * params["months_total"]
         proficiency = Random.rand(4)
         school = 0
@@ -175,8 +172,8 @@ class Organization < Scene
         months = 0
         proficiency = 0
       end
-      o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
-      d = @@role_data[o][r]
+      o = SimControl.role_data["offices"][(SimControl.role_data["roles"].index(r)/3).to_i]
+      d = SimControl.role_data[o][r]
       agent = Agent.new(@game,:units,sn,o,r,d,params)
       agent.months = months
       agent.role.proficiency = proficiency
@@ -203,7 +200,7 @@ class Organization < Scene
     end
     if n < 0 and not b
       u = Unit.new(@game, :units,"U#{@total_units}",
-          @@default_data["role_ratios"])
+          @game.default_data["role_ratios"])
       push(:units,u)
       @total_units += 1
       #@total_stat.inc(:total_units)
@@ -260,7 +257,7 @@ class Organization < Scene
   # Uses default data to create parameters for a new agent.
   # @param role [String] is the role to create for; default is "default".
   def parse_default(role="default")
-    agent_data = @@default_data["#{role}_agent"]
+    agent_data = SimControl.default_data["#{role}_agent"]
     #$FRAME.log(9, "Creating defaults...#{agent_data}")
     params = {}
     agent_data.each do |k,v|
@@ -292,7 +289,7 @@ class Organization < Scene
     return nil if @end_run
     $FRAME.log(self,"update", brief)
     $FRAME.log(self,"update", "IN:#{@resources}")
-    if @@preferences["iterations"] == @num_runs || @current_agents < 5
+    if SimControl.preferences["iterations"] == @num_runs || @current_agents < 5
       @end_run = true
       $FRAME.log(self,"EOG", to_s)
       return nil
@@ -319,7 +316,7 @@ class Organization < Scene
     else
       remove_agent
     end
-    rand = Random.rand(@@preferences["cap_modifier"])
+    rand = Random.rand(SimControl.preferences["cap_modifier"])
     @cap += (rand * Random.rand < 0.5 ? 1 : -1)
     $FRAME.log(self,"update", "R:#{@resources}")
     #track resource use
@@ -369,9 +366,9 @@ class Organization < Scene
       r1 = agent.desired_role
       r2 = priority_need
       #desired + needed
-      if @old_resources[r1] < @@default_data["resources"][r1]
+      if @old_resources[r1] < SimControl.default_data["resources"][r1]
         #desired + needed + not needed
-        if @old_resources[r0] >= @@default_data["resources"][r0]
+        if @old_resources[r0] >= SimControl.default_data["resources"][r0]
           #agent role change
           r = r1
         else #desired + needed + needed
@@ -380,15 +377,15 @@ class Organization < Scene
       #desired + not needed
       else
         #desired + not needed + not needed
-        if @old_resources[r0] >= @@default_data["resources"][r0]
+        if @old_resources[r0] >= SimControl.default_data["resources"][r0]
           r = r1
         end
       end
       if r == nil #has not chosen
         #not desired + needed
-        if @old_resources[r2] < @@default_data["resources"][r2]
+        if @old_resources[r2] < SimControl.default_data["resources"][r2]
           #not desired + needed + not needed
-          if @old_resources[r0] >= @@default_data["resources"][r0]
+          if @old_resources[r0] >= SimControl.default_data["resources"][r0]
             r = r2
           end #not desired + needed + needed
         #not desired + not needed
@@ -396,8 +393,8 @@ class Organization < Scene
       end
     end
     return false if r == nil
-    o = @@role_data["offices"][(@@role_data["roles"].index(r)/3).to_i]
-    d = @@role_data[o][r]
+    o = SimControl.role_data["offices"][(SimControl.role_data["roles"].index(r)/3).to_i]
+    d = SimControl.role_data[o][r]
     ratio = Equations.consume_retrain(@resources, @consumption, d[0])
     if Random.rand < ratio
       role = RoleProgress.new(o,r,d)
@@ -418,7 +415,7 @@ class Organization < Scene
   def draw (graphics, tick)
     #$FRAME.log(self,"draw","#{tick}")
     #@retrain_stat.set(:runtime, tick)
-    super if @@preferences[:draw] == 1
+    super if SimControl.preferences[:draw] == 1
   end
   def to_s
     text = "Agents:#{@current_agents}/#{@total_agents}," +
@@ -436,7 +433,7 @@ class Organization < Scene
     return text
   end
   def brief
-    "I:#{@num_runs}/#{@@preferences["iterations"]}" +
+    "I:#{@num_runs}/#{SimControl.preferences["iterations"]}" +
         "{A:#{@current_agents}/#{@total_agents}," +
         "R:#{@retrainees.size}," +
         "U:#{@groups[:units].size}/#{@total_units}}"
@@ -463,15 +460,6 @@ class Organization < Scene
     "professional" => k.to_f,
     "formal" =>       l.to_f
     }
-  end
-  def self.preferences
-    @@preferences
-  end
-  def self.default_data
-    @@default_data
-  end
-  def self.role_data
-    @@role_data
   end
   def self.control_data
     @@control_data

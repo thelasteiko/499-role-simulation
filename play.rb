@@ -5,6 +5,9 @@ require_relative 'organization'
 class SimControl < LittleGame
   def initialize
     #for each priority do ...
+    @@preferences = JSON.parse(File.read('pref.json'))
+    @@role_data = JSON.parse(File.read('roles.json'))
+    @@default_data = JSON.parse(File.read('default.json'))
     @run_param = JSON.parse(File.read('run_param.json'))
     @priority = 0
     @reassign = 0
@@ -47,7 +50,15 @@ class SimControl < LittleGame
       end
     end
     super
-    
+  end
+  def self.preferences
+    @@preferences
+  end
+  def self.default_data
+    @@default_data
+  end
+  def self.role_data
+    @@role_data
   end
 end
 

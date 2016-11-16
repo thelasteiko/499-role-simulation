@@ -22,9 +22,9 @@ class Unit < GameObject
       v.each do |j|
         j.update(resources, new_resources,
           trainers)
-        if Organization.preferences["reassignment_start"] <= @game.scene.num_runs and
+        if SimControl.preferences["reassignment_start"] <= @game.scene.num_runs and
             not j.remove and j.role.proficiency > 0 and
-            j.motivation <= Organization.preferences["motivation"]
+            j.motivation <= SimControl.preferences["motivation"]
           $FRAME.log(self,"update", "Retraining #{j.to_s}")
           j.retrained = @game.scene.retrain(j)
           if j.retrained
