@@ -8,7 +8,5 @@
   "motivation": 0.5,
   "motivation_multiplier": 0.01,
   "satisfaction":   0.6,
-  "pcs":  0.1,
-  "priority":   "combination",
-  "reassignment_levels": [0,1,1,1]
+  "pcs":  0.1
 }

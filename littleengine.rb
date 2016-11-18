@@ -380,14 +380,16 @@ class LittleFrame < FXMainWindow
         end
         super(app, "Game Frame", :width => w, :height => myh)
         @app = app #this is the main application
-        #@contents = FXVerticalFrame.new(self, LAYOUT_FILL_X|LAYOUT_FILL_Y)
-        @contents = FXVerticalFrame.new(self, LAYOUT_FILL_X)
-        @canvas = FXCanvas.new(@contents, :opts => LAYOUT_FILL_X|LAYOUT_FILL_Y|LAYOUT_TOP|LAYOUT_LEFT)
+        @contents = FXVerticalFrame.new(self, LAYOUT_FILL_X|LAYOUT_FILL_Y)
+        #@contents = FXVerticalFrame.new(self, LAYOUT_FILL_X)
+        #@canvas = FXCanvas.new(@contents, :opts => LAYOUT_FILL_X|LAYOUT_FILL_Y|LAYOUT_TOP|LAYOUT_LEFT)
+        @canvas = FXCanvas.new(@contents, :opts => LAYOUT_FILL_X|LAYOUT_TOP|LAYOUT_LEFT)
         if $DEBUG #create the console for debug messages
-          debugframe = FXVerticalFrame.new(@contents,:opts => FRAME_SUNKEN|LAYOUT_FILL_X|LAYOUT_TOP|LAYOUT_LEFT)
+          #debugframe = FXVerticalFrame.new(@contents,:opts => FRAME_SUNKEN|LAYOUT_FILL_X|LAYOUT_TOP|LAYOUT_LEFT)
+          debugframe = FXVerticalFrame.new(@contents,:opts => FRAME_SUNKEN|LAYOUT_FILL_X|LAYOUT_FILL_Y|LAYOUT_TOP|LAYOUT_LEFT)
           FXLabel.new(debugframe, "Console", nil, JUSTIFY_CENTER_X|LAYOUT_FILL_X)
           FXHorizontalSeparator.new(debugframe, SEPARATOR_RIDGE|LAYOUT_FILL_X)
-          @@console = FXText.new(debugframe, opts: TEXT_READONLY|TEXT_WORDWRAP|TEXT_AUTOSCROLL|LAYOUT_FILL_X)
+          @@console = FXText.new(debugframe, opts: TEXT_READONLY|TEXT_WORDWRAP|TEXT_AUTOSCROLL|LAYOUT_FILL_X|LAYOUT_FILL_Y)
           @@console.setText("Starting...\n")
         end
         if $PERFORMANCE

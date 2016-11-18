@@ -1,0 +1,45 @@
+16:49:08:0.026003: Organization.load: Starting run control0000
+16:49:08:0.030003: Fixnum.Frame:run:An error occured; time:2016-11-16 16:49:08 -0800, tick:0, EG:true
+Agents:0/0,Units:1
+Resource{
+	food:150.0
+	shelter:150.0
+	health:150.0
+	acquisition:150.0
+	role:150.0
+	audit:150.0
+	equipment:150.0
+	security:150.0
+	data:150.0
+	ojt:150.0
+	professional:150.0
+	formal:150.0
+}
+Trainers{{"service"=>[0, 0, 0], "administration"=>[0, 0, 0], "technical"=>[0, 0, 0], "training"=>[0, 0, 0]}
+}
+Units{
+	U0{
+}
+}: true
+16:49:08:0.036005: Fixnum.Frame:run:An error occured; time:2016-11-16 16:49:08 -0800, tick:0.03200697898864746, EG:true
+Agents:0/0,Units:1
+Resource{
+	food:150.0
+	shelter:150.0
+	health:150.0
+	acquisition:150.0
+	role:150.0
+	audit:150.0
+	equipment:150.0
+	security:150.0
+	data:150.0
+	ojt:150.0
+	professional:150.0
+	formal:150.0
+}
+Trainers{{"service"=>[0, 0, 0], "administration"=>[0, 0, 0], "technical"=>[0, 0, 0], "training"=>[0, 0, 0]}
+}
+Units{
+	U0{
+}
+}: true

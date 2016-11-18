@@ -20,9 +20,10 @@ class Organization < Scene
   #   @return [FixNum] the total or max amount of agents.
   attr_accessor :total_agents
   # @!attribute [rw] current_agents
-  # @return [FixNum] the current number of agents.
+  #   @return [FixNum] the current number of agents.
   attr_accessor :current_agents
-  # @return [FixNum] the total number of units created.
+  # @!attribute [rw] total_units
+  #   @return [FixNum] the total number of units created.
   attr_accessor :total_units
   # @return [Hash] the resources available.
   attr_accessor :resources
@@ -50,7 +51,7 @@ class Organization < Scene
     @groups[:units] = UnitGroup.new(game, self)
     @total_units = 1
     push(:units, Unit.new(game,:units,"U0",
-        @@default_data["role_ratios"]))
+        SimControl.default_data["role_ratios"]))
     @retrainees = []
     @consumption = Hash.new
     @type = "#{@@control_data["priority"]}"
@@ -200,7 +201,7 @@ class Organization < Scene
     end
     if n < 0 and not b
       u = Unit.new(@game, :units,"U#{@total_units}",
-          @game.default_data["role_ratios"])
+          SimControl.default_data["role_ratios"])
       push(:units,u)
       @total_units += 1
       #@total_stat.inc(:total_units)

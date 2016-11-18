@@ -35,6 +35,7 @@ class SimControl < LittleGame
     else
       r = @run_param["reassignment_level"][@reassign]
     end
+    return nil if @priority >= @run_param["priority"].size
     return {"priority" => @run_param["priority"][@priority],
         "reassignment_level" => r}
   end
