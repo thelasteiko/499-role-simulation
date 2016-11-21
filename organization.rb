@@ -114,10 +114,12 @@ class Organization < Scene
         "professional_from" => 0,
         "professional_to" => 0,
         "formal_orig" => 0,"formal_from" => 0,"formal_to" => 0)
+    #puts "Created Org"
   end
   # Loads base data to start the simulation with.
   # @see Scene::load
   def load (app)
+    #puts "Loading..."
     $FRAME.log(self,"load","Starting run #{@type}")
     #create an office for each role
     @resources = Organization.create_resource_list(
@@ -302,8 +304,6 @@ class Organization < Scene
     while not @retrainees.empty?
       add_agent(@retrainees.pop)
     end
-    #determine need for basic things: food, shelter, equipment, data
-    #and what role needs to be created or retrained from/to
     nr = Organization.create_resource_list
     @groups.each do |k,v|
       if k == :units

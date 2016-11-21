@@ -39,9 +39,9 @@ include Fox
 #How many milliseconds the loop should take to run.
 $MS_PER_FRAME = 0.01
 #Set this to true to display the debug window.
-$DEBUG = true
+$DEBUG = false
 #Set this to true to save comments to file.
-$LOG = true
+$LOG = false
 #Set this to true for tracking performance.
 $PERFORMANCE = true
 
@@ -417,7 +417,12 @@ class LittleFrame < FXMainWindow
           @game.run
         rescue
           @game.end_game = true
-          $FRAME.log(1, "Frame:run:An error occured; " + @game.to_s, true)
+          if $LOG
+            $FRAME.log(1, "Frame:run:An error occured; " + @game.to_s, true)
+          else
+            puts "Frame:run:An error occured; "
+            on_close(self,nil,:error)
+          end
         end
       end
       show(PLACEMENT_SCREEN)
@@ -437,7 +442,7 @@ class LittleFrame < FXMainWindow
     # @param exit [true, false] is the optional parameter to signal
     #                          the application to close.
     def log (sender, method, note="test", exit=false)
-      if @@console
+      if $DEBUG
         time = Time.now
         @@console.appendText("#{time}:#{sender.class.name}:#{method}:#{note}\n")
       end

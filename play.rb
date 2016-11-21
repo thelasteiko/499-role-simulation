@@ -36,8 +36,10 @@ class SimControl < LittleGame
       r = @run_param["reassignment_level"][@reassign]
     end
     return nil if @priority >= @run_param["priority"].size
-    return {"priority" => @run_param["priority"][@priority],
+    h = {"priority" => @run_param["priority"][@priority],
         "reassignment_level" => r}
+    #puts h
+    return h
   end
   
   def run
@@ -52,6 +54,7 @@ class SimControl < LittleGame
     end
     super
   end
+  
   def self.preferences
     @@preferences
   end
