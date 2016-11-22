@@ -61,7 +61,14 @@ class RoleProgress
     end
     false
   end
-  
+  def ==(o)
+    if o.instance_of? self.class
+      return @role_name == o.role_name
+    elsif o.instance_of? String
+      return @role_name == o
+    end
+    return false
+  end
   def to_s
     "{#{@office}:#{@role_name}:#{@role_data}," +
       "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
@@ -82,9 +89,10 @@ class Agent < GameObject
   attr_accessor :months
   # @return [FixNum] agent life-span.
   attr_accessor :months_total
-  attr_accessor :desired_role
+  #attr_accessor :desired_role
   attr_accessor :remove
   attr_accessor :retrained
+  attr_accessor :desired_role_probability
   def initialize(game, group, serial_number,
       office, role_name, role_data, params={})
     super(game, group)
@@ -100,11 +108,14 @@ class Agent < GameObject
       @consumption = Organization.create_resource_list(
           1,1,1,1,1,1,1,1,1,1,1,1)
     end
+    #@desired_role = params["desired_role"] ? params["desired_role"] :
+    #    SimControl.role_data["roles"][params["desired_role"].to_i]
     @desired_role = SimControl.role_data["roles"][params["desired_role"].to_i]
-    #$FRAME.log(1, "#{@desired_role}")
+    #$FRAME.log(self, "initialize", "#{@desired_role}")
     @months = 0
     @retrained = false
     @remove = false
+    @desired_role_probability = 0.0
   end
   # Changes the role of an agent. If the agent has previously
   # held the role, it reverts to the previously held role.
@@ -219,6 +230,42 @@ class Agent < GameObject
         trainers[i.office][i.proficiency-1] -= 1
       end
     end
+  end
+  # Returns a role that the agent has not been assigned yet.
+  # This does not necessarily equal the one they will be
+  # most proficient in.
+  # @return [String] the name of a role.
+  def desired_role (test_data = ["food","shelter","health",
+    "equipment","security","data",
+    "acquisition","role","audit",
+    "ojt","professional","formal"])
+    #determine if the desired role will be chosen
+    if Random.rand < @desired_role_probability
+      $FRAME.log(self, "desired_role", "Request #{@desired_role}")
+      return @desired_role
+    end
+    #randomly choose a role from the list of roles
+    #where the role chosen is not in the role list
+    #r = Random.rand(12)
+    r = Random.rand(SimControl.role_data["roles"].length)
+    $FRAME.log(self, "desired_role", "#Trying #{r}")
+    n = 0
+    while @roles.include?(SimControl.role_data["roles"][r]) and
+        n < 12
+    #while @roles.include?(test_data[r])
+      #puts test_data[r]
+      #r = Random.rand(12)
+      r = Random.rand(SimControl.role_data["roles"].length)
+      $FRAME.log(self, "desired_role", "Trying #{r}")
+      n += 1
+    end
+    @desired_role_probability += Random.rand
+    ret = SimControl.role_data["roles"][r]
+    if ret == nil
+      return role.role_name
+    end
+    return ret
+    #return test_data[r]
   end
   def to_s
     text = "#{@serial_number}:#{@motivation}:#{@months}/#{@months_total}{"

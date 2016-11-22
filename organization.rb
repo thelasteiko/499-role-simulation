@@ -57,6 +57,7 @@ class Organization < Scene
     @type = "#{@@control_data["priority"]}"
     a = @@control_data["reassignment_level"]
     @type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
+=begin
     @resource_stat = LittleLog::Statistical.new("resource",
         type: @type,
         run: 0,
@@ -84,6 +85,34 @@ class Organization < Scene
         "professional_used" =>    0,
         "formal_needed" =>  0,
         "formal_used" =>    0)
+=end
+    @resource_stat = LittleLog::Statistical.new("resource",
+        type: @type,
+        run: 0,
+        "food_start" =>  0,
+        "food_end" =>  0,
+        "shelter_start" => 0,
+        "shelter_end" => 0,
+        "health_start" =>  0,
+        "health_end" =>  0,
+        "acquisition_start" => 0,
+        "acquisition_end" => 0,
+        "role_start" =>  0,
+        "role_end" =>  0,
+        "audit_start" => 0,
+        "audit_end" => 0,
+        "equipment_start" => 0,
+        "equipment_end" => 0,
+        "security_start" =>  0,
+        "security_end" =>  0,
+        "data_start" =>  0,
+        "data_end" =>  0,
+        "ojt_start" => 0,
+        "ojt_end" => 0,
+        "professional_start" =>  0,
+        "professional_end" =>  0,
+        "formal_start" =>  0,
+        "formal_end" =>  0)
     @retrain_stat = LittleLog::Statistical.new("retrain",
         type: @type,
         run:  0,
@@ -297,9 +326,10 @@ class Organization < Scene
       $FRAME.log(self,"EOG", to_s)
       return nil
     end
-    old = {} #for updating the log
+    #old = {} #for updating the log
     @resources.each do |k,v|
-      old[k] = v
+      #old[k] = v
+      @resource_stat.set("#{k}_start", v)
     end
     while not @retrainees.empty?
       add_agent(@retrainees.pop)
@@ -323,9 +353,10 @@ class Organization < Scene
     #track resource use
     @resources.each do |k,v|
       #difference b/t used and needed
-      @resource_stat.add("#{k}_needed", old[k] - v)
-      v < 0 ? n = old[k] : n = old[k] - v
-      @resource_stat.add("#{k}_used", n) #actual use
+      #@resource_stat.add("#{k}_needed", old[k] - v)
+      #v < 0 ? n = old[k] : n = old[k] - v
+      #@resource_stat.add("#{k}_used", n) #actual use
+      @resource_stat.set("#{k}_end", v)
     end
     @resource_stat.save.inc(:run).reset([:run,:type])
     @retrain_stat.save.inc(:run).reset([:run, :type])
@@ -365,6 +396,7 @@ class Organization < Scene
       #not needed + not desired + needed      = no  X
       r0 = agent.role.role_name
       r1 = agent.desired_role
+      $FRAME.log(self, "retrain", "Retrain to #{r1}?")
       r2 = priority_need
       #desired + needed
       if @old_resources[r1] < SimControl.default_data["resources"][r1]
@@ -393,7 +425,7 @@ class Organization < Scene
         end
       end
     end
-    return false if r == nil
+    return false if r == nil or not SimControl.role_data["roles"].include? r
     o = SimControl.role_data["offices"][(SimControl.role_data["roles"].index(r)/3).to_i]
     d = SimControl.role_data[o][r]
     ratio = Equations.consume_retrain(@resources, @consumption, d[0])
@@ -402,7 +434,7 @@ class Organization < Scene
       oldrole = agent.role.role_name
       b = agent.change_role(role)
       if b
-        @total_stat.inc("#{oldrole}_from")
+        @total_stat.dec("#{oldrole}_from")
         @retrain_stat.inc(:successes)
         @total_stat.inc("#{r}_to")
         return b
