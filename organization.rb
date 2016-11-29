@@ -319,20 +319,20 @@ class Organization < Scene
     rand = Random.rand(SimControl.preferences["cap_modifier"])
     @cap += (rand * Random.rand < 0.5 ? 1 : -1)
     $FRAME.log(self,"update", "R:#{@resources}")
-    #track resource use
+    @old_resources = @resources
+    @resources = nr
     @resources.each do |k,v|
+      need = v - @old_resources[k] == 0 ? 0.0 : v / (v - @old_resources[k])
+      @resources[k] += Equations.consume_audit(
+          @old_resources, @consumption, need) * v
+    end
+    #track resource use
+    @old_resources.each do |k,v|
       @resource_stat.set("#{k}_end", v)
     end
     @resource_stat.save.inc(:run).reset([:run,:type])
     @retrain_stat.save.inc(:run).reset([:run, :type])
     @total_stat.save.inc(:run).reset([:run, :type])
-    @old_resources = @resources
-    @resources = nr
-    @resources.each do |k,v|
-      need = v - @old_resources[k] == 0 ? 0.0 : v / v - @old_resources[k]
-      @resources[k] += Equations.consume_audit(
-          @old_resources, @consumption, need) * v
-    end
     @num_runs += 1
   end
   

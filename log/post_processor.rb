@@ -80,13 +80,13 @@ class PostProcessor
     File.open("parsed_#{filename}","a") do |f|
         for j in 0...current.length
           f.write("#{type},#{j},") #the run number
-          f.write(current[j].to_csv) #the data
+          f.write(current[j].to_csv) if current[j] != nil #the data
         end #did it for each run
     end #end of file
   end
 end
 
 #PostProcessor.parse("test.csv")
-PostProcessor.parse("retrain_20161127.csv")
-PostProcessor.parse("total_20161127.csv")
-#PostProcessor.parse("resource_20161127.csv")
+#PostProcessor.parse("retrain_20161127.csv")
+#PostProcessor.parse("total_20161128.csv")
+PostProcessor.parse("resource_20161128.csv")

@@ -36,16 +36,27 @@ module Equations
   # @param proficiency [Float] the level of proficiency an agent has.
   # @param c [Float] the rate of resource reduction.
   # @return [Float] a percentage of the output.
-  def Equations.output (r, c, motivation, proficiency)
-    return 0.0 if proficiency == 0
+  def Equations.output (r, c, motivation, role)
+    return 0.0 if role.proficiency == 0
+    proficiency = role.proficiency
+    if proficiency < 3
+      t_ratio = role.role_data[proficiency]
+      t_ratio = t_ratio == 0 ? 0.0 : (role.progress + role.months) / t_ratio
+    else
+      t_ratio = role.months * 0.06
+    end
+    #m(a+b+n+y+i)
     ratio = c["food"] == 0 ? 0.0 : (r["food"]/c["food"]) * WEIGHT["food"] * motivation
     ratio += c["shelter"] == 0 ? 0.0 : (r["shelter"]/c["shelter"]) * WEIGHT["shelter"] * motivation
+    #(m+p+g)(r[z]+r[o])
     re = c["equipment"] == 0 ? 0.0 : (r["equipment"]/c["equipment"]) * WEIGHT["equipment"]
-    re *= (motivation + proficiency)
+    re *= (motivation + proficiency + t_ratio)
     rd = c["data"] == 0 ? 0.0 : (r["data"]/c["data"]) * WEIGHT["data"]
-    rd *= (motivation + proficiency)
+    rd *= (motivation + proficiency + t_ratio)
+    #
     rh = c["health"] == 0 ? 0.0 : (r["health"]/c["health"]) * WEIGHT["health"] * motivation
     rs = c["security"] == 0 ? 0.0 : (r["security"]/c["security"]) * WEIGHT["security"] * motivation
+    rp = c["professional"] == 0 ? 0.0 : (r["professional"]/c["professional"]) * WEIGHT["professional"] * motivation
     return ratio + re + rd + rh + rs
   end
   # Consumes resources.
@@ -156,6 +167,9 @@ module Equations
     r["audit"] -= x
     ratio = c["audit"] == 0 ? 0.0 : (n["audit"]/c["audit"]) * WEIGHT["audit"]
     # need = provided / demand
-    ratio *= (need <= 1.0 and need > 0.0) ? (1.0 - need) : 0.0
+    if n <= 1.0 and need > 0.0
+      return ratio * (1.0 - need)
+    end
+    return 0.0
   end
 end

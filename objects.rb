@@ -74,7 +74,7 @@ class RoleProgress
   end
   def to_s
     "{#{@office}:#{@role_name}:#{@role_data}," +
-      "P:#{@proficiency},MOS:#{@months_current},T:#{@progress}}"
+      "P:#{@proficiency},MOS:#{@months},T:#{@progress}}"
   end
 end
 # Agents are the backbone of the simulation. They intake resources and
@@ -207,7 +207,7 @@ class Agent < GameObject
       @motivation -= (ret[:shortfall] *
           SimControl.preferences["motivation_multiplier"])
     end
-    o = Equations.output(ret, @consumption, @motivation, role.proficiency)
+    o = Equations.output(ret, @consumption, @motivation, role)
     #$FRAME.log(3, "#{@serial_number}:#{o}")
     new_resources[role.role_name] += @output * o
     #$FRAME.log(3, "#{new_resources}")
@@ -232,6 +232,7 @@ class Agent < GameObject
     end
     @months += 1
   end
+  
   def remove_trainer(trainers)
     @roles.each do |i|
       if trainers[i.office][i.proficiency-1] > 0 and

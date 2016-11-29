@@ -1,5 +1,5 @@
 {
-  "limit":  500,
+  "limit":  50,
   "priority":  [
     "control",
     "organization",

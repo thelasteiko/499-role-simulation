@@ -47,8 +47,8 @@ module LittleLog
     def initialize(qualifier="statistical",stat_list={})
       @stat_list = stat_list
       super()
-      @filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_#{@str_date}#{EXT}"
-      #@filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_20161127#{EXT}"
+      #@filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_#{@str_date}#{EXT}"
+      @filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_20161128#{EXT}"
       if not File.file?(@filename)
         File.new(@filename, 'w')
         File.open(@filename, 'w') do |f|
