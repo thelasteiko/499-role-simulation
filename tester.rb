@@ -2,9 +2,9 @@
 
 #require_relative 'littleengine'
 #require_relative 'objects'
-require 'json'
+#require 'json'
 
-
+=begin
 role_data = JSON.parse(File.read('roles.json'))
 
 puts role_data["roles"].length
@@ -18,3 +18,6 @@ puts role_data["roles"].index("role")
 for i in 0...100
   puts Random.rand(12)
 end
+=end
+
+IO.foreach("log/performance_20161125.csv") {|f| puts f}

@@ -25,6 +25,8 @@ class PostProcessor
       if i == 0 #get headers
         headers = csv.to_s
         puts "headers: #{headers}"
+      elsif i > 0 and csv[0] == 'type'
+        next
       else #not header? process line
         if types.empty?
           types.push(csv[0]) #next type added
@@ -85,6 +87,6 @@ class PostProcessor
 end
 
 #PostProcessor.parse("test.csv")
-PostProcessor.parse("retrain_20161120.csv")
-PostProcessor.parse("total_20161120.csv")
-PostProcessor.parse("resource_20161120.csv")
+PostProcessor.parse("retrain_20161127.csv")
+PostProcessor.parse("total_20161127.csv")
+#PostProcessor.parse("resource_20161127.csv")

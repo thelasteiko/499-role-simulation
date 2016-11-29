@@ -57,35 +57,6 @@ class Organization < Scene
     @type = "#{@@control_data["priority"]}"
     a = @@control_data["reassignment_level"]
     @type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
-=begin
-    @resource_stat = LittleLog::Statistical.new("resource",
-        type: @type,
-        run: 0,
-        "food_needed" =>  0,
-        "food_used" =>    0,
-        "shelter_needed" => 0,
-        "shelter_used" =>   0,
-        "health_needed" =>  0,
-        "health_used" =>    0,
-        "acquisition_needed" => 0,
-        "acquisition_used" =>   0,
-        "role_needed" =>  0,
-        "role_used" =>    0,
-        "audit_needed" => 0,
-        "audit_used" =>   0,
-        "equipment_needed" => 0,
-        "equipment_used" =>   0,
-        "security_needed" =>  0,
-        "security_used" =>    0,
-        "data_needed" =>  0,
-        "data_used" =>    0,
-        "ojt_needed" => 0,
-        "ojt_used" =>   0,
-        "professional_needed" =>  0,
-        "professional_used" =>    0,
-        "formal_needed" =>  0,
-        "formal_used" =>    0)
-=end
     @resource_stat = LittleLog::Statistical.new("resource",
         type: @type,
         run: 0,
@@ -326,9 +297,7 @@ class Organization < Scene
       $FRAME.log(self,"EOG", to_s)
       return nil
     end
-    #old = {} #for updating the log
     @resources.each do |k,v|
-      #old[k] = v
       @resource_stat.set("#{k}_start", v)
     end
     while not @retrainees.empty?
@@ -352,10 +321,6 @@ class Organization < Scene
     $FRAME.log(self,"update", "R:#{@resources}")
     #track resource use
     @resources.each do |k,v|
-      #difference b/t used and needed
-      #@resource_stat.add("#{k}_needed", old[k] - v)
-      #v < 0 ? n = old[k] : n = old[k] - v
-      #@resource_stat.add("#{k}_used", n) #actual use
       @resource_stat.set("#{k}_end", v)
     end
     @resource_stat.save.inc(:run).reset([:run,:type])
@@ -363,6 +328,11 @@ class Organization < Scene
     @total_stat.save.inc(:run).reset([:run, :type])
     @old_resources = @resources
     @resources = nr
+    @resources.each do |k,v|
+      need = v - @old_resources[k] == 0 ? 0.0 : v / v - @old_resources[k]
+      @resources[k] += Equations.consume_audit(
+          @old_resources, @consumption, need) * v
+    end
     @num_runs += 1
   end
   
@@ -396,7 +366,7 @@ class Organization < Scene
       #not needed + not desired + needed      = no  X
       r0 = agent.role.role_name
       r1 = agent.desired_role
-      $FRAME.log(self, "retrain", "Retrain to #{r1}?")
+      #$FRAME.log(self, "retrain", "Retrain to #{r1}?")
       r2 = priority_need
       #desired + needed
       if @old_resources[r1] < SimControl.default_data["resources"][r1]

@@ -12,6 +12,7 @@ class RoleProgress
   attr_accessor :proficiency
   # @return [FixNum] how many months in the current proficiency level.
   attr_accessor :months_current
+  attr_accessor :months
   # @return [FixNum] number of tasks completed.
   attr_accessor :progress
   # Creates an object to track the training progress of an agent.
@@ -22,6 +23,7 @@ class RoleProgress
     @role_data = role_data
     @proficiency = 0
     @months_current = 0
+    @months = 0
     @progress = 0.0
   end
   # Updates the training progress.
@@ -37,6 +39,7 @@ class RoleProgress
     end
     #$FRAME.log(5, to_s)
     @months_current += 1
+    @months += 1
   end
   # Determines if the agent is ready for upgrade to the next proficiency level.
   # @return [Boolean] true if they upgrade, false otherwise.
@@ -115,7 +118,7 @@ class Agent < GameObject
     @months = 0
     @retrained = false
     @remove = false
-    @desired_role_probability = 0.0
+    @desired_role_probability = params["d_prob"] ? params["d_prob"] : 0.0
   end
   # Changes the role of an agent. If the agent has previously
   # held the role, it reverts to the previously held role.
@@ -129,6 +132,7 @@ class Agent < GameObject
     a = []
     p = nil
     o = role.role_name
+    t = role.months
     @roles.each do |i|
       if i.office == r.office
         #$FRAME.log(7, "#{i.office}==#{r.office}")
@@ -154,6 +158,7 @@ class Agent < GameObject
       end
       return false
     end
+    #quickly changing roles increases stress
     @months -= 36
     a = SimControl.default_data["default_agent"]["motivation"]
     @motivation = WeightedRandom.rand(0.5,a[2],a[3],a[4],a[5])
@@ -161,6 +166,8 @@ class Agent < GameObject
     @consumption["ojt"] = WeightedRandom.rand(a[1],a[2],a[3],a[4],a[5])
     if role.role_name == @desired_role
       @motivation *= 1.5
+    elsif t <= 3
+      @motivation *= 0.5
     end
     return true
   end
@@ -191,10 +198,12 @@ class Agent < GameObject
     # Reduce motivation if there isn't enough resources.
     if ret[:shortfall] >= @tolerance
       #$FRAME.log(6, "Shortfall: #{ret[:shortfall]} : #{@motivation}")
-      @motivation -= (ret[:shortfall] * 0.01)
+      @motivation -= (ret[:shortfall] *
+          SimControl.preferences["motivation_multiplier"])
       $FRAME.log(self,"update", "Shortfall: #{ret[:shortfall]} : #{@motivation}")
-    end
-    if role.role_name != @desired_role and ret[:shortfall] > 0
+    elsif ret[:shortfall] <= 0
+      @motivation += SimControl.preferences["motivation_multiplier"]
+    elsif role.role_name != @desired_role and ret[:shortfall] > 0
       @motivation -= (ret[:shortfall] *
           SimControl.preferences["motivation_multiplier"])
     end
@@ -241,13 +250,20 @@ class Agent < GameObject
     "ojt","professional","formal"])
     #determine if the desired role will be chosen
     if Random.rand < @desired_role_probability
-      $FRAME.log(self, "desired_role", "Request #{@desired_role}")
+      #$FRAME.log(self, "desired_role", "Request #{@desired_role}")
       return @desired_role
+    end
+    min = 0
+    max = SimControl.role_data["roles"].length
+    if Random.rand < @desired_role_probability + 0.5
+      #get the location of the office
+      min = (SimControl.role_data["roles"].index(@desired_role)/3).to_i * 3
+      max = min+3
     end
     #randomly choose a role from the list of roles
     #where the role chosen is not in the role list
     #r = Random.rand(12)
-    r = Random.rand(SimControl.role_data["roles"].length)
+    r = Random.rand(max-min)+min
     $FRAME.log(self, "desired_role", "#Trying #{r}")
     n = 0
     while @roles.include?(SimControl.role_data["roles"][r]) and
@@ -255,8 +271,8 @@ class Agent < GameObject
     #while @roles.include?(test_data[r])
       #puts test_data[r]
       #r = Random.rand(12)
-      r = Random.rand(SimControl.role_data["roles"].length)
-      $FRAME.log(self, "desired_role", "Trying #{r}")
+      r = Random.rand(max-min)+min
+      #$FRAME.log(self, "desired_role", "Trying #{r}")
       n += 1
     end
     @desired_role_probability += Random.rand

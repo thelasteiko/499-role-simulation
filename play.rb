@@ -67,7 +67,7 @@ class SimControl < LittleGame
 end
 
 if __FILE__ == $0
-  $FRAME = LittleFrame.new(400, 300)
+  $FRAME = LittleFrame.new(800, 800)
   game = SimControl.new
   $FRAME.start(game)
 end

@@ -4,16 +4,16 @@ The equations used in the simulation.
 module Equations
   # Determines how much each resource affects the simulation.
   WEIGHT = {
-    "food" =>         2.0,
-    "shelter" =>      2.0,
+    "food" =>         1.2,
+    "shelter" =>      1.2,
     "health" =>       1.1,
     "acquisition" =>  1.0,
     "role" =>         1.0,
     "audit" =>        0.8,
-    "equipment" =>    2.0,
+    "equipment" =>    1.2,
     "security" =>     1.0,
-    "data" =>         2.0,
-    "ojt" =>          1.5,
+    "data" =>         1.2,
+    "ojt" =>          1.1,
     "professional" => 0.8,
     "formal" =>       1.0
   }
@@ -38,14 +38,15 @@ module Equations
   # @return [Float] a percentage of the output.
   def Equations.output (r, c, motivation, proficiency)
     return 0.0 if proficiency == 0
-    ratio = c["food"] == 0 ? 0.0 : (r["food"]/c["food"]) * WEIGHT["food"]
-    ratio += c["shelter"] == 0 ? 0.0 : (r["shelter"]/c["shelter"]) * WEIGHT["shelter"]
-    ratio += c["health"] == 0 ? 0.0 : (r["health"]/c["health"]) * WEIGHT["health"]
-    ratio += c["equipment"] == 0 ? 0.0 : (r["equipment"]/c["equipment"]) * WEIGHT["equipment"]
-    ratio += c["data"] == 0 ? 0.0 : (r["data"]/c["data"]) * WEIGHT["data"]
-    ratio += c["security"] == 0 ? 0.0 : (r["security"]/c["security"]) * WEIGHT["security"]
-    ratio *= (motivation + proficiency + (r["audit"]  * WEIGHT["audit"]))
-    ratio *= 0.1
+    ratio = c["food"] == 0 ? 0.0 : (r["food"]/c["food"]) * WEIGHT["food"] * motivation
+    ratio += c["shelter"] == 0 ? 0.0 : (r["shelter"]/c["shelter"]) * WEIGHT["shelter"] * motivation
+    re = c["equipment"] == 0 ? 0.0 : (r["equipment"]/c["equipment"]) * WEIGHT["equipment"]
+    re *= (motivation + proficiency)
+    rd = c["data"] == 0 ? 0.0 : (r["data"]/c["data"]) * WEIGHT["data"]
+    rd *= (motivation + proficiency)
+    rh = c["health"] == 0 ? 0.0 : (r["health"]/c["health"]) * WEIGHT["health"] * motivation
+    rs = c["security"] == 0 ? 0.0 : (r["security"]/c["security"]) * WEIGHT["security"] * motivation
+    return ratio + re + rd + rh + rs
   end
   # Consumes resources.
   # @param r [Hash] the overall resources available.
@@ -65,7 +66,7 @@ module Equations
         elsif proficiency > 0
           x = (x*2.5) / proficiency
         end
-      elsif k == "role" or k == "formal" or k == "acquisition"
+      elsif k == "role" or k == "formal" or k == "acquisition" or k == "audit"
         x = 0.0
       end
       if v - x >= 0.0
@@ -75,9 +76,9 @@ module Equations
         v > 0.0 ? a = v : a = 0.0
         r[k] -= x
         ret[k] = a
-        #if k == "food" or k == "shelter" or k == "equipment" or k == "data"
+        if k == "food" or k == "shelter" or k == "equipment" or k == "data"
           ret[:shortfall] += x-a
-        #end
+        end
       end
     end
     return ret
@@ -141,5 +142,20 @@ module Equations
       ratio *= cost
     end
     return ratio * 0.19
+  end
+  
+  def Equations.consume_audit(r, c, need)
+    x = c["audit"]
+    n ={}
+    if r["audit"] - x < 0.0
+      r["audit"] > 0 ? a = r["audit"] : a = 0.0
+      n["audit"] = a
+    else
+      n["audit"] = x
+    end
+    r["audit"] -= x
+    ratio = c["audit"] == 0 ? 0.0 : (n["audit"]/c["audit"]) * WEIGHT["audit"]
+    # need = provided / demand
+    ratio *= (need <= 1.0 and need > 0.0) ? (1.0 - need) : 0.0
   end
 end
