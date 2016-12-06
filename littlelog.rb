@@ -48,7 +48,7 @@ module LittleLog
       @stat_list = stat_list
       super()
       #@filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_#{@str_date}#{EXT}"
-      @filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_20161128#{EXT}"
+      @filename = "#{LittleLog::LOG_FOLDER}#{qualifier}_20161204#{EXT}"
       if not File.file?(@filename)
         File.new(@filename, 'w')
         File.open(@filename, 'w') do |f|
@@ -92,6 +92,16 @@ module LittleLog
       self
     end
     
+    def div(stat, denom=1)
+      set(stat) if not @stat_list[stat]
+      if denom == 0
+        @stat_list[stat] = 0
+      else
+        @stat_list[stat] = @stat_list[stat] / denom
+      end
+      self
+    end
+    
     def save
       #puts @stat_list
       File.open(@filename, 'a') do |f|
@@ -113,6 +123,9 @@ module LittleLog
         end
       end
       self
+    end
+    def [](key)
+      @stat_list[key]
     end
   end
   
@@ -140,7 +153,7 @@ module LittleLog
     def initialize(qualifier="log")
       super()
       @filename = 
-          "#{LittleLog::LOG_FOLDER}#{qualifier}_#{@str_date}#{@str_time}#{EXT}"
+          "#{LittleLog::LOG_FOLDER}#{qualifier}_#{@str_date}#{EXT}"
     end
     def log(sender, method, note)
       time = Time.now

@@ -17,12 +17,13 @@ class SimControl < LittleGame
   
   def get_next_run
     return nil if @priority >= @run_param["priority"].size
-    if @test_num >= @run_param["limit"]
-      if @priority == 0
+    if @test_num >= @run_param["limit"] #done with last type, going to next
+      if @priority == 0 #did control
         @priority += 1
         @reassign = 0
       else
         @reassign += 1
+        #start over for proficiency
         if @reassign >= @run_param["reassignment_level"].size
           @priority += 1
           @reassign = 0
@@ -67,7 +68,7 @@ class SimControl < LittleGame
 end
 
 if __FILE__ == $0
-  $FRAME = LittleFrame.new(800, 800)
+  $FRAME = LittleFrame.new(800, 500)
   game = SimControl.new
   $FRAME.start(game)
 end

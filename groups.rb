@@ -22,9 +22,10 @@ class Unit < GameObject
       v.each do |j|
         j.update(resources, new_resources,
           trainers)
-        if SimControl.preferences["reassignment_start"] <= @game.scene.num_runs and
-            not j.remove and j.role.proficiency > 0 and
-            j.motivation <= SimControl.preferences["motivation"]
+        if SimControl.preferences["reassignment_start"] <= @game.scene.num_runs and not
+            j.remove and (j.motivation <= SimControl.preferences["motivation"] or
+            (Organization.control_data["priority"] != "agent" and
+            @game.scene.reassign_need(j.role.role_name)))
           $FRAME.log(self,"update", "Retraining #{j.to_s}")
           j.retrained = @game.scene.retrain(j)
           if j.retrained
@@ -41,12 +42,13 @@ class Unit < GameObject
       v.delete_if do |j|
         if j.remove
           @game.scene.current_agents -= 1
-          @game.scene.total_stat.dec("#{j.role.role_name}_from")
+          @game.scene.total_stat.dec("#{j.role.role_name}_dead")
           j.remove_trainer(trainers)
           $FRAME.log(self,"update",
               "#{j.serial_number} died at #{j.months}/#{j.months_total}.")
           true
         else
+          @game.scene.total_stat.inc("#{j.role.role_name}_total")
           false
         end
       end
@@ -91,11 +93,11 @@ class Unit < GameObject
     return text
   end
   def brief
-    n = 0
+    n = Hash.new
     @agents.each do |k,v|
-      n += v.size
+      n[k] = v.size
     end
-    text = "#{@unit_serial}:#{n}"
+    text = "#{@unit_serial}:#{n.to_s}"
   end
 end
 
@@ -108,5 +110,12 @@ class UnitGroup < Group
           true
         end
       end
+  end
+  def brief
+    text = "\n"
+    @entities.each do |i|
+      text += i.brief + "\n"
+    end
+    return text
   end
 end

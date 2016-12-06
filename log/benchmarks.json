@@ -1,0 +1,14 @@
+{
+    "food_end":         100.0,
+    "shelter_end":      100.0,
+    "health_end":       70.0,
+    "acquisition_end":  25.0,
+    "role_end":         10.0,
+    "audit_end":        65.0,
+    "equipment_end":    100.0,
+    "security_end":     90.0,
+    "data_end":         100.0,
+    "ojt_end":          70.0,
+    "professional_end": 80.0,
+    "formal_end":       20.0
+}

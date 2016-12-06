@@ -1,6 +1,6 @@
 {
-  "iterations": 250,
-  "reassignment_start": 3,
+  "iterations": 1000,
+  "reassignment_start": 2,
   "draw":       0,
   "verbose":    1,
   "start_agents": 70,

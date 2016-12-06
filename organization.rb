@@ -40,7 +40,7 @@ class Organization < Scene
     @@control_data = param
     @total_agents = 0
     @current_agents = 0
-    @cap = 70
+    @cap = SimControl.preferences["start_agents"]
     @end_run = false
     @trainers = {
       "service"         =>  [0,0,0],
@@ -57,63 +57,148 @@ class Organization < Scene
     @type = "#{@@control_data["priority"]}"
     a = @@control_data["reassignment_level"]
     @type += "#{a[0]}#{a[1]}#{a[2]}#{a[3]}"
+=begin
+    @percents_stat = LittleLog::Statistical.new("percents_use",
+        type: @type,
+        run:  0,
+        "food_s" =>  0,
+        "shelter_s" => 0,
+        "health_s" =>  0,
+        "acquisition_s" => 0,
+        "role_s" =>  0,
+        "audit_s" => 0,
+        "equipment_s" => 0,
+        "security_s" =>  0,
+        "data_s" =>  0,
+        "ojt_s" => 0,
+        "professional_s" =>  0,
+        "formal_s" =>  0)
+    @percente_stat = LittleLog::Statistical.new("percente_use",
+        type: @type,
+        run:  0,
+        "food_e" =>  0,
+        "shelter_e" => 0,
+        "health_e" =>  0,
+        "acquisition_e" => 0,
+        "role_e" =>  0,
+        "audit_e" => 0,
+        "equipment_e" => 0,
+        "security_e" =>  0,
+        "data_e" =>  0,
+        "ojt_e" => 0,
+        "professional_e" =>  0,
+        "formal_e" =>  0)
+    @percentd_stat = LittleLog::Statistical.new("percentd_use",
+        type: @type,
+        run:  0,
+        "food_d" =>  0,
+        "shelter_d" => 0,
+        "health_d" =>  0,
+        "acquisition_d" => 0,
+        "role_d" =>  0,
+        "audit_d" => 0,
+        "equipment_d" => 0,
+        "security_d" =>  0,
+        "data_d" =>  0,
+        "ojt_d" => 0,
+        "professional_d" =>  0,
+        "formal_d" =>  0)
+=end
     @resource_stat = LittleLog::Statistical.new("resource",
         type: @type,
         run: 0,
         "food_start" =>  0,
-        "food_end" =>  0,
         "shelter_start" => 0,
-        "shelter_end" => 0,
         "health_start" =>  0,
-        "health_end" =>  0,
         "acquisition_start" => 0,
-        "acquisition_end" => 0,
         "role_start" =>  0,
-        "role_end" =>  0,
         "audit_start" => 0,
-        "audit_end" => 0,
         "equipment_start" => 0,
-        "equipment_end" => 0,
         "security_start" =>  0,
-        "security_end" =>  0,
         "data_start" =>  0,
-        "data_end" =>  0,
         "ojt_start" => 0,
-        "ojt_end" => 0,
         "professional_start" =>  0,
-        "professional_end" =>  0,
         "formal_start" =>  0,
+        "food_end" =>  0,
+        "shelter_end" => 0,
+        "health_end" =>  0,
+        "acquisition_end" => 0,
+        "role_end" =>  0,
+        "audit_end" => 0,
+        "equipment_end" => 0,
+        "security_end" =>  0,
+        "data_end" =>  0,
+        "ojt_end" => 0,
+        "professional_end" =>  0,
         "formal_end" =>  0)
     @retrain_stat = LittleLog::Statistical.new("retrain",
         type: @type,
         run:  0,
         attempts: 0,
-        successes:  0)
+        "food_f" =>  0,
+        "shelter_f" => 0,
+        "health_f" =>  0,
+        "acquisition_f" => 0,
+        "role_f" =>  0,
+        "audit_f" => 0,
+        "equipment_f" => 0,
+        "security_f" =>  0,
+        "data_f" =>  0,
+        "ojt_f" => 0,
+        "professional_f" =>  0,
+        "formal_f" =>  0,
+        "food_t" =>  0,
+        "shelter_t" => 0,
+        "health_t" =>  0,
+        "acquisition_t" => 0,
+        "role_t" =>  0,
+        "audit_t" => 0,
+        "equipment_t" => 0,
+        "security_t" =>  0,
+        "data_t" =>  0,
+        "ojt_t" => 0,
+        "professional_t" =>  0,
+        "formal_t" =>  0)
     @total_stat = LittleLog::Statistical.new("total",
         type: @type,
         run: 0,
-        "food_orig" => 0,"food_from" => 0,"food_to" => 0,
-        "shelter_orig" =>  0,
-        "shelter_from" =>  0,"shelter_to" =>  0,
-        "health_orig" =>   0,
-        "health_from" =>   0,"health_to" =>   0,
-        "acquisition_orig" =>  0,
-        "acquisition_from" =>  0,
-        "acquisition_to" =>  0,
-        "role_orig" => 0,"role_from" => 0,"role_to" => 0,
-        "audit_orig" =>  0,"audit_from" =>  0,"audit_to" =>  0,
-        "equipment_orig" =>  0,
-        "equipment_from" =>  0,
-        "equipment_to" =>  0,
-        "security_orig" => 0,
-        "security_from" => 0,
-        "security_to" => 0,
-        "data_orig" => 0,"data_from" => 0,"data_to" => 0,
-        "ojt_orig" =>  0,"ojt_from" =>  0,"ojt_to" =>  0,
-        "professional_orig" => 0,
-        "professional_from" => 0,
-        "professional_to" => 0,
-        "formal_orig" => 0,"formal_from" => 0,"formal_to" => 0)
+        cap: @cap,
+        "food_new" => 0,
+        "shelter_new" =>  0,
+        "health_new" =>   0,
+        "acquisition_new" =>  0,
+        "role_new" => 0,
+        "audit_new" =>  0,
+        "equipment_new" =>  0,
+        "security_new" => 0,
+        "data_new" => 0,
+        "ojt_new" =>  0,
+        "professional_new" => 0,
+        "formal_new" => 0,
+        "food_dead" => 0,
+        "shelter_dead" =>  0,
+        "health_dead" =>   0,
+        "acquisition_dead" =>  0,
+        "role_dead" => 0,
+        "audit_dead" =>  0,
+        "equipment_dead" =>  0,
+        "security_dead" => 0,
+        "data_dead" => 0,
+        "ojt_dead" =>  0,
+        "professional_dead" => 0,
+        "formal_dead" => 0,
+        "food_total" => 0,
+        "shelter_total" =>  0,
+        "health_total" =>   0,
+        "acquisition_total" =>  0,
+        "role_total" => 0,
+        "audit_total" =>  0,
+        "equipment_total" =>  0,
+        "security_total" => 0,
+        "data_total" => 0,
+        "ojt_total" =>  0,
+        "professional_total" => 0,
+        "formal_total" => 0)
     #puts "Created Org"
   end
   # Loads base data to start the simulation with.
@@ -150,7 +235,7 @@ class Organization < Scene
       add_agent(a)
       @total_agents += 1
       @current_agents += 1
-      @total_stat.inc("#{r}_orig")
+      @total_stat.inc("#{r}_new")
       @total_stat.inc(:total_agents)
     end
     #set statistics
@@ -188,7 +273,7 @@ class Organization < Scene
       end
       @total_agents += 1
       @current_agents += 1
-      @total_stat.inc("#{r}_orig")
+      @total_stat.inc("#{r}_new")
       #@total_stat.inc(:total_agents)
       #$FRAME.log(self,"add_agent", "Created #{sn}")
     end
@@ -257,6 +342,18 @@ class Organization < Scene
     return maxk
   end
   
+  def reassign_need(role)
+    #check if role is in excess
+    if @old_resources[role] >= SimControl.default_data["max_resources"][role]
+      mink = priority_need
+      if mink and @old_resources[priority_need] <=  SimControl.default_data["min_resources"][role]
+        #priority need is really needed
+        return true
+      end
+    end
+    return false
+  end
+  
   # Uses default data to create parameters for a new agent.
   # @param role [String] is the role to create for; default is "default".
   def parse_default(role="default")
@@ -297,8 +394,11 @@ class Organization < Scene
       $FRAME.log(self,"EOG", to_s)
       return nil
     end
+    #total_s = 0
     @resources.each do |k,v|
       @resource_stat.set("#{k}_start", v)
+      #@percents_stat.set("#{k}_s",v)
+      #total_s += v
     end
     while not @retrainees.empty?
       add_agent(@retrainees.pop)
@@ -318,6 +418,7 @@ class Organization < Scene
     end
     rand = Random.rand(SimControl.preferences["cap_modifier"])
     @cap += (rand * Random.rand < 0.5 ? 1 : -1)
+    @total_stat.set(:cap, @cap)
     $FRAME.log(self,"update", "R:#{@resources}")
     @old_resources = @resources
     @resources = nr
@@ -327,9 +428,23 @@ class Organization < Scene
           @old_resources, @consumption, need) * v
     end
     #track resource use
+    #total_e = 0
     @old_resources.each do |k,v|
       @resource_stat.set("#{k}_end", v)
+      #x = @resource_stat["#{k}_start"]-@resource_stat["#{k}_end"]
+      #@percentd_stat.set("#{k}_d", x)
+      #total_e += v
+      #@percente_stat.set("#{k}_e", v)
     end
+=begin
+    @resources.each_key do |k|
+      @percents_stat.div("#{k}_s", total_s)
+      #@percent_stat.div("#{k}_e", total_e)
+      @percentd_stat.div("#{k}_d", total_s-total_e)
+    end
+    @percents_stat.save.inc(:run).reset([:run, :type])
+    @percentd_stat.save.inc(:run).reset([:run, :type])
+=end
     @resource_stat.save.inc(:run).reset([:run,:type])
     @retrain_stat.save.inc(:run).reset([:run, :type])
     @total_stat.save.inc(:run).reset([:run, :type])
@@ -364,14 +479,14 @@ class Organization < Scene
       #not needed + desired +     needed      = no  X
       #not needed + not desired + not needed  = no
       #not needed + not desired + needed      = no  X
-      r0 = agent.role.role_name
-      r1 = agent.desired_role
+      r0 = agent.role.role_name #current
+      r1 = agent.desired_role #want
       #$FRAME.log(self, "retrain", "Retrain to #{r1}?")
-      r2 = priority_need
+      r2 = priority_need #org
       #desired + needed
-      if @old_resources[r1] < SimControl.default_data["resources"][r1]
+      if @old_resources[r1] < SimControl.default_data["min_resources"][r1]
         #desired + needed + not needed
-        if @old_resources[r0] >= SimControl.default_data["resources"][r0]
+        if @old_resources[r0] >= SimControl.default_data["max_resources"][r0]
           #agent role change
           r = r1
         else #desired + needed + needed
@@ -380,15 +495,15 @@ class Organization < Scene
       #desired + not needed
       else
         #desired + not needed + not needed
-        if @old_resources[r0] >= SimControl.default_data["resources"][r0]
+        if @old_resources[r0] >= SimControl.default_data["max_resources"][r0]
           r = r1
         end
       end
       if r == nil #has not chosen
         #not desired + needed
-        if @old_resources[r2] < SimControl.default_data["resources"][r2]
+        if @old_resources[r2] < SimControl.default_data["min_resources"][r2]
           #not desired + needed + not needed
-          if @old_resources[r0] >= SimControl.default_data["resources"][r0]
+          if @old_resources[r0] >= SimControl.default_data["max_resources"][r0]
             r = r2
           end #not desired + needed + needed
         #not desired + not needed
@@ -404,9 +519,8 @@ class Organization < Scene
       oldrole = agent.role.role_name
       b = agent.change_role(role)
       if b
-        @total_stat.dec("#{oldrole}_from")
-        @retrain_stat.inc(:successes)
-        @total_stat.inc("#{r}_to")
+        @retrain_stat.inc("#{oldrole}_f")
+        @retrain_stat.inc("#{r}_t")
         return b
       end
     end
@@ -442,9 +556,10 @@ class Organization < Scene
         "U:#{@groups[:units].size}/#{@total_units}}"
   end
   def on_close
-    #@total_stat.set(:agents_current, @current_agents)
-    #@total_stat.set(:units_current, @groups[:units].size)
-    #@total_stat.save
+    unit_log = LittleLog::Debug.new("units")
+    unit_log.log(self,"on_close",@type.to_s)
+    unit_log.log(self,"on_close",@groups[:units].brief)
+    unit_log.log(self,"on_close","\n")
   end
   # Creates a resource list with the listed values, defaulting to zero.
   # @param a [Number] how much of whatever.

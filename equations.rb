@@ -4,18 +4,18 @@ The equations used in the simulation.
 module Equations
   # Determines how much each resource affects the simulation.
   WEIGHT = {
-    "food" =>         1.2,
-    "shelter" =>      1.2,
-    "health" =>       1.1,
-    "acquisition" =>  1.0,
-    "role" =>         1.0,
-    "audit" =>        0.8,
-    "equipment" =>    1.2,
-    "security" =>     1.0,
-    "data" =>         1.2,
-    "ojt" =>          1.1,
-    "professional" => 0.8,
-    "formal" =>       1.0
+    "food" =>         0.881657438,
+    "shelter" =>      0.89042035,
+    "health" =>       0.92443719,
+    "acquisition" =>  0.998226525,
+    "role" =>         0.989449467,
+    "audit" =>        0.960582147,
+    "equipment" =>    0.85107897,
+    "security" =>     0.92477882,
+    "data" =>         0.851106435,
+    "ojt" =>          0.814710458,
+    "professional" => 0.926323967,
+    "formal" =>       0.987228232
   }
   # Consumes resources and produces a ratio for training.
   # @param r [Hash] a listing of available resources.
@@ -167,7 +167,7 @@ module Equations
     r["audit"] -= x
     ratio = c["audit"] == 0 ? 0.0 : (n["audit"]/c["audit"]) * WEIGHT["audit"]
     # need = provided / demand
-    if n <= 1.0 and need > 0.0
+    if need <= 1.0 and need > 0.0
       return ratio * (1.0 - need)
     end
     return 0.0

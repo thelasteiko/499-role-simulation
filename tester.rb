@@ -20,4 +20,9 @@ for i in 0...100
 end
 =end
 
-IO.foreach("log/performance_20161125.csv") {|f| puts f}
+#IO.foreach("log/performance_20161125.csv") {|f| puts f}
+
+h = {"food" => 2, "leaf" => 8}
+
+puts h.to_s + "\nnext line"
+

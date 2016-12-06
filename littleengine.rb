@@ -304,6 +304,7 @@ class LittleGame
         #if the scene has been changed, switch out the old scene
         #and switch input to the new scene.
         if (@newscene)
+            @scene.on_close if @scene
             @scene = @newscene
             @newscene = nil
             start_input if @canvas and @input
