@@ -152,61 +152,69 @@ class PostProcessor
     end
   end
   
-  def self.readMeans(filename)
-    h = {
-        "food_start" =>  0,
-        "shelter_start" => 0,
-        "health_start" =>  0,
-        "acquisition_start" => 0,
-        "role_start" =>  0,
-        "audit_start" => 0,
-        "equipment_start" => 0,
-        "security_start" =>  0,
-        "data_start" =>  0,
-        "ojt_start" => 0,
-        "professional_start" =>  0,
-        "formal_start" =>  0,
-        "food_end" =>  0,
-        "shelter_end" => 0,
-        "health_end" =>  0,
-        "acquisition_end" => 0,
-        "role_end" =>  0,
-        "audit_end" => 0,
-        "equipment_end" => 0,
-        "security_end" =>  0,
-        "data_end" =>  0,
-        "ojt_end" => 0,
-        "professional_end" =>  0,
-        "formal_end" =>  0
-    }
-    CSV.foreach(filename) do |csv|
-      
-    end
-  end
-  
-  #make a run that will get the standard deviation
-  # for each run iteration?
-  # or should I just do the last, the end results are what matter right?
-  # I need a measure of change
-  def self.deviation(filename)
-    #calculate the standard deviation for each type
-    i = 0
-    headers = []
-    data = []
-    CSV.foreach(filename) do |csv|
-      if i == 0
-        headers = csv
-      else
-        if data[0] != csv[0]
-          append(nil,"stdev_#{filename}", headers, data) if not data.empty?
-          data = [csv[0],csv[1]] #type and run
-        end
-        #i'll find the sd for every col i guess
-        #m = sum(x)/n
-        #sigma = sum((x-(sum(x)/n))^2)/(n-1)
-        append(nil, "stdev_#{filename}", headers,data)
+  #I need the mean across means.
+  def self.means(filename) #the one I'm trying to get the means from
+    #start with the averages? no I need to pull the originals.
+    #i = 1
+    headers = ["run", "start_mean", "start_stdev", "end_mean", "end_stdev"]
+    fn = 0
+    b1 = 0
+    b2 = 9
+    #i = 6
+    for i in 0...1000 #each file
+      if i != 0 and (i) % 10 == 0
+        b1 += 10
+        b2 += 10
       end
-      i += 1
+      f = "run_#{b1}-#{b2}/#{i}_#{filename}" #next file
+      h = false
+      sta = 0.0
+      ena = 0.0
+      stsum = []
+      ensum = []
+      CSV.foreach(f) do |csv| #read the file
+        if not h or csv[0].include?("organization")
+          h = true
+          next
+        end
+        st = 0.0
+        en = 0.0
+        #sum the items across start and end for each line
+        for k in 2..13
+          x = csv[k].to_f
+          st += x
+          sta += x
+        end
+        for t in 13...csv.length-1
+          x = csv[t].to_f
+          en += x
+          ena += x
+        end
+        #store sums for each possible combination
+        stsum.push(st)
+        ensum.push(en)
+      end
+      #puts "{#{sta},#{ena},#{stsum.length},#{ensum.length}}"
+      #calculate the average for this run
+      #m = sum(x)/n
+      stm = sta / stsum.length.to_f
+      enm = ena / ensum.length.to_f
+      #puts "{#{stm},#{enm}}"
+      #calculate the standard deviation
+      #sigma = sum((x-(sum(x)/n))^2)/(n-1)
+      stsd = 0.0
+      ensd = 0.0
+      stsum.each do |v|
+        stsd += ((v - stm) ** 2)
+        #puts stsd
+      end
+      ensum.each do |v|
+        ensd += ((v - enm) ** 2)
+      end
+      stsd = Math.sqrt(stsd / (stsum.length-1))
+      ensd = Math.sqrt(ensd / (ensum.length-1))
+      #puts "{#{stsd},#{ensd}}"
+      append(nil, "stdev2_#{filename}", headers, [i,stm,stsd,enm,ensd])
     end
   end
   
@@ -252,9 +260,9 @@ class PostProcessor
 end
 
 #PostProcessor.average("resource_20161204.csv")
-#PostProcessor.group_resource("resource_20161128.csv")
-#PostProcessor.group_run("resource_20161204.csv")
-#PostProcessor.survival_rates("run_990-999/999_resource_20161204.csv", JSON.parse(File.read("benchmarks.json")))
-#PostProcessor.group_run("total_20161204.csv")
 #PostProcessor.average("retrain_20161204.csv")
 #PostProcessor.average("total_20161204.csv")
+#PostProcessor.group_run("resource_20161204.csv")
+#PostProcessor.group_run("total_20161204.csv")
+#PostProcessor.survival_rates("run_990-999/999_resource_20161204.csv", JSON.parse(File.read("benchmarks.json")))
+PostProcessor.means("resource_20161204.csv")
